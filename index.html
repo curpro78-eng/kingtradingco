@@ -233,8 +233,8 @@ input,select,textarea{font-family:var(--font-body)}
 .skeleton-line.btn{height:34px;border-radius:var(--radius-sm);margin-top:4px}
 
 /* ── WISHLIST TOAST ── */
-#wishToast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(60px) scale(.9);background:var(--bg-dark);color:#fff;padding:10px 18px;border-radius:var(--radius-md);font-size:.83rem;font-weight:500;z-index:600;display:flex;align-items:center;gap:7px;transition:transform .35s var(--spring),opacity .3s;box-shadow:var(--shadow-lg);max-width:300px;opacity:0;pointer-events:none}
-#wishToast.show{transform:translateX(-50%) translateY(0) scale(1);opacity:1}
+/* #wishToast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(60px) scale(.9);background:var(--bg-dark);color:#fff;padding:10px 18px;border-radius:var(--radius-md);font-size:.83rem;font-weight:500;z-index:600;display:flex;align-items:center;gap:7px;transition:transform .35s var(--spring),opacity .3s;box-shadow:var(--shadow-lg);max-width:300px;opacity:0;pointer-events:none}
+#wishToast.show{transform:translateX(-50%) translateY(0) scale(1);opacity:1} */
 
 /* ── PRODUCT QUICK VIEW MODAL ── */
 .qv-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:400;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px}
@@ -496,7 +496,7 @@ tbody tr:hover .td-img{transform:scale(1.1)}
 <header class="header" id="mainHeader">
   <nav class="nav">
     <div class="logo" onclick="showView('store')">
-      <div class="logo-icon">🌾</div>
+      <!-- <div class="logo-icon">🌾</div> -->
       <div class="logo-text">King Trading Co.<span>Quality Groceries · Since 1990</span></div>
     </div>
     <div class="nav-search" id="navSearch">
@@ -509,11 +509,11 @@ tbody tr:hover .td-img{transform:scale(1.1)}
       <div class="nav-btn" onclick="openCart()" title="Cart" id="cartBtn">
         🛒
         <span class="cart-badge" id="cartBadge">0</span>
-      </div>
+      <!-- </div>
       <div class="nav-btn" onclick="openWishlist()" title="Wishlist" id="wishBtn" style="font-size:17px">
         🤍
         <span class="cart-badge" id="wishBadge" style="background:#ef4444;border-color:var(--primary)">0</span>
-      </div>
+      </div> -->
       <button class="admin-nav-btn" id="adminNavBtn" onclick="showView('admin')">⚙️ Admin</button>
     </div>
   </nav>
@@ -744,7 +744,7 @@ tbody tr:hover .td-img{transform:scale(1.1)}
 </div>
 
 <!-- ════════════ WISHLIST PANEL ════════════ -->
-<div class="cart-overlay" id="wishOverlay" onclick="if(event.target===this)closeWishlist()">
+<!-- <div class="cart-overlay" id="wishOverlay" onclick="if(event.target===this)closeWishlist()">
   <div class="cart-panel">
     <div class="cart-panel-head" style="background:linear-gradient(135deg,#be185d,#e11d48)">
       <h2>🤍 Wishlist</h2>
@@ -756,7 +756,7 @@ tbody tr:hover .td-img{transform:scale(1.1)}
       <button class="clear-cart-btn" onclick="clearWishlist()">🗑 Clear Wishlist</button>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- ════════════ CART PANEL ════════════ -->
 <div class="cart-overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()">
@@ -854,14 +854,23 @@ tbody tr:hover .td-img{transform:scale(1.1)}
 // ════════════════════════════════════════
 //  FIREBASE CONFIG
 // ════════════════════════════════════════
-const firebaseConfig = {
-  apiKey: "AIzaSyBg0HeoooI58R6ikEfM5oaC5kPmfS9VskM",
-  authDomain: "kingtradingco-eac53.firebaseapp.com",
-  projectId: "kingtradingco-eac53",
-  storageBucket: "",
-  messagingSenderId: "705858167354",
-  appId: "1:705858167354:web:03bfc2cc0e702b428b0b03"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBg0HeoooI58R6ikEfM5oaC5kPmfS9VskM",
+//   authDomain: "kingtradingco-eac53.firebaseapp.com",
+//   projectId: "kingtradingco-eac53",
+//   storageBucket: "",
+//   messagingSenderId: "705858167354",
+//   appId: "1:705858167354:web:03bfc2cc0e702b428b0b03"
+// };
+  const firebaseConfig = {
+    apiKey: "AIzaSyBg0HeoooI58R6ikEfM5oaC5kPmfS9VskM",
+    authDomain: "kingtradingco-eac53.firebaseapp.com",
+    projectId: "kingtradingco-eac53",
+    storageBucket: "kingtradingco-eac53.firebasestorage.app",
+    messagingSenderId: "705858167354",
+    appId: "1:705858167354:web:03bfc2cc0e702b428b0b03",
+    measurementId: "G-CTYE1YC20V"
+  };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
@@ -1157,46 +1166,46 @@ function renderProducts() {
   initReveal();
 }
 
-function productCardHTML(p) {
-  const wish = getWishlist();
-  const isWished = wish.some(w => w.id === p.id);
-  const emoji = CAT_EMOJI[p.category] || '🛒';
-  const img = p.imageUrl
-    ? '<img src="' + p.imageUrl + '" alt="' + eh(p.productName) + '" loading="lazy" onerror="this.outerHTML=\'<div class=\\\'card-placeholder\\\'><div class=\\\'ph-icon\\\'>' + emoji + '</div></div>\'">'
-    : '<div class="card-placeholder"><div class="ph-icon">' + emoji + '</div></div>';
-  const price = p.price > 0
-    ? '<div class="card-price"><span class="currency">₹</span>' + p.price.toLocaleString('en-IN') + '</div>'
-    : '<div class="card-price no-price">Price on request</div>';
-  const safeName = ea(p.productName);
-  const safeImg  = ea(p.imageUrl || '');
-  const safeCat  = ea(p.category || '');
-  const btn = p.available !== false
-    ? '<button class="add-btn" onclick="addToCart(\'' + p.id + '\',\'' + safeName + '\',' + (p.price||0) + ',\'' + safeImg + '\')"><span>＋</span> Add to Cart</button>'
-    : '<button class="add-btn" disabled style="background:#e5e7eb;color:#9ca3af;cursor:not-allowed">Unavailable</button>';
-  const wishIcon = isWished ? '❤️' : '🤍';
-  const wishClass = isWished ? 'card-wish wished' : 'card-wish';
-  const wishTitle = isWished ? 'Remove from wishlist' : 'Add to wishlist';
-  return '<div class="product-card' + (p.available===false?' unavailable':'') + '" onclick="openQV(\'' + p.id + '\')">'
-    + '<div class="card-img-wrap">'
-    + img
-    + '<div class="shimmer-fx"></div>'
-    + '<span class="cat-pill">' + emoji + ' ' + (p.category||'Other') + '</span>'
-    + '<button class="' + wishClass + '" onclick="event.stopPropagation();toggleWish(\'' + p.id + '\',\'' + safeName + '\',' + (p.price||0) + ',\'' + safeImg + '\',\'' + safeCat + '\')" title="' + wishTitle + '">' + wishIcon + '</button>'
-    + '</div>'
-    + '<div class="card-body">'
-    + '<div class="card-name">' + eh(p.productName) + '</div>'
-    + '<div class="card-cat-lbl">' + emoji + ' ' + (p.category||'Other') + '</div>'
-    + price
-    + '<div onclick="event.stopPropagation()">' + btn + '</div>'
-    + '</div>'
-    + '</div>';
-}
+// function productCardHTML(p) {
+//   const wish = getWishlist();
+//   const isWished = wish.some(w => w.id === p.id);
+//   const emoji = CAT_EMOJI[p.category] || '🛒';
+//   const img = p.imageUrl
+//     ? '<img src="' + p.imageUrl + '" alt="' + eh(p.productName) + '" loading="lazy" onerror="this.outerHTML=\'<div class=\\\'card-placeholder\\\'><div class=\\\'ph-icon\\\'>' + emoji + '</div></div>\'">'
+//     : '<div class="card-placeholder"><div class="ph-icon">' + emoji + '</div></div>';
+//   const price = p.price > 0
+//     ? '<div class="card-price"><span class="currency">₹</span>' + p.price.toLocaleString('en-IN') + '</div>'
+//     : '<div class="card-price no-price">Price on request</div>';
+//   const safeName = ea(p.productName);
+//   const safeImg  = ea(p.imageUrl || '');
+//   const safeCat  = ea(p.category || '');
+//   const btn = p.available !== false
+//     ? '<button class="add-btn" onclick="addToCart(\'' + p.id + '\',\'' + safeName + '\',' + (p.price||0) + ',\'' + safeImg + '\')"><span>＋</span> Add to Cart</button>'
+//     : '<button class="add-btn" disabled style="background:#e5e7eb;color:#9ca3af;cursor:not-allowed">Unavailable</button>';
+//   const wishIcon = isWished ? '❤️' : '🤍';
+//   const wishClass = isWished ? 'card-wish wished' : 'card-wish';
+//   const wishTitle = isWished ? 'Remove from wishlist' : 'Add to wishlist';
+//   return '<div class="product-card' + (p.available===false?' unavailable':'') + '" onclick="openQV(\'' + p.id + '\')">'
+//     + '<div class="card-img-wrap">'
+//     + img
+//     + '<div class="shimmer-fx"></div>'
+//     + '<span class="cat-pill">' + emoji + ' ' + (p.category||'Other') + '</span>'
+//     + '<button class="' + wishClass + '" onclick="event.stopPropagation();toggleWish(\'' + p.id + '\',\'' + safeName + '\',' + (p.price||0) + ',\'' + safeImg + '\',\'' + safeCat + '\')" title="' + wishTitle + '">' + wishIcon + '</button>'
+//     + '</div>'
+//     + '<div class="card-body">'
+//     + '<div class="card-name">' + eh(p.productName) + '</div>'
+//     + '<div class="card-cat-lbl">' + emoji + ' ' + (p.category||'Other') + '</div>'
+//     + price
+//     + '<div onclick="event.stopPropagation()">' + btn + '</div>'
+//     + '</div>'
+//     + '</div>';
+// }
 
-function showSkeletons(n) {
-  const grid = document.getElementById('productsGrid');
-  if (!grid) return;
-  grid.innerHTML = Array(n).fill('<div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton-body"><div class="skeleton skeleton-line"></div><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line btn"></div></div></div>').join('');
-}
+// function showSkeletons(n) {
+//   const grid = document.getElementById('productsGrid');
+//   if (!grid) return;
+//   grid.innerHTML = Array(n).fill('<div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton-body"><div class="skeleton skeleton-line"></div><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line btn"></div></div></div>').join('');
+// }
 
 // ════════════════════════════════════════
 //  SEARCH SUGGESTIONS
@@ -1366,105 +1375,105 @@ function qvAddToCart() {
 // ════════════════════════════════════════
 //  WISHLIST
 // ════════════════════════════════════════
-function getWishlist() { try { return JSON.parse(localStorage.getItem("kt_wish")||"[]"); } catch(e) { return []; } }
-function saveWishlist(w) { localStorage.setItem("kt_wish", JSON.stringify(w)); }
+// function getWishlist() { try { return JSON.parse(localStorage.getItem("kt_wish")||"[]"); } catch(e) { return []; } }
+// function saveWishlist(w) { localStorage.setItem("kt_wish", JSON.stringify(w)); }
 
-function toggleWish(id, name, price, image, category) {
-  let wish = getWishlist();
-  const idx = wish.findIndex(w => w.id === id);
-  if (idx > -1) {
-    wish.splice(idx, 1);
-    showWishToast('💔 Removed from wishlist');
-  } else {
-    wish.push({id, name, price, image, category});
-    showWishToast('❤️ Added to wishlist!');
-  }
-  saveWishlist(wish);
-  updateWishBadge();
-  renderProducts();
-}
+// function toggleWish(id, name, price, image, category) {
+//   let wish = getWishlist();
+//   const idx = wish.findIndex(w => w.id === id);
+//   if (idx > -1) {
+//     wish.splice(idx, 1);
+//     showWishToast('💔 Removed from wishlist');
+//   } else {
+//     wish.push({id, name, price, image, category});
+//     showWishToast('❤️ Added to wishlist!');
+//   }
+//   saveWishlist(wish);
+//   updateWishBadge();
+//   renderProducts();
+// }
 
-function showWishToast(msg) {
-  const t = document.getElementById('wishToast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._t);
-  t._t = setTimeout(() => t.classList.remove('show'), 2200);
-}
+// function showWishToast(msg) {
+//   const t = document.getElementById('wishToast');
+//   t.textContent = msg;
+//   t.classList.add('show');
+//   clearTimeout(t._t);
+//   t._t = setTimeout(() => t.classList.remove('show'), 2200);
+// }
 
-function updateWishBadge() {
-  const total = getWishlist().length;
-  const b = document.getElementById('wishBadge');
-  if (!b) return;
-  b.textContent = total;
-  b.classList.toggle('show', total > 0);
-  document.getElementById('wishBtn').textContent = total > 0 ? '❤️' : '🤍';
-}
+// function updateWishBadge() {
+//   const total = getWishlist().length;
+//   const b = document.getElementById('wishBadge');
+//   if (!b) return;
+//   b.textContent = total;
+//   b.classList.toggle('show', total > 0);
+//   document.getElementById('wishBtn').textContent = total > 0 ? '❤️' : '🤍';
+// }
 
-function openWishlist() {
-  renderWishPanel();
-  document.getElementById('wishOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
+// function openWishlist() {
+//   renderWishPanel();
+//   document.getElementById('wishOverlay').classList.add('open');
+//   document.body.style.overflow = 'hidden';
+// }
 
-function closeWishlist() {
-  document.getElementById('wishOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
+// function closeWishlist() {
+//   document.getElementById('wishOverlay').classList.remove('open');
+//   document.body.style.overflow = '';
+// }
 
-function renderWishPanel() {
-  const wish = getWishlist();
-  const list = document.getElementById('wishItemsList');
-  const footer = document.getElementById('wishFooter');
-  if (wish.length === 0) {
-    list.innerHTML = '<div class="cart-empty-state"><div class="ce-icon">🤍</div><h3>Wishlist is empty</h3><p>Tap ❤️ on any product to save it</p></div>';
-    footer.style.display = 'none';
-    return;
-  }
-  list.innerHTML = wish.map(function(item, i) {
-    const catE = CAT_EMOJI[item.category] || '🛒';
-    const imgEl = item.image
-      ? '<img class="ci-img" src="' + item.image + '" alt="">'
-      : '<div class="ci-img-ph">' + catE + '</div>';
-    return '<div class="cart-item" style="animation-delay:' + (i*0.05) + 's">'
-      + imgEl
-      + '<div class="ci-info"><div class="ci-name">' + eh(item.name) + '</div><div class="ci-price">' + (item.price>0?'₹'+item.price.toLocaleString('en-IN'):'Price on request') + '</div></div>'
-      + '<div class="ci-controls">'
-      + '<button class="add-btn" style="width:auto;padding:0 10px;height:30px;font-size:.72rem;margin:0" onclick="addToCartFromWish(\'' + item.id + '\',\'' + ea(item.name) + '\',' + item.price + ',\'' + ea(item.image||'') + '\')">Add</button>'
-      + '<button class="ci-remove" onclick="removeFromWish(\'' + item.id + '\')">🗑</button>'
-      + '</div>'
-      + '</div>';
-  }).join('');
-  footer.style.display = 'block';
-}
+// function renderWishPanel() {
+//   const wish = getWishlist();
+//   const list = document.getElementById('wishItemsList');
+//   const footer = document.getElementById('wishFooter');
+//   if (wish.length === 0) {
+//     list.innerHTML = '<div class="cart-empty-state"><div class="ce-icon">🤍</div><h3>Wishlist is empty</h3><p>Tap ❤️ on any product to save it</p></div>';
+//     footer.style.display = 'none';
+//     return;
+//   }
+//   list.innerHTML = wish.map(function(item, i) {
+//     const catE = CAT_EMOJI[item.category] || '🛒';
+//     const imgEl = item.image
+//       ? '<img class="ci-img" src="' + item.image + '" alt="">'
+//       : '<div class="ci-img-ph">' + catE + '</div>';
+//     return '<div class="cart-item" style="animation-delay:' + (i*0.05) + 's">'
+//       + imgEl
+//       + '<div class="ci-info"><div class="ci-name">' + eh(item.name) + '</div><div class="ci-price">' + (item.price>0?'₹'+item.price.toLocaleString('en-IN'):'Price on request') + '</div></div>'
+//       + '<div class="ci-controls">'
+//       + '<button class="add-btn" style="width:auto;padding:0 10px;height:30px;font-size:.72rem;margin:0" onclick="addToCartFromWish(\'' + item.id + '\',\'' + ea(item.name) + '\',' + item.price + ',\'' + ea(item.image||'') + '\')">Add</button>'
+//       + '<button class="ci-remove" onclick="removeFromWish(\'' + item.id + '\')">🗑</button>'
+//       + '</div>'
+//       + '</div>';
+//   }).join('');
+//   footer.style.display = 'block';
+// }
 
-function removeFromWish(id) {
-  let wish = getWishlist();
-  wish = wish.filter(w => w.id !== id);
-  saveWishlist(wish);
-  updateWishBadge();
-  renderWishPanel();
-  renderProducts();
-}
+// function removeFromWish(id) {
+//   let wish = getWishlist();
+//   wish = wish.filter(w => w.id !== id);
+//   saveWishlist(wish);
+//   updateWishBadge();
+//   renderWishPanel();
+//   renderProducts();
+// }
 
-function addToCartFromWish(id, name, price, image) {
-  addToCart(id, name, price, image);
-  renderWishPanel();
-}
+// function addToCartFromWish(id, name, price, image) {
+//   addToCart(id, name, price, image);
+//   renderWishPanel();
+// }
 
-function addAllWishToCart() {
-  getWishlist().forEach(item => addToCart(item.id, item.name, item.price, item.image));
-  showToast('🛒 All wishlist items added!', 'success');
-  closeWishlist();
-}
+// function addAllWishToCart() {
+//   getWishlist().forEach(item => addToCart(item.id, item.name, item.price, item.image));
+//   showToast('🛒 All wishlist items added!', 'success');
+//   closeWishlist();
+// }
 
-function clearWishlist() {
-  if (!confirm("Clear all wishlist items?")) return;
-  saveWishlist([]);
-  updateWishBadge();
-  renderWishPanel();
-  renderProducts();
-}
+// function clearWishlist() {
+//   if (!confirm("Clear all wishlist items?")) return;
+//   saveWishlist([]);
+//   updateWishBadge();
+//   renderWishPanel();
+//   renderProducts();
+// }
 
 // ════════════════════════════════════════
 //  CART
