@@ -324,7 +324,7 @@ tbody tr:hover .tdi{transform:scale(1.08)}
 var _k=['AIzaSyBg0HeoooI58R6ikEfM5oaC5kPmfS9VskM','kingtradingco-eac53.firebaseapp.com','kingtradingco-eac53','705858167354','1:705858167354:web:03bfc2cc0e702b428b0b03'];
 (function(){firebase.initializeApp({apiKey:_k[0],authDomain:_k[1],projectId:_k[2],storageBucket:'',messagingSenderId:_k[3],appId:_k[4]});})();
 var db=firebase.firestore(),auth=firebase.auth(),col=db.collection('products');
-var CATS=["Rice","Dal","Flour","Oil","Masala","Other"],EM={Rice:"🌾",Dal:"🫘",Flour:"🌻",Oil:"🫙",Masala:"🌶️",Other:"🛒"};
+var CATS=["Rice","Dal","Flour","Oil","Sugar","Other"],EM={Rice:"🌾",Dal:"🫘",Flour:"🌻",Oil:"🫙",Sugar:"🍚",Other:"🛒"};
 var adminProds=[],editId=null,editImg=null,loaded=false;
 var catO=CATS.map(function(c){return'<option value="'+c+'">'+c+'</option>';}).join('');
 document.getElementById('acat').innerHTML=catO;document.getElementById('ecat').innerHTML=catO;
