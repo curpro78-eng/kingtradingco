@@ -4,7 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malivagam — Quality Groceries &amp; Rice, Since 1964</title>
+<link rel="icon" href="rice.png">
+<title>Malivagam</title>
+<!-- <title>Malivagam — Quality Groceries &amp; Rice, Since 1964</title> -->
 <meta name="description" content="Malivagam – Premium rice, dal, flour, oil and groceries since 1964. Order via WhatsApp, Salem.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -107,6 +109,12 @@ body::before {
 @keyframes suggSlideIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:none} }
 @keyframes suggAddPop { 0%{transform:scale(1)} 40%{transform:scale(1.25) rotate(-6deg)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
 
+/* ─── NEW: gold shimmer for hero brand name ─── */
+@keyframes goldShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
 /* ═══════════════════════════════════
    HEADER
 ═══════════════════════════════════ */
@@ -156,7 +164,7 @@ body::before {
   background:rgba(255,255,255,.85);
   border:1.5px solid var(--border);
   border-radius:99px;
-  overflow:visible; /* must stay visible so sugg-box can escape */
+  overflow:visible;
   transition:background .3s, border-color .3s, box-shadow .3s, border-radius .3s;
   position:relative;
 }
@@ -165,7 +173,6 @@ body::before {
   border-color:rgba(139,69,19,.45);
   box-shadow:0 0 0 4px rgba(139,69,19,.08), 0 6px 20px rgba(139,69,19,.1);
   border-radius:20px 20px 0 0;
-  /* NO transform:translateY here — it breaks sugg-box positioning */
 }
 .sw .si { padding:0 14px; font-size:14px; color:var(--muted2); flex-shrink:0; transition:color .3s; }
 .sw:focus-within .si { color:var(--spice); }
@@ -237,8 +244,23 @@ body::before {
 .ss-empty { padding:22px 16px; text-align:center; color:var(--muted2); font-size:.82rem; font-style:italic; }
 .ss-empty-icon { font-size:1.6rem; opacity:.4; margin-bottom:6px; }
 
-/* MOBILE search */
-.mobile-search-bar { display:none; padding:10px 16px; background:rgba(254,243,226,.95); border-bottom:1px solid var(--border); position:relative; }
+/* ════════════════════════════════════
+   MOBILE SEARCH BAR — STICKY (CHANGE 1)
+   Sticks below header so it never
+   disappears when the user scrolls.
+════════════════════════════════════ */
+.mobile-search-bar {
+  display:none;
+  /* CHANGED: sticky, just below the 72px header */
+  position:sticky;
+  top:72px;
+  z-index:190;           /* just below header (200) */
+  padding:10px 16px;
+  background:rgba(254,243,226,.97);
+  backdrop-filter:blur(16px) saturate(1.4);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 12px rgba(139,69,19,.08);
+}
 .mobile-search-bar input { width:100%; height:42px; background:#fff; border:1.5px solid var(--border); border-radius:99px; padding:0 16px 0 44px; font-size:.875rem; outline:none; transition:border-color .25s,box-shadow .25s; color:var(--ink); }
 .mobile-search-bar input:focus { border-color:rgba(139,69,19,.4); box-shadow:0 0 0 3px rgba(139,69,19,.08); }
 .mob-si { position:absolute; left:28px; top:50%; transform:translateY(-50%); font-size:15px; color:var(--muted2); pointer-events:none; }
@@ -275,7 +297,7 @@ body::before {
 .ticker-dot { width:5px; height:5px; border-radius:50%; background:rgba(0,0,0,.3); flex-shrink:0; }
 
 /* ═══════════════════════════════════
-   HERO — REDESIGNED
+   HERO — CHANGE 2: lighter overlay + richer text
 ═══════════════════════════════════ */
 .hero {
   position:relative;
@@ -285,10 +307,8 @@ body::before {
   justify-content:center;
   overflow:hidden;
   padding:60px 24px 56px;
-  /* no background-color — image fills it */
 }
 
-/* Stable background image — covers the section */
 .hero::before {
   content:'';
   position:absolute;
@@ -298,30 +318,20 @@ body::before {
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  filter: blur(1px);
-  transform: scale(1.04); /* prevents blurred edges from showing white */
+  filter: blur(2px);
+  transform: scale(1.04);
 }
 
-/* Dark maroon overlay for text legibility */
-/* .hero-overlay {
-  display:none;
-} */
- .hero-overlay {
+/* CHANGE 2 — overlay is now noticeably lighter (~40% vs ~75% before) */
+.hero-overlay {
   position:absolute;
   inset:0;
   z-index:1;
-  background:linear-gradient(
-    160deg,
-    rgba(58,8,8,.78) 0%,
-    rgba(74,10,18,.68) 45%,
-    rgba(44,6,12,.80) 100%
-  );
+  background:rgba(0,0,0,.55);
   pointer-events:none;
 }
 
 
-
-/* Decorative orbs */
 .hero-orb {
   position:absolute;
   border-radius:50%;
@@ -340,7 +350,6 @@ body::before {
   animation-duration:14s; animation-delay:-7s;
 }
 
-/* Content wrapper */
 .hero-content {
   position:relative;
   z-index:2;
@@ -357,68 +366,99 @@ body::before {
 /* Badge */
 .hero-badge {
   display:inline-flex; align-items:center; gap:7px;
-  background:rgba(200,169,110,.16);
-  border:1px solid rgba(200,169,110,.38);
-  color:var(--maroon-gold);
-  font-size:.72rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
-  padding:5px 16px; border-radius:99px;
-  margin-bottom:18px;
+  background:rgba(200,169,110,.22);
+  border:1px solid rgba(200,169,110,.55);
+  color:#FFE8A8;
+  font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  padding:6px 18px; border-radius:99px;
+  margin-bottom:20px;
+  text-shadow:0 1px 8px rgba(0,0,0,.5);
   animation:heroBadgeSlide .7s .1s var(--spring) both;
 }
 .hero-badge-star { color:var(--accent); animation:none; }
 
-/* Brand name */
+/* CHANGE 2 — brand name: animated gold shimmer + stronger glow */
+/* .hero-brand-name {
+  font-family:var(--ff-serif);
+  font-size:clamp(3rem,8vw,5.6rem);
+  font-weight:300;
+  font-style:italic; */
+  /* Shimmer gradient over gold base */
+  /* background: linear-gradient(
+    105deg,
+    #C8A96E 0%,
+    #FFE8A0 30%,
+    #FFF3C0 50%,
+    #FFE8A0 70%,
+    #C8A96E 100%
+  );
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:
+    heroTitleReveal 1s .25s var(--reveal) both,
+    goldShimmer 4s 1.5s linear infinite;
+  line-height:1.0;
+  letter-spacing:-.02em;
+  margin-bottom:8px;
+  filter:drop-shadow(0 2px 20px rgba(200,169,110,.55)) drop-shadow(0 0 60px rgba(255,220,100,.25));
+} */
 .hero-brand-name {
   font-family:var(--ff-serif);
   font-size:clamp(3rem,8vw,5.6rem);
   font-weight:300;
   font-style:italic;
-  color:var(--maroon-gold);
+  color:#FFE8A0;
   line-height:1.0;
   letter-spacing:-.02em;
   margin-bottom:8px;
-  text-shadow:0 2px 40px rgba(0,0,0,.5), 0 0 80px rgba(200,169,110,.2);
+  text-shadow:0 2px 24px rgba(0,0,0,.6), 0 0 60px rgba(200,169,110,.3);
   animation:heroTitleReveal 1s .25s var(--reveal) both;
 }
 
-/* Location */
+
+/* Location — brighter, crisper */
 .hero-location {
-  font-size:.72rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
-  color:rgba(200,169,110,.55);
+  font-size:.75rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase;
+  color:rgba(255,220,160,.85);
+  text-shadow:0 1px 10px rgba(0,0,0,.6);
   margin-bottom:22px;
   animation:heroSubFade .7s .45s ease both;
 }
 
 /* Gold divider */
 .hero-divider-line {
-  width:56px; height:1.5px;
-  background:linear-gradient(90deg,transparent,var(--maroon-gold),transparent);
-  margin:0 auto 24px;
+  width:64px; height:1.5px;
+  background:linear-gradient(90deg,transparent,#FFE8A0,transparent);
+  margin:0 auto 26px;
   animation:heroDividerGrow .8s .55s var(--reveal) both;
   transform-origin:center;
 }
 
-/* Pills */
+/* Pills — brighter text */
 .hero-pills {
   display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
-  margin-bottom:28px;
+  margin-bottom:30px;
   animation:heroSubFade .7s .62s ease both;
 }
 .hero-pill {
-  padding:6px 16px; border-radius:99px;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(200,169,110,.24);
-  color:rgba(255,255,255,.8);
-  font-size:.75rem; font-weight:500;
-  backdrop-filter:blur(6px);
+  padding:7px 18px; border-radius:99px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,220,140,.35);
+  color:rgba(255,240,200,.95);
+  font-size:.78rem; font-weight:600;
+  backdrop-filter:blur(8px);
+  text-shadow:0 1px 6px rgba(0,0,0,.4);
   transition:all .25s var(--spring);
   cursor:default;
 }
 .hero-pill:hover {
-  background:rgba(200,169,110,.18);
-  border-color:rgba(200,169,110,.52);
-  transform:translateY(-3px) scale(1.05);
+  background:rgba(200,169,110,.28);
+  border-color:rgba(255,220,140,.7);
+  transform:translateY(-3px) scale(1.06);
   color:#fff;
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
 }
 
 /* Action buttons */
@@ -432,8 +472,8 @@ body::before {
   background:linear-gradient(135deg,var(--maroon),var(--maroon-lt));
   color:var(--maroon-gold); font-size:.9rem; font-weight:700;
   display:inline-flex; align-items:center; gap:8px;
-  border:1px solid rgba(200,169,110,.25); cursor:pointer;
-  box-shadow:0 6px 28px rgba(107,15,26,.45);
+  border:1px solid rgba(200,169,110,.35); cursor:pointer;
+  box-shadow:0 6px 28px rgba(107,15,26,.5), 0 2px 8px rgba(0,0,0,.3);
   transition:all .3s var(--spring); position:relative; overflow:hidden;
   animation:heroBtnGlow 2.5s 1.5s ease-in-out infinite;
 }
@@ -442,13 +482,14 @@ body::before {
 .ica-primary:hover::before { animation:shimmerSlide .6s ease; }
 .ica-ghost {
   height:52px; padding:0 28px; border-radius:10px;
-  border:1.5px solid rgba(255,255,255,.22);
-  color:rgba(255,255,255,.85); font-size:.9rem; font-weight:500;
+  border:1.5px solid rgba(255,255,255,.38);
+  color:rgba(255,255,255,.95); font-size:.9rem; font-weight:600;
   display:inline-flex; align-items:center; gap:8px;
-  background:rgba(255,255,255,.06); backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.1); backdrop-filter:blur(10px);
   cursor:pointer; transition:all .25s var(--ease); text-decoration:none;
+  text-shadow:0 1px 6px rgba(0,0,0,.3);
 }
-.ica-ghost:hover { background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.4); transform:translateY(-3px); }
+.ica-ghost:hover { background:rgba(255,255,255,.2); border-color:rgba(255,255,255,.6); transform:translateY(-3px); }
 
 @media(max-width:600px) {
   .hero { padding:48px 16px 44px; }
@@ -464,6 +505,10 @@ body::before {
   position:sticky; top:72px; z-index:100;
   background:rgba(254,243,226,.92); backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
+}
+/* On mobile, filter bar drops below the sticky search bar (72px header + ~62px search bar) */
+@media(max-width:480px) {
+  .fbar { top:134px; }
 }
 .fin {
   max-width:1300px; margin:0 auto; padding:12px 28px;
@@ -918,7 +963,7 @@ body::before {
   </nav>
 </header>
 
-<!-- Mobile search -->
+<!-- Mobile search — NOW STICKY (stays while scrolling) -->
 <div class="mobile-search-bar" id="mobileSearchBar">
   <span class="mob-si">🔍</span>
   <input type="text" id="mobileSearch" placeholder="Search products…" autocomplete="off">
@@ -945,27 +990,22 @@ body::before {
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="hero">
-
-  <!-- Maroon overlay sits on top of CSS background-image -->
   <div class="hero-overlay"></div>
-
-  <!-- Decorative orbs -->
   <div class="hero-orb hero-orb1"></div>
   <div class="hero-orb hero-orb2"></div>
 
-  <!-- Main content -->
   <div class="hero-content">
-
     <div class="hero-badge">
       <span class="hero-badge-star">✦</span> Since 1964 · Trusted Quality
     </div>
 
     <div class="hero-brand-name">Malivagam</div>
-    <div class="hero-location">· Salem, Tamil Nadu</div>
+    <br>
+    <div class="hero-location">· Salem, Tamil Nadu ·</div>
     <div class="hero-divider-line"></div>
 
     <div class="hero-pills">
-      <span class="hero-pill">🍚 Sugar</span>
+      <span class="hero-pill">🍚 Sugar</span> 
       <span class="hero-pill">🌾 Rice</span>
       <span class="hero-pill">🫘 Dal</span>
       <span class="hero-pill">🌻 Flour</span>
@@ -976,7 +1016,6 @@ body::before {
       <button class="ica-primary" onclick="document.getElementById('pgrid').scrollIntoView({behavior:'smooth'})">🛒 Browse Products</button>
       <a class="ica-ghost" href="https://wa.me/919443355683?text=Vanakkam%20Malivagam" target="_blank">💬 WhatsApp Order</a>
     </div>
-
   </div>
 </section>
 
@@ -998,7 +1037,7 @@ body::before {
   </div>
 </div>
 
-<!-- FILTER BAR — Sugar replaces Masala -->
+<!-- FILTER BAR -->
 <div class="fbar"><div class="fin">
   <button class="fb act" data-cat="All">🏪 All</button>
   <button class="fb" data-cat="Sugar">🍚 அஸ்கா-புதிய வரவு / Sugar</button>
@@ -1027,7 +1066,6 @@ body::before {
 
 <!-- OUR BRANCHES -->
 <section class="branches-section" id="branches">
-
   <div class="branches-section-hdr">
     <p class="branches-section-label">Find Us</p>
     <h2 class="branches-section-title">
@@ -1038,7 +1076,6 @@ body::before {
   </div>
 
   <div class="branches-grid-new">
-
     <!-- Branch 1: King Trading Co -->
     <div class="branch-card-new">
       <div class="branch-badge-new">Branch 1</div>
@@ -1059,7 +1096,7 @@ body::before {
           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           title="King Trading Co Location"></iframe>
       </div>
-      <a href="https://www.google.com/maps/place/King+Trading+and+co/@11.6560154,78.1391781,15z" class="branch-map-btn" target="_blank" rel="noopener">
+      <a href="https://maps.app.goo.gl/aentkfhAJZMDDZkL6" class="branch-map-btn" target="_blank" rel="noopener">
         🗺 View on Google Maps
       </a>
     </div>
@@ -1088,13 +1125,11 @@ body::before {
         🗺 View on Google Maps
       </a>
     </div>
-
   </div>
 </section>
 
 <!-- CONTACT SECTION -->
 <section class="contact-section" id="contact">
-
   <div class="contact-section-hdr">
     <span class="contact-section-label">Get in Touch</span>
     <h2 class="contact-section-title">
@@ -1105,7 +1140,6 @@ body::before {
   </div>
 
   <div class="contact-grid-new">
-
     <!-- Call Us -->
     <div class="contact-card-new">
       <div class="contact-icon-new">📞</div>
@@ -1140,7 +1174,6 @@ body::before {
         Order on WhatsApp
       </a>
     </div>
-
   </div>
 </section>
 
@@ -1291,7 +1324,6 @@ document.addEventListener('DOMContentLoaded',function(){
   updateBadge(); showSkel(10); loadProds(); initScroll();
   setTimeout(function(){document.getElementById('stitle').classList.add('drawn');},900);
 
-  // Filter buttons
   document.querySelectorAll('.fb').forEach(function(b){
     b.addEventListener('click',function(){
       document.querySelectorAll('.fb').forEach(function(x){x.classList.remove('act');});
@@ -1299,7 +1331,6 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
-  // Desktop search
   var searchEl=document.getElementById('searchInput');
   var navSearch=document.getElementById('navSearch');
   var mobEl=document.getElementById('mobileSearch');
@@ -1329,7 +1360,6 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 });
 
-/* ── SEARCH SUGGESTIONS ── */
 function buildSugg(query,boxId){
   var box=document.getElementById(boxId||'searchSugg');
   if(!box)return;
@@ -1391,7 +1421,6 @@ function clearSearch(){
   hideSugg();renderProds();
 }
 
-/* ── FIREBASE ── */
 function loadProds(){
   try{
     col.orderBy('createdAt','desc').onSnapshot(async function(snap){
@@ -1440,7 +1469,6 @@ function cardH(p){
 }
 function showSkel(n){var g=document.getElementById('pgrid');if(!g)return;g.innerHTML=Array(n).fill('<div class="skc"><div class="sk ski"></div><div class="skb"><div class="sk skl"></div><div class="sk skl s"></div><div class="sk skl b"></div></div></div>').join('');}
 
-/* ── CART ── */
 function getCart(){try{return JSON.parse(localStorage.getItem('mv_cart')||'[]');}catch(e){return[];}}
 function saveCart(c){localStorage.setItem('mv_cart',JSON.stringify(c));}
 function updateBadge(){var t=getCart().reduce(function(s,i){return s+i.qty;},0);var b=document.getElementById('cn');b.textContent=t;if(t>0)b.classList.add('show');else b.classList.remove('show');}
@@ -1472,7 +1500,6 @@ function renderCart(){
   document.getElementById('csub').textContent=qty+' item'+(qty>1?'s':'')+' in cart';
 }
 
-/* ── QUICK VIEW ── */
 function openQV(id){
   var p=prods.find(function(x){return x.id===id;});if(!p)return;qvId=id;
   var ie=document.getElementById('qvi');
@@ -1493,7 +1520,6 @@ function openQV(id){
 function closeQV(){document.getElementById('qvo').classList.remove('open');document.body.style.overflow='';qvId=null;}
 function qvAddCart(){var p=prods.find(function(x){return x.id===qvId;});if(!p)return;addCart(p.id,p.productName,p.price||0,p.imageUrl||'');closeQV();}
 
-/* ── CHECKOUT ── */
 function checkoutWA(){
   var cart=getCart();if(!cart.length){alert('Cart is empty!');return;}
   var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் :\n';
@@ -1518,7 +1544,6 @@ function openWhatsappOrder(e){
   else{window.open('https://wa.me/'+WA+'?text='+encodeURIComponent('வணக்கம் மலிவகம்!! 🙏\nஆர்டர் செய்ய விரும்புகிறேன்.'),'_blank');}
 }
 
-/* ── SCROLL / REVEAL ── */
 function initScroll(){
   var hdr=document.getElementById('hdr'),btt=document.getElementById('bttNew');
   window.addEventListener('scroll',function(){var y=window.scrollY;hdr.classList.toggle('scrolled',y>10);if(btt)btt.classList.toggle('visible',y>400);});
