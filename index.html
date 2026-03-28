@@ -6,14 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="rice.png">
 <title>Malivagam</title>
-<!-- <title>Malivagam — Quality Groceries &amp; Rice, Since 1964</title> -->
 <meta name="description" content="Malivagam – Premium rice, dal, flour, oil and groceries since 1964. Order via WhatsApp, Salem.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════
-   TOKENS
-═══════════════════════════════════ */
 :root {
   --gold:    #FFC570;
   --gold-dk: #E8A840;
@@ -79,9 +75,6 @@ body::before {
     repeating-linear-gradient(-45deg,rgba(139,69,19,.03) 0px,rgba(139,69,19,.03) 1px,transparent 1px,transparent 6px);
 }
 
-/* ═══════════════════════════════════
-   KEYFRAMES
-═══════════════════════════════════ */
 @keyframes riseUp        { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
 @keyframes fadeIn        { from{opacity:0} to{opacity:1} }
 @keyframes shimmerSlide  { 0%{transform:translateX(-180%) skewX(-12deg)} 100%{transform:translateX(220%) skewX(-12deg)} }
@@ -95,29 +88,17 @@ body::before {
 @keyframes slideInR      { from{opacity:0;transform:translateX(18px)} to{opacity:1;transform:none} }
 @keyframes heroTitleReveal { 0%{opacity:0;transform:translateY(40px) skewY(2deg);filter:blur(8px)} 100%{opacity:1;transform:none;filter:blur(0)} }
 @keyframes heroBadgeSlide  { 0%{opacity:0;transform:translateX(-30px) scale(.9)} 100%{opacity:1;transform:none} }
-@keyframes heroPillPop     { 0%{opacity:0;transform:scale(0) rotate(-10deg)} 70%{transform:scale(1.1) rotate(2deg)} 100%{opacity:1;transform:scale(1) rotate(0)} }
 @keyframes heroSubFade     { 0%{opacity:0;transform:translateY(16px)} 100%{opacity:1;transform:none} }
 @keyframes heroBtnGlow     { 0%,100%{box-shadow:0 6px 24px rgba(200,169,110,.4)} 50%{box-shadow:0 8px 36px rgba(200,169,110,.75),0 0 0 6px rgba(200,169,110,.12)} }
 @keyframes heroDividerGrow { from{transform:scaleX(0);opacity:0} to{transform:scaleX(1);opacity:1} }
-@keyframes featBandIn      { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
-@keyframes shimmerLine     { 0%{left:-100%} 100%{left:100%} }
-@keyframes growLine        { from{transform:scaleY(0);opacity:0} to{transform:scaleY(1);opacity:1} }
-@keyframes fadeSlideUp     { from{opacity:0;transform:translateY(18px) scale(.94)} to{opacity:1;transform:none} }
-@keyframes floatIcon       { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
-@keyframes fabRing         { 0%{transform:scale(1);opacity:.7} 100%{transform:scale(1.6);opacity:0} }
 @keyframes heroOrbDrift    { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.05)} 66%{transform:translate(-20px,15px) scale(.97)} }
+@keyframes goldShimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+@keyframes fabRing         { 0%{transform:scale(1);opacity:.7} 100%{transform:scale(1.6);opacity:0} }
 @keyframes suggSlideIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:none} }
 @keyframes suggAddPop { 0%{transform:scale(1)} 40%{transform:scale(1.25) rotate(-6deg)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
+@keyframes pinBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
 
-/* ─── NEW: gold shimmer for hero brand name ─── */
-@keyframes goldShimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
-}
-
-/* ═══════════════════════════════════
-   HEADER
-═══════════════════════════════════ */
+/* ── HEADER ── */
 .hdr {
   position:sticky; top:0; z-index:200;
   background:rgba(254,243,226,.92);
@@ -135,7 +116,6 @@ body::before {
 .logo-name { font-family:var(--ff-serif); font-size:1.22rem; font-weight:600; color:var(--spice-dk); letter-spacing:.01em; }
 .logo-sub { font-size:.58rem; color:var(--muted2); letter-spacing:.12em; text-transform:uppercase; font-weight:500; }
 
-/* ── MAIN NAV LINKS ── */
 .main-nav {
   display:flex; align-items:center; gap:4px; flex-shrink:0;
 }
@@ -157,7 +137,7 @@ body::before {
 .main-nav a:hover::after { left:14px; right:14px; }
 @media(max-width:640px) { .main-nav { display:none; } }
 
-/* ── SEARCH WRAPPER ── */
+/* ── SEARCH ── */
 .nav-search { flex:1; max-width:420px; position:relative; }
 .sw {
   display:flex; align-items:center;
@@ -244,17 +224,12 @@ body::before {
 .ss-empty { padding:22px 16px; text-align:center; color:var(--muted2); font-size:.82rem; font-style:italic; }
 .ss-empty-icon { font-size:1.6rem; opacity:.4; margin-bottom:6px; }
 
-/* ════════════════════════════════════
-   MOBILE SEARCH BAR — STICKY (CHANGE 1)
-   Sticks below header so it never
-   disappears when the user scrolls.
-════════════════════════════════════ */
+/* ── MOBILE SEARCH BAR ── */
 .mobile-search-bar {
   display:none;
-  /* CHANGED: sticky, just below the 72px header */
   position:sticky;
   top:72px;
-  z-index:190;           /* just below header (200) */
+  z-index:190;
   padding:10px 16px;
   background:rgba(254,243,226,.97);
   backdrop-filter:blur(16px) saturate(1.4);
@@ -268,7 +243,10 @@ body::before {
 .mob-sugg-box.show { opacity:1; transform:none; pointer-events:all; }
 @media(max-width:480px) { .nav-search{display:none!important} .mobile-search-bar{display:block!important} }
 
-.nav-r { display:flex; align-items:center; gap:10px; }
+/* ── NAV RIGHT ── */
+.nav-r { display:flex; align-items:center; gap:8px; }
+
+/* ── CART PILL ── */
 .cart-pill {
   height:42px; padding:0 18px; border-radius:99px;
   background:var(--maroon); color:var(--maroon-gold);
@@ -284,9 +262,39 @@ body::before {
 .cart-badge { background:var(--maroon-gold); color:var(--maroon-dk); min-width:20px; height:20px; border-radius:99px; font-size:.62rem; font-weight:800; display:none; align-items:center; justify-content:center; padding:0 5px; animation:badgePop .4s var(--spring) both; }
 .cart-badge.show { display:flex; }
 
-/* ═══════════════════════════════════
-   TICKER
-═══════════════════════════════════ */
+/* ── 3-DOT NAV MENU (right of cart) ── */
+.dot-menu-wrap { position:relative; flex-shrink:0; }
+.dot-menu-btn {
+  width:42px; height:42px; border-radius:99px;
+  background:rgba(107,15,26,.08);
+  border:1.5px solid rgba(107,15,26,.15);
+  color:var(--maroon); display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; letter-spacing:1px; cursor:pointer;
+  transition:all .25s var(--spring); flex-shrink:0;
+}
+.dot-menu-btn:hover { background:var(--maroon); color:var(--maroon-gold); border-color:var(--maroon); transform:scale(1.08); box-shadow:0 4px 16px rgba(107,15,26,.35); }
+.dot-menu-btn.open { background:var(--maroon); color:var(--maroon-gold); border-color:var(--maroon); }
+.dot-menu-dropdown {
+  position:absolute; top:calc(100% + 10px); right:0;
+  background:rgba(255,249,236,.99); backdrop-filter:blur(16px);
+  border:1.5px solid rgba(107,15,26,.18); border-radius:var(--r-lg);
+  box-shadow:0 20px 48px rgba(107,15,26,.18), 0 4px 12px rgba(107,15,26,.08);
+  min-width:180px; overflow:hidden; z-index:300;
+  opacity:0; transform:translateY(-8px) scale(.95); pointer-events:none;
+  transition:opacity .22s var(--spring), transform .22s var(--spring);
+}
+.dot-menu-dropdown.open { opacity:1; transform:none; pointer-events:all; }
+.dot-menu-item {
+  display:flex; align-items:center; gap:10px;
+  padding:13px 18px; font-size:.82rem; font-weight:500; color:var(--ink2);
+  cursor:pointer; transition:background .15s; border-bottom:1px solid var(--border2);
+  text-decoration:none;
+}
+.dot-menu-item:last-child { border-bottom:none; }
+.dot-menu-item:hover { background:rgba(107,15,26,.07); color:var(--maroon); }
+.dot-menu-item .dmi { font-size:1rem; flex-shrink:0; }
+
+/* ── TICKER ── */
 .ticker-wrap { background:var(--accent); overflow:hidden; height:32px; display:flex; align-items:center; border-bottom:1px solid rgba(0,0,0,.08); position:relative; }
 .ticker-wrap::before,.ticker-wrap::after { content:''; position:absolute; top:0; bottom:0; width:60px; z-index:2; pointer-events:none; }
 .ticker-wrap::before { left:0; background:linear-gradient(90deg,var(--accent),transparent); }
@@ -296,241 +304,53 @@ body::before {
 .ticker-item { display:inline-flex; align-items:center; gap:8px; padding:0 28px; font-size:.74rem; font-weight:600; color:#1a1a1a; letter-spacing:.03em; }
 .ticker-dot { width:5px; height:5px; border-radius:50%; background:rgba(0,0,0,.3); flex-shrink:0; }
 
-/* ═══════════════════════════════════
-   HERO — CHANGE 2: lighter overlay + richer text
-═══════════════════════════════════ */
+/* ── HERO ── */
 .hero {
-  position:relative;
-  min-height:520px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  padding:60px 24px 56px;
+  position:relative; min-height:520px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; padding:60px 24px 56px;
 }
-
 .hero::before {
-  content:'';
-  position:absolute;
-  inset:0;
-  z-index:0;
-  background-image: url('dal.jpeg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  filter: blur(2px);
-  transform: scale(1.04);
+  content:''; position:absolute; inset:0; z-index:0;
+  background-image:url('dal.jpeg');
+  background-size:cover; background-position:center; background-repeat:no-repeat;
+  filter:blur(2px); transform:scale(1.04);
 }
-
-/* CHANGE 2 — overlay is now noticeably lighter (~40% vs ~75% before) */
-.hero-overlay {
-  position:absolute;
-  inset:0;
-  z-index:1;
-  background:rgba(0,0,0,.55);
-  pointer-events:none;
-}
-
-
-.hero-orb {
-  position:absolute;
-  border-radius:50%;
-  pointer-events:none;
-  z-index:1;
-  animation:heroOrbDrift linear infinite;
-}
-.hero-orb1 {
-  width:380px; height:380px; top:-80px; right:-60px;
-  background:radial-gradient(circle,rgba(200,169,110,.13) 0%,transparent 70%);
-  animation-duration:18s;
-}
-.hero-orb2 {
-  width:260px; height:260px; bottom:-60px; left:-40px;
-  background:radial-gradient(circle,rgba(107,15,26,.22) 0%,transparent 70%);
-  animation-duration:14s; animation-delay:-7s;
-}
-
-.hero-content {
-  position:relative;
-  z-index:2;
-  max-width:640px;
-  width:100%;
-  margin:0 auto;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:0;
-}
-
-/* Badge */
-.hero-badge {
-  display:inline-flex; align-items:center; gap:7px;
-  background:rgba(200,169,110,.22);
-  border:1px solid rgba(200,169,110,.55);
-  color:#FFE8A8;
-  font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-  padding:6px 18px; border-radius:99px;
-  margin-bottom:20px;
-  text-shadow:0 1px 8px rgba(0,0,0,.5);
-  animation:heroBadgeSlide .7s .1s var(--spring) both;
-}
-.hero-badge-star { color:var(--accent); animation:none; }
-
-/* CHANGE 2 — brand name: animated gold shimmer + stronger glow */
-/* .hero-brand-name {
-  font-family:var(--ff-serif);
-  font-size:clamp(3rem,8vw,5.6rem);
-  font-weight:300;
-  font-style:italic; */
-  /* Shimmer gradient over gold base */
-  /* background: linear-gradient(
-    105deg,
-    #C8A96E 0%,
-    #FFE8A0 30%,
-    #FFF3C0 50%,
-    #FFE8A0 70%,
-    #C8A96E 100%
-  );
-  background-size:200% auto;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:
-    heroTitleReveal 1s .25s var(--reveal) both,
-    goldShimmer 4s 1.5s linear infinite;
-  line-height:1.0;
-  letter-spacing:-.02em;
-  margin-bottom:8px;
-  filter:drop-shadow(0 2px 20px rgba(200,169,110,.55)) drop-shadow(0 0 60px rgba(255,220,100,.25));
-} */
-.hero-brand-name {
-  font-family:var(--ff-serif);
-  font-size:clamp(3rem,8vw,5.6rem);
-  font-weight:300;
-  font-style:italic;
-  color:#FFE8A0;
-  line-height:1.0;
-  letter-spacing:-.02em;
-  margin-bottom:8px;
-  text-shadow:0 2px 24px rgba(0,0,0,.6), 0 0 60px rgba(200,169,110,.3);
-  animation:heroTitleReveal 1s .25s var(--reveal) both;
-}
-
-
-/* Location — brighter, crisper */
-.hero-location {
-  font-size:.75rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase;
-  color:rgba(255,220,160,.85);
-  text-shadow:0 1px 10px rgba(0,0,0,.6);
-  margin-bottom:22px;
-  animation:heroSubFade .7s .45s ease both;
-}
-
-/* Gold divider */
-.hero-divider-line {
-  width:64px; height:1.5px;
-  background:linear-gradient(90deg,transparent,#FFE8A0,transparent);
-  margin:0 auto 26px;
-  animation:heroDividerGrow .8s .55s var(--reveal) both;
-  transform-origin:center;
-}
-
-/* Pills — brighter text */
-.hero-pills {
-  display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
-  margin-bottom:30px;
-  animation:heroSubFade .7s .62s ease both;
-}
-.hero-pill {
-  padding:7px 18px; border-radius:99px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,220,140,.35);
-  color:rgba(255,240,200,.95);
-  font-size:.78rem; font-weight:600;
-  backdrop-filter:blur(8px);
-  text-shadow:0 1px 6px rgba(0,0,0,.4);
-  transition:all .25s var(--spring);
-  cursor:default;
-}
-.hero-pill:hover {
-  background:rgba(200,169,110,.28);
-  border-color:rgba(255,220,140,.7);
-  transform:translateY(-3px) scale(1.06);
-  color:#fff;
-  box-shadow:0 6px 20px rgba(0,0,0,.3);
-}
-
-/* Action buttons */
-.hero-actions {
-  display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
-  margin-bottom:28px;
-  animation:heroSubFade .7s .75s ease both;
-}
-.ica-primary {
-  height:52px; padding:0 32px; border-radius:10px;
-  background:linear-gradient(135deg,var(--maroon),var(--maroon-lt));
-  color:var(--maroon-gold); font-size:.9rem; font-weight:700;
-  display:inline-flex; align-items:center; gap:8px;
-  border:1px solid rgba(200,169,110,.35); cursor:pointer;
-  box-shadow:0 6px 28px rgba(107,15,26,.5), 0 2px 8px rgba(0,0,0,.3);
-  transition:all .3s var(--spring); position:relative; overflow:hidden;
-  animation:heroBtnGlow 2.5s 1.5s ease-in-out infinite;
-}
+.hero-overlay { position:absolute; inset:0; z-index:1; background:rgba(0,0,0,.55); pointer-events:none; }
+.hero-orb { position:absolute; border-radius:50%; pointer-events:none; z-index:1; animation:heroOrbDrift linear infinite; }
+.hero-orb1 { width:380px; height:380px; top:-80px; right:-60px; background:radial-gradient(circle,rgba(200,169,110,.13) 0%,transparent 70%); animation-duration:18s; }
+.hero-orb2 { width:260px; height:260px; bottom:-60px; left:-40px; background:radial-gradient(circle,rgba(107,15,26,.22) 0%,transparent 70%); animation-duration:14s; animation-delay:-7s; }
+.hero-content { position:relative; z-index:2; max-width:640px; width:100%; margin:0 auto; text-align:center; display:flex; flex-direction:column; align-items:center; gap:0; }
+.hero-badge { display:inline-flex; align-items:center; gap:7px; background:rgba(200,169,110,.22); border:1px solid rgba(200,169,110,.55); color:#FFE8A8; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:6px 18px; border-radius:99px; margin-bottom:20px; text-shadow:0 1px 8px rgba(0,0,0,.5); animation:heroBadgeSlide .7s .1s var(--spring) both; }
+.hero-badge-star { color:var(--accent); }
+.hero-brand-name { font-family:var(--ff-serif); font-size:clamp(3rem,8vw,5.6rem); font-weight:300; font-style:italic; color:#FFE8A0; line-height:1.0; letter-spacing:-.02em; margin-bottom:8px; text-shadow:0 2px 24px rgba(0,0,0,.6),0 0 60px rgba(200,169,110,.3); animation:heroTitleReveal 1s .25s var(--reveal) both; }
+.hero-location { font-size:.75rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:rgba(255,220,160,.85); text-shadow:0 1px 10px rgba(0,0,0,.6); margin-bottom:22px; animation:heroSubFade .7s .45s ease both; }
+.hero-divider-line { width:64px; height:1.5px; background:linear-gradient(90deg,transparent,#FFE8A0,transparent); margin:0 auto 26px; animation:heroDividerGrow .8s .55s var(--reveal) both; transform-origin:center; }
+.hero-pills { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; animation:heroSubFade .7s .62s ease both; }
+.hero-pill { padding:7px 18px; border-radius:99px; background:rgba(255,255,255,.12); border:1px solid rgba(255,220,140,.35); color:rgba(255,240,200,.95); font-size:.78rem; font-weight:600; backdrop-filter:blur(8px); text-shadow:0 1px 6px rgba(0,0,0,.4); transition:all .25s var(--spring); cursor:default; }
+.hero-pill:hover { background:rgba(200,169,110,.28); border-color:rgba(255,220,140,.7); transform:translateY(-3px) scale(1.06); color:#fff; box-shadow:0 6px 20px rgba(0,0,0,.3); }
+.hero-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; animation:heroSubFade .7s .75s ease both; }
+.ica-primary { height:52px; padding:0 32px; border-radius:10px; background:linear-gradient(135deg,var(--maroon),var(--maroon-lt)); color:var(--maroon-gold); font-size:.9rem; font-weight:700; display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(200,169,110,.35); cursor:pointer; box-shadow:0 6px 28px rgba(107,15,26,.5),0 2px 8px rgba(0,0,0,.3); transition:all .3s var(--spring); position:relative; overflow:hidden; animation:heroBtnGlow 2.5s 1.5s ease-in-out infinite; }
 .ica-primary::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent); transform:translateX(-220%) skewX(-14deg); }
 .ica-primary:hover { background:linear-gradient(135deg,var(--maroon-lt),#A02030); transform:translateY(-3px) scale(1.03); box-shadow:0 12px 36px rgba(107,15,26,.6); animation:none; }
 .ica-primary:hover::before { animation:shimmerSlide .6s ease; }
-.ica-ghost {
-  height:52px; padding:0 28px; border-radius:10px;
-  border:1.5px solid rgba(255,255,255,.38);
-  color:rgba(255,255,255,.95); font-size:.9rem; font-weight:600;
-  display:inline-flex; align-items:center; gap:8px;
-  background:rgba(255,255,255,.1); backdrop-filter:blur(10px);
-  cursor:pointer; transition:all .25s var(--ease); text-decoration:none;
-  text-shadow:0 1px 6px rgba(0,0,0,.3);
-}
+.ica-ghost { height:52px; padding:0 28px; border-radius:10px; border:1.5px solid rgba(255,255,255,.38); color:rgba(255,255,255,.95); font-size:.9rem; font-weight:600; display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.1); backdrop-filter:blur(10px); cursor:pointer; transition:all .25s var(--ease); text-decoration:none; text-shadow:0 1px 6px rgba(0,0,0,.3); }
 .ica-ghost:hover { background:rgba(255,255,255,.2); border-color:rgba(255,255,255,.6); transform:translateY(-3px); }
+@media(max-width:600px) { .hero{padding:48px 16px 44px} .hero-brand-name{font-size:clamp(2.4rem,10vw,4rem)} .hero-actions{flex-direction:column;align-items:center} .ica-primary,.ica-ghost{width:100%;max-width:300px;justify-content:center} }
 
-@media(max-width:600px) {
-  .hero { padding:48px 16px 44px; }
-  .hero-brand-name { font-size:clamp(2.4rem,10vw,4rem); }
-  .hero-actions { flex-direction:column; align-items:center; }
-  .ica-primary,.ica-ghost { width:100%; max-width:300px; justify-content:center; }
-}
-
-/* ═══════════════════════════════════
-   FILTER BAR
-═══════════════════════════════════ */
-.fbar {
-  position:sticky; top:72px; z-index:100;
-  background:rgba(254,243,226,.92); backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-}
-/* On mobile, filter bar drops below the sticky search bar (72px header + ~62px search bar) */
-@media(max-width:480px) {
-  .fbar { top:134px; }
-}
-.fin {
-  max-width:1300px; margin:0 auto; padding:12px 28px;
-  display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; align-items:center;
-}
+/* ── FILTER BAR ── */
+.fbar { position:sticky; top:72px; z-index:100; background:rgba(254,243,226,.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+@media(max-width:480px) { .fbar { top:134px; } }
+.fin { max-width:1300px; margin:0 auto; padding:12px 28px; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; align-items:center; }
 .fin::-webkit-scrollbar { display:none; }
-.fb {
-  flex-shrink:0; height:36px; padding:0 16px; border-radius:99px;
-  border:1.5px solid var(--border); background:rgba(255,255,255,.6);
-  color:var(--muted2); font-size:.76rem; font-weight:500; white-space:nowrap;
-  display:flex; align-items:center; gap:5px;
-  cursor:pointer; transition:all .22s var(--spring);
-}
+.fb { flex-shrink:0; height:36px; padding:0 16px; border-radius:99px; border:1.5px solid var(--border); background:rgba(255,255,255,.6); color:var(--muted2); font-size:.76rem; font-weight:500; white-space:nowrap; display:flex; align-items:center; gap:5px; cursor:pointer; transition:all .22s var(--spring); }
 .fb:hover { border-color:rgba(107,15,26,.4); color:var(--maroon); background:rgba(255,255,255,.9); transform:translateY(-2px); box-shadow:0 4px 14px rgba(107,15,26,.12); }
 .fb.act { background:var(--maroon); border-color:var(--maroon); color:var(--maroon-gold); box-shadow:0 4px 16px rgba(107,15,26,.35); transform:translateY(-1px); }
 .fsort { margin-left:auto; flex-shrink:0; height:36px; padding:0 13px; border-radius:99px; border:1.5px solid var(--border); background:rgba(255,255,255,.6); color:var(--muted2); font-size:.76rem; font-weight:500; display:flex; align-items:center; gap:5px; cursor:pointer; transition:all .2s; }
 .fsort:hover { border-color:rgba(107,15,26,.4); }
 .fsort select { border:none; background:none; outline:none; color:inherit; font-size:inherit; font-family:inherit; cursor:pointer; -webkit-appearance:none; }
 
-/* ═══════════════════════════════════
-   MAIN / PRODUCTS
-═══════════════════════════════════ */
+/* ── PRODUCTS ── */
 .main { max-width:1300px; margin:0 auto; padding:40px 28px 120px; }
 .sh { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; gap:12px; flex-wrap:wrap; }
 .stitle { font-family:var(--ff-serif); font-size:1.7rem; font-weight:400; color:var(--spice-dk); position:relative; display:inline-block; font-style:italic; }
@@ -542,17 +362,8 @@ body::before {
 @media(min-width:780px) { .pgrid{grid-template-columns:repeat(4,1fr)} }
 @media(min-width:1060px) { .pgrid{grid-template-columns:repeat(5,1fr)} }
 
-/* ═══════════════════════════════════
-   PRODUCT CARD
-═══════════════════════════════════ */
-.pc {
-  background:rgba(255,255,255,.85); backdrop-filter:blur(6px);
-  border:1px solid var(--border); border-radius:var(--r-lg);
-  overflow:hidden; display:flex; flex-direction:column;
-  cursor:pointer; animation:riseUp .45s ease both;
-  transition:box-shadow .3s var(--ease),border-color .3s,transform .4s var(--spring);
-  position:relative;
-}
+/* ── PRODUCT CARD ── */
+.pc { background:rgba(255,255,255,.85); backdrop-filter:blur(6px); border:1px solid var(--border); border-radius:var(--r-lg); overflow:hidden; display:flex; flex-direction:column; cursor:pointer; animation:riseUp .45s ease both; transition:box-shadow .3s var(--ease),border-color .3s,transform .4s var(--spring); position:relative; }
 .pc::after { content:''; position:absolute; inset:0; border-radius:var(--r-lg); box-shadow:inset 0 1px 0 rgba(255,255,255,.8); pointer-events:none; z-index:2; }
 .pc:hover { border-color:rgba(107,15,26,.3); box-shadow:0 18px 52px rgba(107,15,26,.14),0 4px 12px rgba(107,15,26,.08); transform:translateY(-6px); }
 .pc.unavail { opacity:.45; pointer-events:none; }
@@ -587,9 +398,7 @@ body::before {
 .skl.s { width:55%; }
 .skl.b { height:40px; border-radius:var(--r-sm); margin-top:4px; }
 
-/* ═══════════════════════════════════
-   QUICK VIEW MODAL
-═══════════════════════════════════ */
+/* ── QUICK VIEW MODAL ── */
 .qvo { position:fixed; inset:0; background:rgba(44,22,5,.6); z-index:600; opacity:0; pointer-events:none; transition:opacity .3s; backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; padding:20px; }
 .qvo.open { opacity:1; pointer-events:all; }
 .qvb { background:rgba(254,248,235,.98); backdrop-filter:blur(16px); border:1px solid var(--border); border-radius:var(--r-xl); width:100%; max-width:580px; max-height:90vh; overflow-y:auto; transform:translateY(28px) scale(.95); transition:transform .4s var(--spring); box-shadow:0 40px 100px rgba(107,15,26,.2),0 8px 32px rgba(107,15,26,.1); }
@@ -613,9 +422,7 @@ body::before {
 .qvwa:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(37,211,102,.45); }
 .qvwa svg { width:22px; height:22px; fill:#fff; }
 
-/* ═══════════════════════════════════
-   CART PANEL
-═══════════════════════════════════ */
+/* ── CART PANEL ── */
 .carto { position:fixed; inset:0; background:rgba(44,22,5,.55); z-index:400; opacity:0; pointer-events:none; transition:opacity .3s; backdrop-filter:blur(6px); }
 .carto.open { opacity:1; pointer-events:all; }
 .cartp { position:fixed; top:0; right:0; height:100%; width:100%; max-width:440px; background:rgba(255,248,232,.97); backdrop-filter:blur(16px); border-left:1px solid var(--border); z-index:401; transform:translateX(110%); transition:transform .45s var(--reveal); display:flex; flex-direction:column; box-shadow:-16px 0 60px rgba(107,15,26,.14); }
@@ -653,9 +460,7 @@ body::before {
 .clbtn { width:100%; height:40px; background:transparent; color:#dc2626; border:1px solid rgba(220,38,38,.2); border-radius:var(--r-md); font-size:.82rem; font-weight:500; cursor:pointer; transition:all .2s; }
 .clbtn:hover { background:rgba(220,38,38,.08); border-color:rgba(220,38,38,.4); }
 
-/* ═══════════════════════════════════
-   WHATSAPP FAB
-═══════════════════════════════════ */
+/* ── WHATSAPP FAB ── */
 .whatsapp-fab { position:fixed; bottom:26px; right:26px; z-index:999; width:60px; height:60px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 24px rgba(37,211,102,.5); transition:all .3s var(--ease-spring); cursor:pointer; }
 .whatsapp-fab::before,.whatsapp-fab::after { content:''; position:absolute; inset:-5px; border-radius:50%; border:2px solid rgba(37,211,102,.3); animation:fabRing 2.5s ease-out infinite; }
 .whatsapp-fab::after { animation-delay:1.25s; }
@@ -667,255 +472,65 @@ body::before {
 .back-to-top.visible { opacity:1; transform:translateY(0); pointer-events:all; }
 .back-to-top:hover { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:var(--maroon-dark); transform:translateY(-3px); }
 
-/* TOAST */
+/* ── TOAST ── */
 .toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(80px) scale(.9); background:rgba(44,22,5,.95); backdrop-filter:blur(12px); border:1px solid var(--border); color:var(--maroon-gold); padding:12px 24px; border-radius:var(--r-md); font-size:.85rem; font-weight:500; z-index:700; display:flex; align-items:center; gap:10px; box-shadow:0 8px 36px rgba(107,15,26,.3); opacity:0; pointer-events:none; transition:all .4s var(--spring); max-width:calc(100vw - 40px); }
 .toast.show { transform:translateX(-50%) translateY(0) scale(1); opacity:1; }
 .toast.ok { border-color:rgba(37,211,102,.3); color:#6ee7b7; background:rgba(6,20,12,.95); }
 .toast.err { border-color:rgba(220,38,38,.3); color:#fca5a5; background:rgba(20,6,6,.95); }
 
-/* ═══════════════════════════════════
-   OUR BRANCHES
-═══════════════════════════════════ */
-@keyframes pinBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+/* ── BRANCHES SECTION ── */
+.branches-section { background:linear-gradient(160deg,var(--maroon-deep) 0%,var(--maroon) 100%); padding:60px 0 80px; position:relative; overflow:hidden; border-top:1px solid rgba(200,169,110,.15); }
+.branches-section::before { content:''; position:absolute; inset:0; background-image:repeating-linear-gradient(-45deg,rgba(201,147,58,.04) 0,rgba(201,147,58,.04) 1px,transparent 0,transparent 50%); background-size:24px 24px; pointer-events:none; }
+.branches-section-hdr { text-align:center; margin-bottom:40px; padding:0 20px; position:relative; z-index:1; }
+.branches-section-label { font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(200,169,110,.5); margin-bottom:8px; }
+.branches-section-title { font-family:var(--ff-serif); font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; font-style:italic; color:var(--white); line-height:1.2; }
+.branches-section-title span { display:block; font-size:.6em; font-style:normal; font-weight:500; color:var(--maroon-gold); letter-spacing:.06em; margin-top:4px; font-family:var(--ff-sans); }
+.branches-divider { width:52px; height:1.5px; background:linear-gradient(90deg,transparent,var(--maroon-gold),transparent); margin:14px auto 0; border-radius:99px; }
+.branches-grid-new { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px; max-width:1000px; margin:0 auto; padding:0 20px; position:relative; z-index:1; }
+.branch-card-new { background:rgba(255,255,255,.06); border:1px solid rgba(201,147,58,.22); border-radius:var(--r-lg); overflow:hidden; transition:all .4s var(--spring); }
+.branch-card-new:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 20px 50px rgba(0,0,0,.4); border-color:rgba(201,147,58,.5); }
+.branch-badge-new { display:inline-block; margin:18px 18px 0; padding:5px 16px; background:linear-gradient(135deg,var(--maroon-gold),var(--gold-light)); color:var(--maroon-dark); border-radius:50px; font-family:var(--ff-serif); font-size:.78rem; font-weight:700; letter-spacing:.1em; }
+.branch-name-row { display:flex; align-items:flex-start; gap:10px; padding:12px 18px 14px; }
+.branch-pin-icon { font-size:1.5rem; margin-top:2px; flex-shrink:0; animation:pinBounce 2s ease-in-out infinite; }
+.branch-name-row h3 { font-family:var(--ff-serif); font-size:1.22rem; font-weight:700; color:var(--white); margin-bottom:3px; }
+.branch-name-row p { font-size:.82rem; color:var(--gold-light); letter-spacing:.04em; font-family:var(--ff-sans); }
+.branch-addr-new { font-size:.8rem; color:rgba(200,169,110,.6); line-height:1.7; padding:0 18px 14px; }
+.branch-addr-new strong { display:flex; align-items:center; gap:5px; color:var(--maroon-gold); font-size:.82rem; margin-bottom:3px; }
+.branch-map-container { overflow:hidden; line-height:0; }
+.branch-map-container iframe { display:block; width:100%; height:230px; border:0; filter:sepia(20%) contrast(1.05); }
+.branch-map-btn { display:block; margin:14px 18px 18px; text-align:center; padding:11px 0; background:linear-gradient(135deg,var(--maroon-gold),var(--gold-light)); color:var(--maroon-dark); border-radius:var(--r-md); font-size:.82rem; font-weight:700; letter-spacing:.04em; text-decoration:none; transition:all .25s var(--spring); box-shadow:0 4px 14px rgba(200,169,110,.25); }
+.branch-map-btn:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(200,169,110,.4); filter:brightness(1.05); }
 
-.branches-section {
-  background:linear-gradient(160deg, var(--maroon-deep) 0%, var(--maroon) 100%);
-  padding:60px 0 80px;
-  position:relative;
-  overflow:hidden;
-  border-top:1px solid rgba(200,169,110,.15);
-}
-.branches-section::before {
-  content:'';
-  position:absolute; inset:0;
-  background-image:repeating-linear-gradient(-45deg,rgba(201,147,58,.04) 0,rgba(201,147,58,.04) 1px,transparent 0,transparent 50%);
-  background-size:24px 24px;
-  pointer-events:none;
-}
-.branches-section-hdr {
-  text-align:center; margin-bottom:40px; padding:0 20px; position:relative; z-index:1;
-}
-.branches-section-label {
-  font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
-  color:rgba(200,169,110,.5); margin-bottom:8px;
-}
-.branches-section-title {
-  font-family:var(--ff-serif);
-  font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; font-style:italic;
-  color:var(--white); line-height:1.2;
-}
-.branches-section-title span {
-  display:block; font-size:.6em; font-style:normal; font-weight:500;
-  color:var(--maroon-gold); letter-spacing:.06em; margin-top:4px; font-family:var(--ff-sans);
-}
-.branches-divider {
-  width:52px; height:1.5px;
-  background:linear-gradient(90deg,transparent,var(--maroon-gold),transparent);
-  margin:14px auto 0; border-radius:99px;
-}
-.branches-grid-new {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-  gap:28px;
-  max-width:1000px; margin:0 auto; padding:0 20px;
-  position:relative; z-index:1;
-}
-.branch-card-new {
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(201,147,58,.22);
-  border-radius:var(--r-lg);
-  overflow:hidden;
-  transition:all .4s var(--spring);
-}
-.branch-card-new:hover {
-  transform:translateY(-6px) scale(1.01);
-  box-shadow:0 20px 50px rgba(0,0,0,.4);
-  border-color:rgba(201,147,58,.5);
-}
-.branch-badge-new {
-  display:inline-block;
-  margin:18px 18px 0;
-  padding:5px 16px;
-  background:linear-gradient(135deg, var(--maroon-gold), var(--gold-light));
-  color:var(--maroon-dark);
-  border-radius:50px;
-  font-family:var(--ff-serif);
-  font-size:.78rem; font-weight:700; letter-spacing:.1em;
-}
-.branch-name-row {
-  display:flex; align-items:flex-start; gap:10px;
-  padding:12px 18px 14px;
-}
-.branch-pin-icon {
-  font-size:1.5rem; margin-top:2px; flex-shrink:0;
-  animation:pinBounce 2s ease-in-out infinite;
-}
-.branch-name-row h3 {
-  font-family:var(--ff-serif); font-size:1.22rem; font-weight:700;
-  color:var(--white); margin-bottom:3px;
-}
-.branch-name-row p {
-  font-size:.82rem; color:var(--gold-light); letter-spacing:.04em;
-  font-family:var(--ff-sans);
-}
-.branch-addr-new {
-  font-size:.8rem; color:rgba(200,169,110,.6);
-  line-height:1.7; padding:0 18px 14px;
-}
-.branch-addr-new strong {
-  display:flex; align-items:center; gap:5px;
-  color:var(--maroon-gold); font-size:.82rem; margin-bottom:3px;
-}
-.branch-map-container {
-  overflow:hidden; line-height:0;
-}
-.branch-map-container iframe {
-  display:block; width:100%; height:230px; border:0;
-  filter:sepia(20%) contrast(1.05);
-}
-.branch-map-btn {
-  display:block; margin:14px 18px 18px;
-  text-align:center; padding:11px 0;
-  background:linear-gradient(135deg, var(--maroon-gold), var(--gold-light));
-  color:var(--maroon-dark); border-radius:var(--r-md);
-  font-size:.82rem; font-weight:700; letter-spacing:.04em;
-  text-decoration:none; transition:all .25s var(--spring);
-  box-shadow:0 4px 14px rgba(200,169,110,.25);
-}
-.branch-map-btn:hover {
-  transform:translateY(-2px);
-  box-shadow:0 8px 22px rgba(200,169,110,.4);
-  filter:brightness(1.05);
-}
-
-/* ═══════════════════════════════════
-   CONTACT SECTION
-═══════════════════════════════════ */
-.contact-section {
-  background:var(--cream);
-  padding:60px 0 80px;
-  position:relative;
-  overflow:hidden;
-  border-top:1px solid var(--border);
-}
-.contact-section::before {
-  content:'';
-  position:absolute; top:-100px; left:50%; transform:translateX(-50%);
-  width:800px; height:800px; border-radius:50%;
-  background:radial-gradient(circle,rgba(139,69,19,.06) 0%,transparent 70%);
-  pointer-events:none;
-}
-.contact-section-hdr {
-  text-align:center; margin-bottom:40px; padding:0 20px; position:relative; z-index:1;
-}
-.contact-section-label {
-  font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--muted2); margin-bottom:8px; display:block;
-}
-.contact-section-title {
-  font-family:var(--ff-serif);
-  font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; font-style:italic;
-  color:var(--maroon-dk); line-height:1.2;
-}
-.contact-section-title span {
-  display:block; font-size:.58em; font-style:normal; font-weight:500;
-  color:var(--muted2); letter-spacing:.06em; margin-top:4px; font-family:var(--ff-sans);
-}
-.contact-divider {
-  width:52px; height:1.5px;
-  background:linear-gradient(90deg,transparent,var(--maroon-gold),transparent);
-  margin:14px auto 0; border-radius:99px;
-}
-.contact-grid-new {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:24px;
-  max-width:900px; margin:0 auto; padding:0 20px;
-  position:relative; z-index:1;
-}
-.contact-card-new {
-  background:#fff;
-  border-radius:var(--r-lg);
-  padding:34px 24px;
-  text-align:center;
-  box-shadow:0 2px 12px rgba(107,15,26,.1);
-  border:1px solid rgba(201,147,58,.12);
-  transition:all .35s var(--spring);
-  position:relative; overflow:hidden;
-}
-.contact-card-new::before {
-  content:'';
-  position:absolute; bottom:0; left:0; right:0; height:3px;
-  background:linear-gradient(90deg, var(--maroon-gold), var(--gold-light), var(--maroon-gold));
-  transform:scaleX(0); transform-origin:center; transition:.4s var(--ease);
-}
+/* ── CONTACT SECTION ── */
+.contact-section { background:var(--cream); padding:60px 0 80px; position:relative; overflow:hidden; border-top:1px solid var(--border); }
+.contact-section::before { content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:800px; height:800px; border-radius:50%; background:radial-gradient(circle,rgba(139,69,19,.06) 0%,transparent 70%); pointer-events:none; }
+.contact-section-hdr { text-align:center; margin-bottom:40px; padding:0 20px; position:relative; z-index:1; }
+.contact-section-label { font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--muted2); margin-bottom:8px; display:block; }
+.contact-section-title { font-family:var(--ff-serif); font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; font-style:italic; color:var(--maroon-dk); line-height:1.2; }
+.contact-section-title span { display:block; font-size:.58em; font-style:normal; font-weight:500; color:var(--muted2); letter-spacing:.06em; margin-top:4px; font-family:var(--ff-sans); }
+.contact-divider { width:52px; height:1.5px; background:linear-gradient(90deg,transparent,var(--maroon-gold),transparent); margin:14px auto 0; border-radius:99px; }
+.contact-grid-new { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; max-width:900px; margin:0 auto; padding:0 20px; position:relative; z-index:1; }
+.contact-card-new { background:#fff; border-radius:var(--r-lg); padding:34px 24px; text-align:center; box-shadow:0 2px 12px rgba(107,15,26,.1); border:1px solid rgba(201,147,58,.12); transition:all .35s var(--spring); position:relative; overflow:hidden; }
+.contact-card-new::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--maroon-gold),var(--gold-light),var(--maroon-gold)); transform:scaleX(0); transform-origin:center; transition:.4s var(--ease); }
 .contact-card-new:hover { transform:translateY(-6px); box-shadow:0 14px 40px rgba(107,15,26,.16); }
 .contact-card-new:hover::before { transform:scaleX(1); }
-.contact-icon-new {
-  font-size:2.4rem; margin-bottom:14px; display:inline-block;
-  transition:.3s var(--spring);
-}
+.contact-icon-new { font-size:2.4rem; margin-bottom:14px; display:inline-block; transition:.3s var(--spring); }
 .contact-card-new:hover .contact-icon-new { transform:scale(1.2) rotate(-5deg); }
-.contact-card-new h4 {
-  font-family:var(--ff-serif); font-size:1.05rem; font-weight:600; font-style:italic;
-  color:var(--maroon); margin-bottom:14px;
-}
-.contact-branch-lbl {
-  font-size:.82rem; color:var(--maroon-dk); margin-bottom:5px;
-  letter-spacing:.04em; font-weight:500;
-}
-.contact-phone-btn {
-  display:block;
-  font-size:.9rem; font-weight:700;
-  color:#fff;
-  background:linear-gradient(135deg, var(--maroon), var(--maroon-lt));
-  border:1px solid rgba(201,147,58,.3);
-  border-radius:50px;
-  padding:11px 20px;
-  margin-bottom:8px;
-  letter-spacing:.05em;
-  text-decoration:none;
-  transition:all .3s var(--spring);
-  box-shadow:0 2px 10px rgba(107,15,26,.2);
-  position:relative; overflow:hidden;
-}
-.contact-phone-btn::after {
-  content:'';
-  position:absolute; inset:0;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.14),transparent);
-  transform:translateX(-100%); transition:.4s;
-}
+.contact-card-new h4 { font-family:var(--ff-serif); font-size:1.05rem; font-weight:600; font-style:italic; color:var(--maroon); margin-bottom:14px; }
+.contact-branch-lbl { font-size:.82rem; color:var(--maroon-dk); margin-bottom:5px; letter-spacing:.04em; font-weight:500; }
+.contact-phone-btn { display:block; font-size:.9rem; font-weight:700; color:#fff; background:linear-gradient(135deg,var(--maroon),var(--maroon-lt)); border:1px solid rgba(201,147,58,.3); border-radius:50px; padding:11px 20px; margin-bottom:8px; letter-spacing:.05em; text-decoration:none; transition:all .3s var(--spring); box-shadow:0 2px 10px rgba(107,15,26,.2); position:relative; overflow:hidden; }
+.contact-phone-btn::after { content:''; position:absolute; inset:0; background:linear-gradient(120deg,transparent,rgba(255,255,255,.14),transparent); transform:translateX(-100%); transition:.4s; }
 .contact-phone-btn:hover::after { transform:translateX(100%); }
-.contact-phone-btn:hover {
-  background:linear-gradient(135deg, var(--gold-dk), var(--gold-light));
-  color:var(--maroon-dark);
-  transform:translateY(-2px);
-  box-shadow:0 6px 20px rgba(200,169,110,.45);
-}
+.contact-phone-btn:hover { background:linear-gradient(135deg,var(--gold-dk),var(--gold-light)); color:var(--maroon-dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(200,169,110,.45); }
 .hours-label { font-size:.82rem; color:var(--muted2); margin-bottom:3px; }
 .hours-label strong { color:var(--ink2); }
-.hours-time-new {
-  font-family:var(--ff-serif); font-size:1.15rem; font-weight:600;
-  color:var(--maroon); margin-bottom:14px;
-}
-.contact-wa-btn {
-  display:inline-flex; align-items:center; gap:8px;
-  padding:13px 26px; border-radius:50px; margin-top:10px;
-  background:linear-gradient(135deg, #1ebe57, var(--wa));
-  color:#fff; font-size:.9rem; font-weight:700;
-  text-decoration:none; letter-spacing:.03em;
-  box-shadow:0 4px 16px rgba(37,211,102,.35);
-  transition:all .3s var(--spring); position:relative; overflow:hidden;
-}
-.contact-wa-btn::after {
-  content:''; position:absolute; inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
-  transform:translateX(-220%) skewX(-14deg);
-}
+.hours-time-new { font-family:var(--ff-serif); font-size:1.15rem; font-weight:600; color:var(--maroon); margin-bottom:14px; }
+.contact-wa-btn { display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:50px; margin-top:10px; background:linear-gradient(135deg,#1ebe57,var(--wa)); color:#fff; font-size:.9rem; font-weight:700; text-decoration:none; letter-spacing:.03em; box-shadow:0 4px 16px rgba(37,211,102,.35); transition:all .3s var(--spring); position:relative; overflow:hidden; }
+.contact-wa-btn::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent); transform:translateX(-220%) skewX(-14deg); }
 .contact-wa-btn:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(37,211,102,.5); }
 .contact-wa-btn:hover::after { animation:shimmerSlide .6s ease; }
 
-/* FOOTER */
+/* ── FOOTER ── */
 .footer { background:var(--maroon-dk); padding:44px 28px 32px; text-align:center; border-top:1px solid rgba(200,169,110,.2); }
 .foot-brand { font-family:var(--ff-serif); font-size:1.6rem; font-weight:400; color:var(--maroon-gold); margin-bottom:8px; font-style:italic; }
 .footer p { font-size:.74rem; color:rgba(200,169,110,.55); margin-bottom:18px; }
@@ -924,8 +539,6 @@ body::before {
 .flinks a:hover { color:var(--maroon-gold); }
 .reveal { opacity:0; transform:translateY(22px); transition:opacity .55s var(--reveal),transform .55s var(--reveal); }
 .reveal.visible { opacity:1; transform:none; }
-
-@keyframes fabRing { 0%{transform:scale(1);opacity:.7} 100%{transform:scale(1.6);opacity:0} }
 </style>
 </head>
 <body>
@@ -940,14 +553,12 @@ body::before {
       </div>
     </div>
 
-    <!-- Main nav links -->
     <nav class="main-nav" id="main-nav">
       <a href="#pgrid" onclick="document.getElementById('pgrid').scrollIntoView({behavior:'smooth'});return false;">Our Products</a>
       <a href="#branches" onclick="document.getElementById('branches').scrollIntoView({behavior:'smooth'});return false;">Branches</a>
       <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">Contact</a>
     </nav>
 
-    <!-- Desktop search -->
     <div class="nav-search" id="navSearch">
       <div class="sw" id="sw">
         <span class="si">🔍</span>
@@ -959,18 +570,24 @@ body::before {
 
     <div class="nav-r">
       <button class="cart-pill" onclick="openCart()">🛒 Cart <span class="cart-badge" id="cn">0</span></button>
+      <div class="dot-menu-wrap" id="dotMenuWrap">
+        <button class="dot-menu-btn" id="dotMenuBtn" onclick="toggleDotMenu()" aria-label="Navigation menu">⋮</button>
+        <div class="dot-menu-dropdown" id="dotMenuDropdown">
+          <a class="dot-menu-item" href="#pgrid" onclick="scrollTo_('pgrid');return false;"><span class="dmi">🛒</span>Our Products</a>
+          <a class="dot-menu-item" href="#branches" onclick="scrollTo_('branches');return false;"><span class="dmi">📍</span> Map / Branches</a>
+          <a class="dot-menu-item" href="#contact" onclick="scrollTo_('contact');return false;"><span class="dmi">📞</span> Contact</a>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
 
-<!-- Mobile search — NOW STICKY (stays while scrolling) -->
 <div class="mobile-search-bar" id="mobileSearchBar">
   <span class="mob-si">🔍</span>
   <input type="text" id="mobileSearch" placeholder="Search products…" autocomplete="off">
   <div class="mob-sugg-box sugg-box" id="mobSuggBox"></div>
 </div>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
     <span class="ticker-item">🌾 Premium Biriyani Rice Variety Available</span><span class="ticker-dot"></span>
@@ -988,30 +605,22 @@ body::before {
   </div>
 </div>
 
-<!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="hero">
   <div class="hero-overlay"></div>
   <div class="hero-orb hero-orb1"></div>
   <div class="hero-orb hero-orb2"></div>
-
   <div class="hero-content">
-    <div class="hero-badge">
-      <span class="hero-badge-star">✦</span> Since 1964 · Trusted Quality
-    </div>
-
-    <div class="hero-brand-name">Malivagam</div>
-    <br>
+    <div class="hero-badge"><span class="hero-badge-star">✦</span> Since 1964 · Trusted Quality</div>
+    <div class="hero-brand-name">Malivagam</div><br>
     <div class="hero-location">· Salem, Tamil Nadu ·</div>
     <div class="hero-divider-line"></div>
-
     <div class="hero-pills">
-      <span class="hero-pill">🍚 Sugar</span> 
+      <span class="hero-pill">🍚 Sugar</span>
       <span class="hero-pill">🌾 Rice</span>
       <span class="hero-pill">🫘 Dal</span>
       <span class="hero-pill">🌻 Flour</span>
       <span class="hero-pill">🫙 Oil</span>
     </div>
-
     <div class="hero-actions">
       <button class="ica-primary" onclick="document.getElementById('pgrid').scrollIntoView({behavior:'smooth'})">🛒 Browse Products</button>
       <a class="ica-ghost" href="https://wa.me/919443355683?text=Vanakkam%20Malivagam" target="_blank">💬 WhatsApp Order</a>
@@ -1019,7 +628,6 @@ body::before {
   </div>
 </section>
 
-<!-- TICKER 2 -->
 <div class="ticker-wrap">
   <div class="ticker-track">
     <span class="ticker-item">🌾 Premium Biriyani Rice Variety Available</span><span class="ticker-dot"></span>
@@ -1037,7 +645,6 @@ body::before {
   </div>
 </div>
 
-<!-- FILTER BAR -->
 <div class="fbar"><div class="fin">
   <button class="fb act" data-cat="All">🏪 All</button>
   <button class="fb" data-cat="Sugar">🍚 அஸ்கா-புதிய வரவு / Sugar</button>
@@ -1055,7 +662,6 @@ body::before {
   </select></div>
 </div></div>
 
-<!-- PRODUCTS -->
 <div class="main">
   <div class="sh">
     <h2 class="stitle" id="stitle">Our Products</h2>
@@ -1064,111 +670,75 @@ body::before {
   <div class="pgrid" id="pgrid"></div>
 </div>
 
-<!-- OUR BRANCHES -->
 <section class="branches-section" id="branches">
   <div class="branches-section-hdr">
     <p class="branches-section-label">Find Us</p>
-    <h2 class="branches-section-title">
-      எங்கள் கிளைகள்
-      <span>Our Branches</span>
-    </h2>
+    <h2 class="branches-section-title">எங்கள் கிளைகள்<span>Our Branches</span></h2>
     <div class="branches-divider"></div>
   </div>
-
   <div class="branches-grid-new">
-    <!-- Branch 1: King Trading Co -->
     <div class="branch-card-new">
       <div class="branch-badge-new">Branch 1</div>
       <div class="branch-name-row">
         <span class="branch-pin-icon">📍</span>
-        <div>
-          <h3>King Trading Co</h3>
-          <p>Suramangalam, Salem</p>
-        </div>
-      </div>
-      <div class="branch-addr-new">
-        <strong>📞 <a href="tel:+918122909992" style="color:var(--maroon-gold);text-decoration:none">8122909992</a></strong>
-        304/445, Suramangalam Road, South Lane,<br>Salem – 636005
-      </div>
-      <div class="branch-map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3905.4!2d78.1391781!3d11.6560154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf03c80fe3d83%3A0x2072fd7e14c128a2!2sKing%20Trading%20and%20co!5e0!3m2!1sen!2sin!4v1"
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="King Trading Co Location"></iframe>
-      </div>
-      <a href="https://maps.app.goo.gl/aentkfhAJZMDDZkL6" class="branch-map-btn" target="_blank" rel="noopener">
-        🗺 View on Google Maps
-      </a>
-    </div>
-
-    <!-- Branch 2: Siva Trading Co -->
-    <div class="branch-card-new">
-      <div class="branch-badge-new">Branch 2</div>
-      <div class="branch-name-row">
-        <span class="branch-pin-icon">📍</span>
-        <div>
-          <h3>Siva Trading Co</h3>
-          <p>Shevapet, Salem</p>
-        </div>
+        <div><h3>Siva Trading Co</h3><p>Shevapet, Salem</p></div>
       </div>
       <div class="branch-addr-new">
         <strong>📞 <a href="tel:+919443355683" style="color:var(--maroon-gold);text-decoration:none">9443355683</a></strong>
         824, Navalar Nedunchezhian Salai,<br>Shevapet, Salem – 636002
       </div>
       <div class="branch-map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15629.946923087795!2d78.13179369574488!3d11.659877366762199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf1fa8cb958a5%3A0xefd4cc4f97fed81a!2zU2l2YSBUcmFkaW5nIENvIChNYWxpdmFnYW0pIOCuruCusuCuv-CuteCuleCuruCvjQ!5e0!3m2!1sen!2sin!4v1774108014490!5m2!1sen!2sin">
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Siva Trading Co Location"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15629.946923087795!2d78.13179369574488!3d11.659877366762199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf1fa8cb958a5%3A0xefd4cc4f97fed81a!2zU2l2YSBUcmFkaW5nIENvIChNYWxpdmFnYW0pIOCuruCusuCuv-CuteCuleCuruCvjQ!5e0!3m2!1sen!2sin!4v1774108014490!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Siva Trading Co Location"></iframe>
       </div>
-      <a href="https://maps.app.goo.gl/2KehgwKbfZic1DNFA" class="branch-map-btn" target="_blank" rel="noopener">
-        🗺 View on Google Maps
-      </a>
+      <a href="https://maps.app.goo.gl/2KehgwKbfZic1DNFA" class="branch-map-btn" target="_blank" rel="noopener">🗺 View on Google Maps</a>
+    </div>
+    <div class="branch-card-new">
+      <div class="branch-badge-new">Branch 2</div>
+      <div class="branch-name-row">
+        <span class="branch-pin-icon">📍</span>
+        <div><h3>King Trading Co</h3><p>Suramangalam, Salem</p></div>
+      </div>
+      <div class="branch-addr-new">
+        <strong>📞 <a href="tel:+918122909992" style="color:var(--maroon-gold);text-decoration:none">8122909992</a></strong>
+        304/445, Suramangalam Road, South Lane,<br>Salem – 636005
+      </div>
+      <div class="branch-map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3905.4!2d78.1391781!3d11.6560154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf03c80fe3d83%3A0x2072fd7e14c128a2!2sKing%20Trading%20and%20co!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="King Trading Co Location"></iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/aentkfhAJZMDDZkL6" class="branch-map-btn" target="_blank" rel="noopener">🗺 View on Google Maps</a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT SECTION -->
 <section class="contact-section" id="contact">
   <div class="contact-section-hdr">
     <span class="contact-section-label">Get in Touch</span>
-    <h2 class="contact-section-title">
-      தொடர்பு கொள்ளுங்கள்
-      <span>Contact Us</span>
-    </h2>
+    <h2 class="contact-section-title">தொடர்பு கொள்ளுங்கள்<span>Contact Us</span></h2>
     <div class="contact-divider"></div>
   </div>
-
   <div class="contact-grid-new">
-    <!-- Call Us -->
     <div class="contact-card-new">
       <div class="contact-icon-new">📞</div>
       <h4>Call Us</h4>
-      <p class="contact-branch-lbl">Branch 1 · King Trading Co</p>
-      <a href="tel:+918122909992" class="contact-phone-btn">📞 8122909992</a>
-      <p class="contact-branch-lbl" style="margin-top:10px">Branch 2 · Siva Trading Co</p>
+      <p class="contact-branch-lbl">Branch 1 · Siva Trading Co</p>
       <a href="tel:+919443355683" class="contact-phone-btn">📞 9443355683</a>
+      <p class="contact-branch-lbl" style="margin-top:10px">Branch 2 · King Trading Co</p>
+      <a href="tel:+918122909992" class="contact-phone-btn">📞 8122909992</a>
     </div>
-
-    <!-- Working Hours -->
     <div class="contact-card-new">
       <div class="contact-icon-new">🕒</div>
       <h4>Working Hours</h4>
-      <p class="contact-branch-lbl">Branch 1 · King Trading Co</p>
+      <p class="contact-branch-lbl">Branch 1 · Siva Trading Co</p>
       <p class="hours-label"><strong>Monday – Saturday</strong></p>
       <p class="hours-time-new">9:00 AM – 8:00 PM</p>
-      <p class="contact-branch-lbl" style="margin-top:8px">Branch 2 · Siva Trading Co</p>
+      <p class="contact-branch-lbl" style="margin-top:8px">Branch 2 · King Trading Co</p>
       <p class="hours-label"><strong>Monday – Saturday</strong></p>
       <p class="hours-time-new">9:00 AM – 8:00 PM</p>
     </div>
-
-    <!-- WhatsApp Order -->
     <div class="contact-card-new">
       <div class="contact-icon-new">💬</div>
       <h4>WhatsApp Order</h4>
-      <p style="font-size:.85rem;color:var(--muted2);margin-bottom:18px;line-height:1.6">
-        Send us your order list directly on WhatsApp — fast, easy, and confirmed instantly.
-      </p>
+      <p style="font-size:.85rem;color:var(--muted2);margin-bottom:18px;line-height:1.6">Send us your order list directly on WhatsApp — fast, easy, and confirmed instantly.</p>
       <a href="https://wa.me/919443355683?text=வணக்கம்%20மலிவகம்!%20ஆர்டர்%20செய்ய%20விரும்புகிறேன்." class="contact-wa-btn" target="_blank" rel="noopener">
         <svg viewBox="0 0 32 32" fill="white" width="18" height="18"><path d="M16.003 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.336.627 4.593 1.817 6.564L2.667 29.333l6.954-1.78A13.27 13.27 0 0016.003 29.333c7.365 0 13.33-5.971 13.33-13.333 0-7.362-5.965-13.333-13.33-13.333zm0 24c-2.01 0-3.981-.527-5.714-1.522l-.41-.24-4.124 1.056 1.093-3.984-.265-.428A10.633 10.633 0 015.333 16c0-5.882 4.788-10.667 10.67-10.667 5.882 0 10.664 4.785 10.664 10.667S21.885 26.667 16.003 26.667zm5.847-7.988c-.32-.16-1.893-.933-2.186-1.04-.293-.107-.506-.16-.72.16s-.826 1.04-1.013 1.253c-.187.214-.373.24-.693.08-.32-.16-1.35-.497-2.572-1.586-.95-.848-1.59-1.895-1.776-2.215-.187-.32-.02-.493.14-.652.144-.143.32-.373.48-.56.16-.186.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.986-2.373-.26-.624-.524-.54-.72-.55l-.613-.01a1.18 1.18 0 00-.853.4c-.293.32-1.12 1.093-1.12 2.666s1.147 3.094 1.307 3.307c.16.213 2.254 3.44 5.463 4.826.764.33 1.36.526 1.824.674.766.243 1.464.209 2.016.127.615-.091 1.893-.773 2.16-1.52.266-.747.266-1.387.186-1.52-.08-.134-.293-.214-.614-.374z"/></svg>
         Order on WhatsApp
@@ -1179,17 +749,16 @@ body::before {
 
 <footer class="footer">
   <div class="foot-brand">Malivagam</div>
-  <p>King Trading Co · Siva Trading Co · Salem, Tamil Nadu</p>
-  <p style="margin-top:4px">📞 8122909992 &nbsp;·&nbsp; 📞 9443355683</p>
+  <p>Siva Trading Co · King Trading Co · Salem, Tamil Nadu</p>
+  <p style="margin-top:4px">📞 9443355683 &nbsp;·&nbsp; 📞 8122909992</p>
   <div class="flinks" style="margin-top:16px">
     <a href="index.html">Home</a>
     <a href="https://wa.me/919443355683" target="_blank">WhatsApp</a>
-    <a href="https://maps.app.goo.gl/L5XDycYeGpg7nnew7" target="_blank">King Trading Map</a>
-    <a href="https://maps.app.goo.gl/Y77N65HjdC5Ko6Az5" target="_blank">Siva Trading Map</a>
+    <a href="https://maps.app.goo.gl/2KehgwKbfZic1DNFA" target="_blank">Siva Trading Map</a>
+    <a href="https://maps.app.goo.gl/aentkfhAJZMDDZkL6" target="_blank">King Trading Map</a>
   </div>
 </footer>
 
-<!-- CART PANEL -->
 <div class="carto" id="carto" onclick="if(event.target===this)closeCart()">
   <div class="cartp">
     <div class="carth"><h2>🛒 Your Cart</h2><button class="cartx" onclick="closeCart()">✕</button></div>
@@ -1206,7 +775,6 @@ body::before {
   </div>
 </div>
 
-<!-- QUICK VIEW MODAL -->
 <div class="qvo" id="qvo" onclick="if(event.target===this)closeQV()">
   <div class="qvb">
     <div class="qvi" id="qvi"></div>
@@ -1225,7 +793,6 @@ body::before {
   </div>
 </div>
 
-<!-- WHATSAPP FAB -->
 <a href="#" onclick="openWhatsappOrder(event)" class="whatsapp-fab" aria-label="Order on WhatsApp">
   <svg viewBox="0 0 32 32" fill="white" width="28" height="28"><path d="M16.003 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.336.627 4.593 1.817 6.564L2.667 29.333l6.954-1.78A13.27 13.27 0 0016.003 29.333c7.365 0 13.33-5.971 13.33-13.333 0-7.362-5.965-13.333-13.33-13.333zm0 24c-2.01 0-3.981-.527-5.714-1.522l-.41-.24-4.124 1.056 1.093-3.984-.265-.428A10.633 10.633 0 015.333 16c0-5.882 4.788-10.667 10.67-10.667 5.882 0 10.664 4.785 10.664 10.667S21.885 26.667 16.003 26.667zm5.847-7.988c-.32-.16-1.893-.933-2.186-1.04-.293-.107-.506-.16-.72.16s-.826 1.04-1.013 1.253c-.187.214-.373.24-.693.08-.32-.16-1.35-.497-2.572-1.586-.95-.848-1.59-1.895-1.776-2.215-.187-.32-.02-.493.14-.652.144-.143.32-.373.48-.56.16-.186.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.986-2.373-.26-.624-.524-.54-.72-.55l-.613-.01a1.18 1.18 0 00-.853.4c-.293.32-1.12 1.093-1.12 2.666s1.147 3.094 1.307 3.307c.16.213 2.254 3.44 5.463 4.826.764.33 1.36.526 1.824.674.766.243 1.464.209 2.016.127.615-.091 1.893-.773 2.16-1.52.266-.747.266-1.387.186-1.52-.08-.134-.293-.214-.614-.374z"/></svg>
   <span class="fab-tooltip">Order Now</span>
@@ -1320,14 +887,24 @@ var CATS=["Sugar","Rice","Dal","Flour","Oil","Other"];
 var EM={Sugar:"🍚",Rice:"🌾",Dal:"🫘",Flour:"🌻",Oil:"🫙",Other:"🛒"};
 var prods=[],activeCat="All",sq="",qvId=null,suggFocusIdx=-1;
 
+/* ── 3-DOT MENU ── */
+function toggleDotMenu(){
+  var btn=document.getElementById('dotMenuBtn');
+  var dd=document.getElementById('dotMenuDropdown');
+  btn.classList.toggle('open');dd.classList.toggle('open');
+}
+function scrollTo_(id){closeDotMenu();var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
+function closeDotMenu(){document.getElementById('dotMenuBtn').classList.remove('open');document.getElementById('dotMenuDropdown').classList.remove('open');}
+document.addEventListener('click',function(e){var wrap=document.getElementById('dotMenuWrap');if(wrap&&!wrap.contains(e.target))closeDotMenu();});
+
 document.addEventListener('DOMContentLoaded',function(){
-  updateBadge(); showSkel(10); loadProds(); initScroll();
+  updateBadge();showSkel(10);loadProds();initScroll();
   setTimeout(function(){document.getElementById('stitle').classList.add('drawn');},900);
 
   document.querySelectorAll('.fb').forEach(function(b){
     b.addEventListener('click',function(){
       document.querySelectorAll('.fb').forEach(function(x){x.classList.remove('act');});
-      b.classList.add('act'); activeCat=b.dataset.cat; renderProds();
+      b.classList.add('act');activeCat=b.dataset.cat;renderProds();
     });
   });
 
@@ -1366,10 +943,7 @@ function buildSugg(query,boxId){
   var ql=query.trim().toLowerCase();
   if(!ql){hideSugg();return;}
   var all=prods.filter(function(p){return p.productName.toLowerCase().includes(ql)||(p.category||'').toLowerCase().includes(ql);});
-  if(!all.length){
-    box.innerHTML='<div class="ss-empty"><div class="ss-empty-icon">🔍</div>No results for "'+eh(query)+'"</div>';
-    box.classList.add('show');suggFocusIdx=-1;return;
-  }
+  if(!all.length){box.innerHTML='<div class="ss-empty"><div class="ss-empty-icon">🔍</div>No results for "'+eh(query)+'"</div>';box.classList.add('show');suggFocusIdx=-1;return;}
   var catMatches=all.filter(function(p){return(p.category||'').toLowerCase().includes(ql);}).slice(0,3);
   var nameMatches=all.filter(function(p){return catMatches.indexOf(p)===-1&&p.productName.toLowerCase().includes(ql);}).slice(0,7);
   var html='',globalIdx=0;
@@ -1421,21 +995,55 @@ function clearSearch(){
   hideSugg();renderProds();
 }
 
+/* ── FIXED: loadProds now respects sortOrder ── */
 function loadProds(){
   try{
-    col.orderBy('createdAt','desc').onSnapshot(async function(snap){
-      if(snap.empty){
-        var batch=db.batch();
-        SEED.forEach(function(p){var r=col.doc();batch.set(r,Object.assign({},p,{createdAt:firebase.firestore.FieldValue.serverTimestamp()}));});
-        try{await batch.commit();}catch(e){prods=SEED.map(function(p,i){return Object.assign({id:'s'+i},p);});renderProds();return;}
-        return;
-      }
-      prods=snap.docs.map(function(d){return Object.assign({id:d.id},d.data());});renderProds();
-    },function(){prods=SEED.map(function(p,i){return Object.assign({id:'s'+i},p);});renderProds();});
+    /* First check if any docs have sortOrder set */
+    col.orderBy('sortOrder','asc').get()
+      .then(function(snap){
+        var hasSortOrder=snap.docs.some(function(d){return d.data().sortOrder!==undefined;});
+        /* Use the appropriate query for the live listener */
+        var liveQuery=hasSortOrder
+          ? col.orderBy('sortOrder','asc')
+          : col.orderBy('createdAt','desc');
+
+        liveQuery.onSnapshot(function(s){
+          if(s.empty){
+            /* Seed products if collection is empty */
+            var batch=db.batch();
+            SEED.forEach(function(p,i){
+              var r=col.doc();
+              batch.set(r,Object.assign({},p,{sortOrder:i,createdAt:firebase.firestore.FieldValue.serverTimestamp()}));
+            });
+            batch.commit().catch(function(){
+              prods=SEED.map(function(p,i){return Object.assign({id:'s'+i},p);});renderProds();
+            });
+            return;
+          }
+          prods=s.docs.map(function(d){return Object.assign({id:d.id},d.data());});
+          renderProds();
+        },function(){
+          /* Fallback to createdAt if sortOrder query fails */
+          col.orderBy('createdAt','desc').onSnapshot(function(s){
+            prods=s.docs.map(function(d){return Object.assign({id:d.id},d.data());});renderProds();
+          });
+        });
+      })
+      .catch(function(){
+        /* Fallback entirely */
+        col.orderBy('createdAt','desc').onSnapshot(function(s){
+          prods=s.docs.map(function(d){return Object.assign({id:d.id},d.data());});renderProds();
+        });
+      });
   }catch(e){prods=SEED.map(function(p,i){return Object.assign({id:'s'+i},p);});renderProds();}
 }
+
 function getFiltered(){
-  var list=prods.filter(function(p){return(activeCat==='All'||p.category===activeCat)&&(!sq||p.productName.toLowerCase().includes(sq)||(p.category||'').toLowerCase().includes(sq));});
+  var list=prods.filter(function(p){
+    return(activeCat==='All'||p.category===activeCat)
+      &&(!sq||p.productName.toLowerCase().includes(sq)||(p.category||'').toLowerCase().includes(sq)
+        ||(p.aliases&&p.aliases.some(function(a){return a.toLowerCase().includes(sq);})));
+  });
   var s=document.getElementById('ss')?document.getElementById('ss').value:'';
   if(s==='na')list.sort(function(a,b){return a.productName.localeCompare(b.productName);});
   if(s==='nd')list.sort(function(a,b){return b.productName.localeCompare(a.productName);});
@@ -1495,7 +1103,8 @@ function renderCart(){
       +'<div class="cictrl"><button class="qb" onclick="changeQty(\''+item.id+'\',-1)">−</button><span class="qn">'+item.qty+'</span><button class="qb" onclick="changeQty(\''+item.id+'\',1)">＋</button><button class="cdel" onclick="removeItem(\''+item.id+'\')">🗑</button></div></div>';
   }).join('');
   foot.style.display='block';
-  var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);var qty=cart.reduce(function(s,i){return s+i.qty;},0);
+  var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);
+  var qty=cart.reduce(function(s,i){return s+i.qty;},0);
   document.getElementById('ctv').textContent=total>0?'₹'+total.toLocaleString('en-IN'):'—';
   document.getElementById('csub').textContent=qty+' item'+(qty>1?'s':'')+' in cart';
 }
@@ -1522,8 +1131,13 @@ function qvAddCart(){var p=prods.find(function(x){return x.id===qvId;});if(!p)re
 
 function checkoutWA(){
   var cart=getCart();if(!cart.length){alert('Cart is empty!');return;}
-  var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் :\n';
-  cart.forEach(function(item,i){msg+=(i+1)+'. '+item.name+' - '+item.qty;if(item.price>0)msg+=' = ₹'+(item.price*item.qty).toLocaleString('en-IN');msg+='\n';});
+  var totalQty=cart.reduce(function(s,i){return s+i.qty;},0);
+  var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் (மொத்தம் '+totalQty+' பொருட்கள்):\n';
+  cart.forEach(function(item,i){
+    msg+=(i+1)+'. '+item.name+' - Qty: '+item.qty;
+    if(item.price>0)msg+=' = ₹'+(item.price*item.qty).toLocaleString('en-IN');
+    msg+='\n';
+  });
   var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);
   if(total>0)msg+='\nமொத்தம்: ₹'+total.toLocaleString('en-IN');
   msg+='\n\nதயவுசெய்து உறுதிப்படுத்தவும். நன்றி!😊';
@@ -1531,8 +1145,9 @@ function checkoutWA(){
 }
 function buildOrderMsg(){
   var cart=getCart();if(!cart.length)return'';
-  var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் :\n';
-  cart.forEach(function(item,i){msg+=(i+1)+'. '+item.name+' - '+item.qty+'\n';});
+  var totalQty=cart.reduce(function(s,i){return s+i.qty;},0);
+  var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் (மொத்தம் '+totalQty+' பொருட்கள்):\n';
+  cart.forEach(function(item,i){msg+=(i+1)+'. '+item.name+' - Qty: '+item.qty+'\n';});
   var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);
   if(total>0)msg+='\nமொத்தம்: ₹'+total.toLocaleString('en-IN');
   msg+='\n\nதயவுசெய்து உறுதிப்படுத்தவும். நன்றி!😊';
