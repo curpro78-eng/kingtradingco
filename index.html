@@ -1129,30 +1129,53 @@ function openQV(id){
 function closeQV(){document.getElementById('qvo').classList.remove('open');document.body.style.overflow='';qvId=null;}
 function qvAddCart(){var p=prods.find(function(x){return x.id===qvId;});if(!p)return;addCart(p.id,p.productName,p.price||0,p.imageUrl||'');closeQV();}
 
+// function checkoutWA(){
+//   var cart=getCart();if(!cart.length){alert('Cart is empty!');return;}
+//   var totalQty=cart.reduce(function(s,i){return s+i.qty;},0);
+//   var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் (மொத்தம் '+totalQty+' பொருட்கள்):\n';
+//   cart.forEach(function(item,i){
+//     msg+=(i+1)+'. '+item.name+' - Qty: '+item.qty;
+//     if(item.price>0)msg+=' = ₹'+(item.price*item.qty).toLocaleString('en-IN');
+//     msg+='\n';
+//   });
+//   var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);
+//   if(total>0)msg+='\nமொத்தம்: ₹'+total.toLocaleString('en-IN');
+//   msg+='\n\nதயவுசெய்து உறுதிப்படுத்தவும். நன்றி!😊';
+//   window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+// }
+// function buildOrderMsg(){
+//   var cart=getCart();if(!cart.length)return'';
+//   var totalQty=cart.reduce(function(s,i){return s+i.qty;},0);
+//   var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் (மொத்தம் '+totalQty+' பொருட்கள்):\n';
+//   cart.forEach(function(item,i){msg+=(i+1)+'. '+item.name+' - Qty: '+item.qty+'\n';});
+//   var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);
+//   if(total>0)msg+='\nமொத்தம்: ₹'+total.toLocaleString('en-IN');
+//   msg+='\n\nதயவுசெய்து உறுதிப்படுத்தவும். நன்றி!😊';
+//   return encodeURIComponent(msg);
+// }
+
 function checkoutWA(){
   var cart=getCart();if(!cart.length){alert('Cart is empty!');return;}
-  var totalQty=cart.reduce(function(s,i){return s+i.qty;},0);
-  var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் (மொத்தம் '+totalQty+' பொருட்கள்):\n';
+  var msg=buildOrderMsg();
+  window.open('https://wa.me/'+WA+'?text='+msg,'_blank');
+}
+
+function buildOrderMsg(){
+  var cart=getCart();if(!cart.length)return'';
+  var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் :\n';
   cart.forEach(function(item,i){
-    msg+=(i+1)+'. '+item.name+' - Qty: '+item.qty;
+    msg+=(i+1)+'. '+item.name+' - '+item.qty;
     if(item.price>0)msg+=' = ₹'+(item.price*item.qty).toLocaleString('en-IN');
     msg+='\n';
   });
-  var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);
-  if(total>0)msg+='\nமொத்தம்: ₹'+total.toLocaleString('en-IN');
-  msg+='\n\nதயவுசெய்து உறுதிப்படுத்தவும். நன்றி!😊';
-  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
-}
-function buildOrderMsg(){
-  var cart=getCart();if(!cart.length)return'';
   var totalQty=cart.reduce(function(s,i){return s+i.qty;},0);
-  var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் (மொத்தம் '+totalQty+' பொருட்கள்):\n';
-  cart.forEach(function(item,i){msg+=(i+1)+'. '+item.name+' - Qty: '+item.qty+'\n';});
   var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);
+  msg+='\nமொத்த  பொருட்கள்: '+totalQty+' qty';
   if(total>0)msg+='\nமொத்தம்: ₹'+total.toLocaleString('en-IN');
   msg+='\n\nதயவுசெய்து உறுதிப்படுத்தவும். நன்றி!😊';
   return encodeURIComponent(msg);
 }
+
 function openWhatsappOrder(e){
   e.preventDefault();var msg=buildOrderMsg();
   if(msg){window.open('https://wa.me/'+WA+'?text='+msg,'_blank');}
