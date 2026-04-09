@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="rice.png">
+<title>Malivagam</title>
+<meta name="description" content="Malivagam – Premium rice, dal, flour, oil and groceries since 1964. Order via WhatsApp, Salem.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:    #FFC570;
+  --gold-dk: #E8A840;
+  --teal:    #AACDDC;
+  --teal-dk: #7EB3C8;
+  --cream:   #FEF3E2;
+  --cream2:  #FBE8C4;
+  --spice:   #8B4513;
+  --spice-dk:#5C2D0A;
+  --spice-lt:#B5611C;
+  --ink:     #2A1505;
+  --ink2:    #3D1E08;
+  --muted:   #7A5230;
+  --muted2:  #A07048;
+  --sand:    #F5E5C8;
+  --border:  rgba(139,69,19,.15);
+  --border2: rgba(139,69,19,.08);
+  --wa:      #25D366;
+  --maroon:       #6B0F1A;
+  --maroon-dk:    #4A0A12;
+  --maroon-lt:    #8B1A28;
+  --maroon-gold:  #C8A96E;
+  --accent:       #F5C842;
+  --r-sm:    10px;
+  --r-md:    16px;
+  --r-lg:    24px;
+  --r-xl:    36px;
+  --ff-serif:'Fraunces',Georgia,serif;
+  --ff-sans: 'Jost',sans-serif;
+  --ease:    cubic-bezier(.25,.46,.45,.94);
+  --spring:  cubic-bezier(.34,1.56,.64,1);
+  --reveal:  cubic-bezier(.16,1,.3,1);
+  --maroon-deep:  #4A0A12;
+  --maroon-light: #8B1A28;
+  --maroon-dark:  #3A0808;
+  --gold-light:   #FFD98A;
+  --white:        #FFFFFF;
+  --shadow-sm:    0 2px 12px rgba(107,15,26,.18);
+  --ease-spring:  cubic-bezier(.34,1.56,.64,1);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:var(--ff-sans);
+  background:var(--cream);
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img { max-width:100%; display:block; }
+a { text-decoration:none; color:inherit; }
+button { cursor:pointer; font-family:var(--ff-sans); border:none; background:none; }
+input,select,textarea { font-family:var(--ff-sans); }
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--cream2); }
+::-webkit-scrollbar-thumb { background:var(--gold-dk); border-radius:99px; }
+
+body::before {
+  content:''; position:fixed; inset:0; z-index:9990; pointer-events:none; opacity:.18;
+  background-image:
+    repeating-linear-gradient(45deg,rgba(139,69,19,.04) 0px,rgba(139,69,19,.04) 1px,transparent 1px,transparent 6px),
+    repeating-linear-gradient(-45deg,rgba(139,69,19,.03) 0px,rgba(139,69,19,.03) 1px,transparent 1px,transparent 6px);
+}
+
+@keyframes riseUp        { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+@keyframes fadeIn        { from{opacity:0} to{opacity:1} }
+@keyframes shimmerSlide  { 0%{transform:translateX(-180%) skewX(-12deg)} 100%{transform:translateX(220%) skewX(-12deg)} }
+@keyframes ticker        { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes floatOrb      { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes badgePop      { 0%{transform:scale(0) rotate(-15deg)} 60%{transform:scale(1.2) rotate(3deg)} 100%{transform:scale(1) rotate(0)} }
+@keyframes cartBounce    { 0%,100%{transform:scale(1)} 35%{transform:scale(1.3) rotate(-8deg)} 65%{transform:scale(.92)} }
+@keyframes waPing        { 0%{transform:scale(.8);opacity:.9} 100%{transform:scale(1.8);opacity:0} }
+@keyframes scanLine      { 0%{top:-2px;opacity:.8} 100%{top:100%;opacity:0} }
+@keyframes skelPulse     { 0%{background-position:200% 0} 100%{background-position:-100% 0} }
+@keyframes slideInR      { from{opacity:0;transform:translateX(18px)} to{opacity:1;transform:none} }
+@keyframes heroTitleReveal { 0%{opacity:0;transform:translateY(40px) skewY(2deg);filter:blur(8px)} 100%{opacity:1;transform:none;filter:blur(0)} }
+@keyframes heroBadgeSlide  { 0%{opacity:0;transform:translateX(-30px) scale(.9)} 100%{opacity:1;transform:none} }
+@keyframes heroSubFade     { 0%{opacity:0;transform:translateY(16px)} 100%{opacity:1;transform:none} }
+@keyframes heroBtnGlow     { 0%,100%{box-shadow:0 6px 24px rgba(200,169,110,.4)} 50%{box-shadow:0 8px 36px rgba(200,169,110,.75),0 0 0 6px rgba(200,169,110,.12)} }
+@keyframes heroDividerGrow { from{transform:scaleX(0);opacity:0} to{transform:scaleX(1);opacity:1} }
+@keyframes heroOrbDrift    { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.05)} 66%{transform:translate(-20px,15px) scale(.97)} }
+@keyframes goldShimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+@keyframes fabRing         { 0%{transform:scale(1);opacity:.7} 100%{transform:scale(1.6);opacity:0} }
+@keyframes suggSlideIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:none} }
+@keyframes suggAddPop { 0%{transform:scale(1)} 40%{transform:scale(1.25) rotate(-6deg)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
+@keyframes pinBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+
+/* ── HEADER ── */
+.hdr {
+  position:sticky; top:0; z-index:200;
+  background:rgba(254,243,226,.92);
+  backdrop-filter:blur(20px) saturate(1.5);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s;
+}
+.hdr.scrolled { box-shadow:0 4px 32px rgba(139,69,19,.12); }
+.nav {
+  max-width:1300px; margin:0 auto;
+  padding:0 28px; height:72px;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+}
+.logo-words { line-height:1.2; }
+.logo-name { font-family:var(--ff-serif); font-size:1.22rem; font-weight:600; color:var(--spice-dk); letter-spacing:.01em; }
+.logo-sub { font-size:.58rem; color:var(--muted2); letter-spacing:.12em; text-transform:uppercase; font-weight:500; }
+
+.main-nav {
+  display:flex; align-items:center; gap:4px; flex-shrink:0;
+}
+.main-nav a {
+  padding:7px 14px; border-radius:99px;
+  font-size:.78rem; font-weight:500; color:var(--muted);
+  text-decoration:none; white-space:nowrap;
+  transition:all .22s var(--spring);
+  position:relative;
+}
+.main-nav a::after {
+  content:''; position:absolute; bottom:4px; left:50%; right:50%;
+  height:1.5px; background:var(--maroon); border-radius:99px;
+  transition:all .25s var(--spring);
+}
+.main-nav a:hover {
+  color:var(--maroon); background:rgba(107,15,26,.06);
+}
+.main-nav a:hover::after { left:14px; right:14px; }
+@media(max-width:640px) { .main-nav { display:none; } }
+
+/* ── SEARCH ── */
+.nav-search { flex:1; max-width:420px; position:relative; }
+.sw {
+  display:flex; align-items:center;
+  background:rgba(255,255,255,.85);
+  border:1.5px solid var(--border);
+  border-radius:99px;
+  overflow:visible;
+  transition:background .3s, border-color .3s, box-shadow .3s, border-radius .3s;
+  position:relative;
+}
+.sw:focus-within {
+  background:#fff;
+  border-color:rgba(139,69,19,.45);
+  box-shadow:0 0 0 4px rgba(139,69,19,.08), 0 6px 20px rgba(139,69,19,.1);
+  border-radius:20px 20px 0 0;
+}
+.sw .si { padding:0 14px; font-size:14px; color:var(--muted2); flex-shrink:0; transition:color .3s; }
+.sw:focus-within .si { color:var(--spice); }
+.sw input {
+  flex:1; height:44px; background:none; border:none; outline:none;
+  font-size:.85rem; color:var(--ink); padding-right:8px; width:100%;
+  -webkit-user-select:text!important;
+  user-select:text!important;
+}
+.sw input::placeholder { color:var(--muted2); font-style:italic; }
+.s-clear {
+  width:30px; height:30px; border-radius:50%; margin-right:6px;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--muted2); font-size:13px; flex-shrink:0;
+  opacity:0; transform:scale(0); transition:all .2s var(--spring); cursor:pointer;
+}
+.nav-search.has-value .s-clear { opacity:1; transform:scale(1); }
+.s-clear:hover { background:var(--cream2); color:var(--spice); }
+
+/* ── SEARCH SUGGESTIONS ── */
+.sugg-box {
+  position:absolute; top:calc(100% + 2px); left:-2px; right:-2px;
+  background:rgba(255,249,236,.99); backdrop-filter:blur(16px);
+  border:1.5px solid rgba(139,69,19,.2); border-top:none;
+  border-radius:0 0 20px 20px; z-index:500;
+  overflow:hidden; max-height:420px; overflow-y:auto;
+  opacity:0; transform:translateY(-4px); pointer-events:none;
+  transition:opacity .2s var(--spring), transform .2s var(--spring);
+  box-shadow:0 20px 48px rgba(139,69,19,.18), 0 4px 12px rgba(139,69,19,.08);
+  scrollbar-width:thin; scrollbar-color:rgba(139,69,19,.2) transparent;
+}
+.sugg-box.show { opacity:1; transform:none; pointer-events:all; }
+.ss-group-hdr {
+  display:flex; align-items:center; gap:8px; padding:8px 14px 5px;
+  font-size:.6rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted2); background:linear-gradient(90deg,rgba(139,69,19,.06),transparent);
+  border-bottom:1px solid var(--border2); user-select:none;
+}
+.ss-group-hdr-icon { font-size:.9rem; }
+.ss-item {
+  display:flex; align-items:center; gap:10px; padding:10px 14px;
+  border-bottom:1px solid var(--border2); cursor:pointer;
+  transition:background .14s; animation:suggSlideIn .18s ease both; position:relative;
+}
+.ss-item:last-child { border-bottom:none; }
+.ss-item:hover, .ss-item.active { background:rgba(107,15,26,.06); }
+.ss-item.active { background:rgba(107,15,26,.09); }
+.ss-icon {
+  width:34px; height:34px; border-radius:10px; flex-shrink:0;
+  background:rgba(200,169,110,.12); border:1px solid rgba(200,169,110,.22);
+  display:flex; align-items:center; justify-content:center; font-size:1rem;
+  transition:transform .25s var(--spring);
+}
+.ss-item:hover .ss-icon { transform:scale(1.12) rotate(-5deg); }
+.ss-text-wrap { flex:1; min-width:0; }
+.ss-name { font-size:.83rem; font-weight:500; color:var(--ink2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.3; margin-bottom:2px; }
+.ss-name mark { background:rgba(245,200,66,.5); border-radius:3px; color:var(--ink); font-weight:700; padding:0 2px; }
+.ss-meta { display:flex; align-items:center; gap:6px; }
+.ss-cat { font-size:.62rem; color:var(--muted2); background:rgba(139,69,19,.07); padding:2px 7px; border-radius:99px; font-weight:500; }
+.ss-price { font-size:.7rem; font-weight:600; color:var(--maroon); font-family:var(--ff-serif); }
+.ss-price.ask { color:var(--muted2); font-weight:400; font-style:italic; font-family:var(--ff-sans); font-size:.62rem; }
+.ss-add {
+  flex-shrink:0; width:30px; height:30px; border-radius:9px;
+  background:linear-gradient(135deg,var(--maroon-dk),var(--maroon));
+  color:var(--maroon-gold); display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; font-weight:700; line-height:1;
+  border:1px solid rgba(200,169,110,.2); transition:all .2s var(--spring); position:relative; z-index:2;
+}
+.ss-add:hover { background:linear-gradient(135deg,var(--maroon),var(--maroon-lt)); transform:scale(1.1); box-shadow:0 4px 14px rgba(107,15,26,.4); }
+.ss-add.added { background:linear-gradient(135deg,var(--teal-dk),#5a9ab5); color:#fff; animation:suggAddPop .4s var(--spring); }
+.ss-empty { padding:22px 16px; text-align:center; color:var(--muted2); font-size:.82rem; font-style:italic; }
+.ss-empty-icon { font-size:1.6rem; opacity:.4; margin-bottom:6px; }
+
+/* ── MOBILE SEARCH BAR ── */
+.mobile-search-bar {
+  display:none;
+  position:sticky;
+  top:72px;
+  z-index:190;
+  padding:10px 16px;
+  background:rgba(254,243,226,.97);
+  backdrop-filter:blur(16px) saturate(1.4);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 12px rgba(139,69,19,.08);
+}
+.mobile-search-bar input {
+  width:100%; height:42px; background:#fff; border:1.5px solid var(--border);
+  border-radius:99px; padding:0 16px 0 44px; font-size:.875rem; outline:none;
+  transition:border-color .25s,box-shadow .25s; color:var(--ink);
+  -webkit-user-select:text!important; user-select:text!important;
+}
+.mobile-search-bar input:focus { border-color:rgba(139,69,19,.4); box-shadow:0 0 0 3px rgba(139,69,19,.08); }
+.mob-si { position:absolute; left:28px; top:50%; transform:translateY(-50%); font-size:15px; color:var(--muted2); pointer-events:none; }
+.mob-sugg-box { position:absolute; top:calc(100% + 6px); left:16px; right:16px; background:rgba(255,249,236,.99); backdrop-filter:blur(12px); border:1.5px solid var(--border); border-radius:var(--r-lg); z-index:400; overflow:hidden; max-height:280px; overflow-y:auto; opacity:0; transform:translateY(-8px) scale(.97); pointer-events:none; transition:all .22s var(--spring); box-shadow:0 16px 48px rgba(139,69,19,.15); }
+.mob-sugg-box.show { opacity:1; transform:none; pointer-events:all; }
+@media(max-width:480px) { .nav-search{display:none!important} .mobile-search-bar{display:block!important} }
+
+/* ── NAV RIGHT ── */
+.nav-r { display:flex; align-items:center; gap:8px; }
+
+/* ── CART PILL ── */
+.cart-pill {
+  height:42px; padding:0 18px; border-radius:99px;
+  background:var(--maroon); color:var(--maroon-gold);
+  font-size:.8rem; font-weight:600;
+  display:inline-flex; align-items:center; gap:8px;
+  cursor:pointer; border:none;
+  box-shadow:0 4px 18px rgba(107,15,26,.4);
+  transition:all .3s var(--spring); position:relative; overflow:hidden;
+}
+.cart-pill::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent); transform:translateX(-220%) skewX(-14deg); }
+.cart-pill:hover { background:var(--maroon-lt); transform:translateY(-2px) scale(1.03); box-shadow:0 8px 28px rgba(107,15,26,.5); }
+.cart-pill:hover::before { animation:shimmerSlide .65s ease; }
+.cart-badge { background:var(--maroon-gold); color:var(--maroon-dk); min-width:20px; height:20px; border-radius:99px; font-size:.62rem; font-weight:800; display:none; align-items:center; justify-content:center; padding:0 5px; animation:badgePop .4s var(--spring) both; }
+.cart-badge.show { display:flex; }
+
+/* ── 3-DOT NAV MENU ── */
+.dot-menu-wrap { position:relative; flex-shrink:0; }
+.dot-menu-btn {
+  width:42px; height:42px; border-radius:99px;
+  background:rgba(107,15,26,.08);
+  border:1.5px solid rgba(107,15,26,.15);
+  color:var(--maroon); display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; letter-spacing:1px; cursor:pointer;
+  transition:all .25s var(--spring); flex-shrink:0;
+}
+.dot-menu-btn:hover { background:var(--maroon); color:var(--maroon-gold); border-color:var(--maroon); transform:scale(1.08); box-shadow:0 4px 16px rgba(107,15,26,.35); }
+.dot-menu-btn.open { background:var(--maroon); color:var(--maroon-gold); border-color:var(--maroon); }
+.dot-menu-dropdown {
+  position:absolute; top:calc(100% + 10px); right:0;
+  background:rgba(255,249,236,.99); backdrop-filter:blur(16px);
+  border:1.5px solid rgba(107,15,26,.18); border-radius:var(--r-lg);
+  box-shadow:0 20px 48px rgba(107,15,26,.18), 0 4px 12px rgba(107,15,26,.08);
+  min-width:180px; overflow:hidden; z-index:300;
+  opacity:0; transform:translateY(-8px) scale(.95); pointer-events:none;
+  transition:opacity .22s var(--spring), transform .22s var(--spring);
+}
+.dot-menu-dropdown.open { opacity:1; transform:none; pointer-events:all; }
+.dot-menu-item {
+  display:flex; align-items:center; gap:10px;
+  padding:13px 18px; font-size:.82rem; font-weight:500; color:var(--ink2);
+  cursor:pointer; transition:background .15s; border-bottom:1px solid var(--border2);
+  text-decoration:none;
+}
+.dot-menu-item:last-child { border-bottom:none; }
+.dot-menu-item:hover { background:rgba(107,15,26,.07); color:var(--maroon); }
+.dot-menu-item .dmi { font-size:1rem; flex-shrink:0; }
+
+/* ── TICKER ── */
+.ticker-wrap { background:var(--accent); overflow:hidden; height:32px; display:flex; align-items:center; border-bottom:1px solid rgba(0,0,0,.08); position:relative; }
+.ticker-wrap::before,.ticker-wrap::after { content:''; position:absolute; top:0; bottom:0; width:60px; z-index:2; pointer-events:none; }
+.ticker-wrap::before { left:0; background:linear-gradient(90deg,var(--accent),transparent); }
+.ticker-wrap::after  { right:0; background:linear-gradient(270deg,var(--accent),transparent); }
+.ticker-track { display:flex; align-items:center; gap:0; white-space:nowrap; animation:ticker 30s linear infinite; }
+.ticker-track:hover { animation-play-state:paused; }
+.ticker-item { display:inline-flex; align-items:center; gap:8px; padding:0 28px; font-size:.74rem; font-weight:600; color:#1a1a1a; letter-spacing:.03em; }
+.ticker-dot { width:5px; height:5px; border-radius:50%; background:rgba(0,0,0,.3); flex-shrink:0; }
+
+/* ── HERO ── */
+.hero {
+  position:relative; min-height:520px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; padding:60px 24px 56px;
+}
+.hero::before {
+  content:''; position:absolute; inset:0; z-index:0;
+  background-image:url('dal.jpeg');
+  background-size:cover; background-position:center; background-repeat:no-repeat;
+  filter:blur(2px); transform:scale(1.04);
+}
+.hero-overlay { position:absolute; inset:0; z-index:1; background:rgba(0,0,0,.55); pointer-events:none; }
+.hero-orb { position:absolute; border-radius:50%; pointer-events:none; z-index:1; animation:heroOrbDrift linear infinite; }
+.hero-orb1 { width:380px; height:380px; top:-80px; right:-60px; background:radial-gradient(circle,rgba(200,169,110,.13) 0%,transparent 70%); animation-duration:18s; }
+.hero-orb2 { width:260px; height:260px; bottom:-60px; left:-40px; background:radial-gradient(circle,rgba(107,15,26,.22) 0%,transparent 70%); animation-duration:14s; animation-delay:-7s; }
+.hero-content { position:relative; z-index:2; max-width:640px; width:100%; margin:0 auto; text-align:center; display:flex; flex-direction:column; align-items:center; gap:0; }
+.hero-badge { display:inline-flex; align-items:center; gap:7px; background:rgba(200,169,110,.22); border:1px solid rgba(200,169,110,.55); color:#FFE8A8; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:6px 18px; border-radius:99px; margin-bottom:20px; text-shadow:0 1px 8px rgba(0,0,0,.5); animation:heroBadgeSlide .7s .1s var(--spring) both; }
+.hero-badge-star { color:var(--accent); }
+.hero-brand-name { font-family:var(--ff-serif); font-size:clamp(3rem,8vw,5.6rem); font-weight:300; font-style:italic; color:#FFE8A0; line-height:1.0; letter-spacing:-.02em; margin-bottom:8px; text-shadow:0 2px 24px rgba(0,0,0,.6),0 0 60px rgba(200,169,110,.3); animation:heroTitleReveal 1s .25s var(--reveal) both; }
+.hero-location { font-size:.75rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:rgba(255,220,160,.85); text-shadow:0 1px 10px rgba(0,0,0,.6); margin-bottom:22px; animation:heroSubFade .7s .45s ease both; }
+.hero-divider-line { width:64px; height:1.5px; background:linear-gradient(90deg,transparent,#FFE8A0,transparent); margin:0 auto 26px; animation:heroDividerGrow .8s .55s var(--reveal) both; transform-origin:center; }
+.hero-pills { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; animation:heroSubFade .7s .62s ease both; }
+.hero-pill { padding:7px 18px; border-radius:99px; background:rgba(255,255,255,.12); border:1px solid rgba(255,220,140,.35); color:rgba(255,240,200,.95); font-size:.78rem; font-weight:600; backdrop-filter:blur(8px); text-shadow:0 1px 6px rgba(0,0,0,.4); transition:all .25s var(--spring); cursor:default; }
+.hero-pill:hover { background:rgba(200,169,110,.28); border-color:rgba(255,220,140,.7); transform:translateY(-3px) scale(1.06); color:#fff; box-shadow:0 6px 20px rgba(0,0,0,.3); }
+.hero-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; animation:heroSubFade .7s .75s ease both; }
+.ica-primary { height:52px; padding:0 32px; border-radius:10px; background:linear-gradient(135deg,var(--maroon),var(--maroon-lt)); color:var(--maroon-gold); font-size:.9rem; font-weight:700; display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(200,169,110,.35); cursor:pointer; box-shadow:0 6px 28px rgba(107,15,26,.5),0 2px 8px rgba(0,0,0,.3); transition:all .3s var(--spring); position:relative; overflow:hidden; animation:heroBtnGlow 2.5s 1.5s ease-in-out infinite; }
+.ica-primary::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent); transform:translateX(-220%) skewX(-14deg); }
+.ica-primary:hover { background:linear-gradient(135deg,var(--maroon-lt),#A02030); transform:translateY(-3px) scale(1.03); box-shadow:0 12px 36px rgba(107,15,26,.6); animation:none; }
+.ica-primary:hover::before { animation:shimmerSlide .6s ease; }
+.ica-ghost { height:52px; padding:0 28px; border-radius:10px; border:1.5px solid rgba(255,255,255,.38); color:rgba(255,255,255,.95); font-size:.9rem; font-weight:600; display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.1); backdrop-filter:blur(10px); cursor:pointer; transition:all .25s var(--ease); text-decoration:none; text-shadow:0 1px 6px rgba(0,0,0,.3); }
+.ica-ghost:hover { background:rgba(255,255,255,.2); border-color:rgba(255,255,255,.6); transform:translateY(-3px); }
+@media(max-width:600px) { .hero{padding:48px 16px 44px} .hero-brand-name{font-size:clamp(2.4rem,10vw,4rem)} .hero-actions{flex-direction:column;align-items:center} .ica-primary,.ica-ghost{width:100%;max-width:300px;justify-content:center} }
+
+/* ── FILTER BAR ── */
+.fbar { position:sticky; top:72px; z-index:100; background:rgba(254,243,226,.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+@media(max-width:480px) { .fbar { top:134px; } }
+.fin { max-width:1300px; margin:0 auto; padding:12px 28px; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; align-items:center; }
+.fin::-webkit-scrollbar { display:none; }
+.fb { flex-shrink:0; height:36px; padding:0 16px; border-radius:99px; border:1.5px solid var(--border); background:rgba(255,255,255,.6); color:var(--muted2); font-size:.76rem; font-weight:500; white-space:nowrap; display:flex; align-items:center; gap:5px; cursor:pointer; transition:all .22s var(--spring); }
+.fb:hover { border-color:rgba(107,15,26,.4); color:var(--maroon); background:rgba(255,255,255,.9); transform:translateY(-2px); box-shadow:0 4px 14px rgba(107,15,26,.12); }
+.fb.act { background:var(--maroon); border-color:var(--maroon); color:var(--maroon-gold); box-shadow:0 4px 16px rgba(107,15,26,.35); transform:translateY(-1px); }
+.fsort { margin-left:auto; flex-shrink:0; height:36px; padding:0 13px; border-radius:99px; border:1.5px solid var(--border); background:rgba(255,255,255,.6); color:var(--muted2); font-size:.76rem; font-weight:500; display:flex; align-items:center; gap:5px; cursor:pointer; transition:all .2s; }
+.fsort:hover { border-color:rgba(107,15,26,.4); }
+.fsort select { border:none; background:none; outline:none; color:inherit; font-size:inherit; font-family:inherit; cursor:pointer; -webkit-appearance:none; }
+
+/* ── PRODUCTS ── */
+.main { max-width:1300px; margin:0 auto; padding:40px 28px 120px; }
+.sh { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; gap:12px; flex-wrap:wrap; }
+.stitle { font-family:var(--ff-serif); font-size:1.7rem; font-weight:400; color:var(--spice-dk); position:relative; display:inline-block; font-style:italic; }
+.stitle::after { content:''; position:absolute; bottom:-5px; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--maroon),var(--maroon-gold),transparent); border-radius:99px; transform:scaleX(0); transform-origin:left; transition:transform .6s var(--reveal); }
+.stitle.drawn::after { transform:scaleX(1); }
+.pcnt { font-size:.72rem; color:var(--muted2); background:rgba(255,255,255,.7); border:1px solid var(--border); padding:5px 14px; border-radius:99px; }
+.pgrid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+@media(min-width:500px) { .pgrid{grid-template-columns:repeat(3,1fr)} }
+@media(min-width:780px) { .pgrid{grid-template-columns:repeat(4,1fr)} }
+@media(min-width:1060px) { .pgrid{grid-template-columns:repeat(5,1fr)} }
+
+/* ── PRODUCT CARD ── */
+.pc { background:rgba(255,255,255,.85); backdrop-filter:blur(6px); border:1px solid var(--border); border-radius:var(--r-lg); overflow:hidden; display:flex; flex-direction:column; cursor:pointer; animation:riseUp .45s ease both; transition:box-shadow .3s var(--ease),border-color .3s,transform .4s var(--spring); position:relative; }
+.pc::after { content:''; position:absolute; inset:0; border-radius:var(--r-lg); box-shadow:inset 0 1px 0 rgba(255,255,255,.8); pointer-events:none; z-index:2; }
+.pc:hover { border-color:rgba(107,15,26,.3); box-shadow:0 18px 52px rgba(107,15,26,.14),0 4px 12px rgba(107,15,26,.08); transform:translateY(-6px); }
+.pc.unavail { opacity:.45; pointer-events:none; }
+.cthumb { aspect-ratio:1/1; position:relative; overflow:hidden; background:linear-gradient(145deg,rgba(255,197,112,.12),rgba(170,205,220,.15)); }
+.cthumb img { width:100%; height:100%; object-fit:contain; object-position:center; background:var(--cream); transition:transform .6s var(--ease),filter .4s; }
+.pc:hover .cthumb img { transform:scale(1.09); filter:saturate(1.08) brightness(1.03); }
+.scan { position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--teal),transparent); opacity:0; pointer-events:none; z-index:3; }
+.pc:hover .scan { opacity:.65; animation:scanLine .85s linear; }
+.tph { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem; opacity:.35; transition:all .4s var(--spring); }
+.pc:hover .tph { opacity:.55; transform:scale(1.12) rotate(-4deg); }
+.ctag { position:absolute; top:9px; left:9px; background:rgba(74,10,18,.85); backdrop-filter:blur(6px); color:var(--maroon-gold); font-size:.65rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:4px 10px; border-radius:99px; border:1px solid rgba(200,169,110,.2); z-index:3; transition:transform .3s var(--spring); }
+.pc:hover .ctag { transform:translateY(-3px); }
+.cbody { padding:16px; flex:1; display:flex; flex-direction:column; }
+.cname { font-size:.95rem; font-weight:600; color:var(--ink2); line-height:1.4; margin-bottom:6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.ccat { font-size:.75rem; color:var(--muted2); font-style:italic; }
+.cprice { font-size:1.1rem; font-weight:700; color:var(--maroon); margin-top:auto; padding-top:10px; }
+.cprice .c { font-size:.72rem; vertical-align:super; font-weight:500; }
+.cprice.ask { color:var(--muted2); font-size:.82rem; font-weight:400; font-style:italic; }
+.abtn { margin-top:12px; width:100%; height:42px; background:linear-gradient(135deg,var(--maroon-dk),var(--maroon)); color:var(--maroon-gold); border-radius:var(--r-sm); font-size:.84rem; font-weight:600; letter-spacing:.02em; display:flex; align-items:center; justify-content:center; gap:6px; cursor:pointer; border:1px solid rgba(200,169,110,.15); transition:all .25s var(--spring); position:relative; overflow:hidden; }
+.abtn::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent); transform:translateX(-220%) skewX(-12deg); }
+.abtn:hover:not(:disabled) { background:linear-gradient(135deg,var(--maroon),var(--maroon-lt)); transform:translateY(-2px); box-shadow:0 6px 20px rgba(107,15,26,.4); border-color:rgba(200,169,110,.3); }
+.abtn:hover:not(:disabled)::after { animation:shimmerSlide .6s ease; }
+.abtn.added { background:linear-gradient(135deg,var(--teal-dk),#c72828); animation:cartBounce .5s var(--spring); }
+.abtn:disabled { background:#e8e0d4; color:#b0957a; cursor:not-allowed; border-color:transparent; }
+.empty-s { grid-column:1/-1; text-align:center; padding:80px 20px; color:var(--muted2); }
+.empty-s .ei { font-size:4rem; opacity:.3; margin-bottom:14px; animation:floatOrb 4s ease-in-out infinite; }
+.skc { background:rgba(255,255,255,.7); border:1px solid var(--border); border-radius:var(--r-lg); overflow:hidden; }
+.sk { background:linear-gradient(90deg,rgba(139,69,19,.06) 25%,rgba(139,69,19,.12) 50%,rgba(139,69,19,.06) 75%); background-size:300% 100%; animation:skelPulse 1.7s ease infinite; border-radius:8px; }
+.ski { aspect-ratio:1/1; }
+.skb { padding:14px; display:flex; flex-direction:column; gap:8px; }
+.skl { height:13px; border-radius:99px; }
+.skl.s { width:55%; }
+.skl.b { height:40px; border-radius:var(--r-sm); margin-top:4px; }
+
+/* ── QUICK VIEW MODAL ── */
+.qvo { position:fixed; inset:0; background:rgba(44,22,5,.6); z-index:600; opacity:0; pointer-events:none; transition:opacity .3s; backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; padding:20px; }
+.qvo.open { opacity:1; pointer-events:all; }
+.qvb { background:rgba(254,248,235,.98); backdrop-filter:blur(16px); border:1px solid var(--border); border-radius:var(--r-xl); width:100%; max-width:580px; max-height:90vh; overflow-y:auto; transform:translateY(28px) scale(.95); transition:transform .4s var(--spring); box-shadow:0 40px 100px rgba(107,15,26,.2),0 8px 32px rgba(107,15,26,.1); }
+.qvo.open .qvb { transform:none; }
+.qvi { aspect-ratio:16/9; background:linear-gradient(145deg,rgba(200,169,110,.15),rgba(170,205,220,.2)); border-radius:var(--r-xl) var(--r-xl) 0 0; overflow:hidden; position:relative; }
+.qvi img { width:100%; height:100%; object-fit:contain; object-position:center; background:var(--cream); }
+.qviph { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:5rem; opacity:.3; }
+.qvx { position:absolute; top:14px; right:14px; width:34px; height:34px; border-radius:50%; background:rgba(74,10,18,.55); backdrop-filter:blur(6px); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; border:1px solid rgba(255,255,255,.15); font-size:.95rem; transition:all .22s var(--spring); }
+.qvx:hover { background:rgba(74,10,18,.85); transform:rotate(90deg) scale(1.1); }
+.qvbody { padding:26px 24px; }
+.qvc { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--maroon); margin-bottom:8px; }
+.qvn { font-family:var(--ff-serif); font-size:1.85rem; font-weight:400; line-height:1.15; margin-bottom:8px; color:var(--maroon-dk); font-style:italic; }
+.qvp { font-size:1.5rem; font-weight:600; color:var(--maroon); margin-bottom:6px; font-family:var(--ff-serif); }
+.qvp .qc { font-size:.85rem; vertical-align:super; font-weight:400; }
+.qvp.ask { color:var(--muted2); font-size:1rem; font-weight:300; font-style:italic; font-family:var(--ff-sans); }
+.qvd { font-size:.9rem; color:var(--muted); line-height:1.8; margin-bottom:18px; padding-bottom:18px; border-bottom:1px solid var(--border); }
+.qvacts { display:flex; gap:10px; }
+.qvadd { flex:1; height:50px; background:linear-gradient(135deg,var(--maroon-dk),var(--maroon)); color:var(--maroon-gold); border-radius:var(--r-md); font-size:.9rem; font-weight:600; display:flex; align-items:center; justify-content:center; gap:8px; border:1px solid rgba(200,169,110,.2); cursor:pointer; transition:all .25s var(--spring); box-shadow:0 4px 18px rgba(107,15,26,.35); }
+.qvadd:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(107,15,26,.5); background:linear-gradient(135deg,var(--maroon),var(--maroon-lt)); }
+.qvwa { width:50px; height:50px; background:var(--wa); border-radius:var(--r-md); display:flex; align-items:center; justify-content:center; transition:all .25s var(--spring); box-shadow:0 4px 14px rgba(37,211,102,.3); }
+.qvwa:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(37,211,102,.45); }
+.qvwa svg { width:22px; height:22px; fill:#fff; }
+
+/* ── CART PANEL ── */
+.carto { position:fixed; inset:0; background:rgba(44,22,5,.55); z-index:400; opacity:0; pointer-events:none; transition:opacity .3s; backdrop-filter:blur(6px); }
+.carto.open { opacity:1; pointer-events:all; }
+.cartp { position:fixed; top:0; right:0; height:100%; width:100%; max-width:440px; background:rgba(255,248,232,.97); backdrop-filter:blur(16px); border-left:1px solid var(--border); z-index:401; transform:translateX(110%); transition:transform .45s var(--reveal); display:flex; flex-direction:column; box-shadow:-16px 0 60px rgba(107,15,26,.14); }
+.carto.open .cartp { transform:none; }
+.carth { padding:20px 22px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-shrink:0; background:linear-gradient(135deg,rgba(107,15,26,.1),rgba(139,26,40,.06)); }
+.carth h2 { font-family:var(--ff-serif); font-size:1.2rem; font-weight:600; color:var(--maroon-dk); font-style:italic; }
+.cartx { width:36px; height:36px; background:rgba(107,15,26,.08); border-radius:50%; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:1.1rem; cursor:pointer; transition:all .22s var(--spring); }
+.cartx:hover { background:rgba(220,38,38,.1); color:#dc2626; border-color:rgba(220,38,38,.3); transform:rotate(90deg) scale(1.1); }
+.cartl { flex:1; overflow-y:auto; }
+.citem { display:flex; align-items:center; gap:12px; padding:14px 20px; border-bottom:1px solid var(--border2); animation:slideInR .3s ease both; transition:background .2s; }
+.citem:hover { background:rgba(200,169,110,.06); }
+.cith { width:58px; height:58px; border-radius:12px; object-fit:cover; background:var(--cream2); flex-shrink:0; border:1px solid var(--border); }
+.ciph { width:58px; height:58px; border-radius:12px; background:linear-gradient(145deg,rgba(200,169,110,.15),rgba(170,205,220,.2)); display:flex; align-items:center; justify-content:center; font-size:1.6rem; flex-shrink:0; border:1px solid var(--border); }
+.ciinf { flex:1; min-width:0; }
+.cin { font-size:.88rem; font-weight:600; color:var(--ink2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom:3px; }
+.cipr { font-size:.75rem; color:var(--muted2); font-style:italic; }
+.cictrl { display:flex; align-items:center; gap:3px; flex-shrink:0; }
+.qb { width:28px; height:28px; border-radius:7px; background:rgba(255,255,255,.8); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:.95rem; font-weight:700; color:var(--maroon); cursor:pointer; transition:all .2s var(--spring); }
+.qb:hover { background:var(--maroon); color:var(--maroon-gold); border-color:var(--maroon); transform:scale(1.12); }
+.qn { min-width:26px; text-align:center; font-size:.9rem; font-weight:700; color:var(--ink); }
+.cdel { width:26px; height:26px; border-radius:6px; display:flex; align-items:center; justify-content:center; color:var(--muted2); margin-left:4px; cursor:pointer; border:none; background:none; transition:all .2s; }
+.cdel:hover { background:rgba(220,38,38,.1); color:#dc2626; }
+.cart-empty { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; color:var(--muted2); padding:40px; text-align:center; }
+.cart-empty .cei { font-size:3.5rem; opacity:.3; animation:floatOrb 4s ease-in-out infinite; }
+.cartf { padding:18px 22px; border-top:1.5px solid var(--border); background:var(--cream2); flex-shrink:0; }
+.ctr { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.ctl { font-size:.88rem; color:var(--muted2); }
+.ctv { font-size:1.25rem; font-weight:700; color:var(--maroon); font-family:var(--ff-serif); }
+.csub { font-size:.74rem; color:#16a34a; margin-bottom:14px; font-style:italic; }
+.chkbtn { width:100%; height:52px; background:linear-gradient(135deg,#1ebe57,var(--wa)); color:#fff; border-radius:var(--r-md); font-size:.9rem; font-weight:700; display:flex; align-items:center; justify-content:center; gap:10px; border:none; cursor:pointer; margin-bottom:10px; transition:all .3s var(--spring); box-shadow:0 4px 18px rgba(37,211,102,.4); position:relative; overflow:hidden; }
+.chkbtn::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent); transform:translateX(-220%) skewX(-14deg); }
+.chkbtn:hover { background:linear-gradient(135deg,#17d44e,#1ebe57); transform:translateY(-2px); box-shadow:0 10px 32px rgba(37,211,102,.55); }
+.chkbtn:hover::before { animation:shimmerSlide .6s ease; }
+.chkbtn svg { width:22px; height:22px; fill:#fff; }
+.clbtn { width:100%; height:40px; background:transparent; color:#dc2626; border:1px solid rgba(220,38,38,.2); border-radius:var(--r-md); font-size:.82rem; font-weight:500; cursor:pointer; transition:all .2s; }
+.clbtn:hover { background:rgba(220,38,38,.08); border-color:rgba(220,38,38,.4); }
+
+/* ── WHATSAPP FAB ── */
+.whatsapp-fab { position:fixed; bottom:26px; right:26px; z-index:999; width:60px; height:60px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 24px rgba(37,211,102,.5); transition:all .3s var(--ease-spring); cursor:pointer; }
+.whatsapp-fab::before,.whatsapp-fab::after { content:''; position:absolute; inset:-5px; border-radius:50%; border:2px solid rgba(37,211,102,.3); animation:fabRing 2.5s ease-out infinite; }
+.whatsapp-fab::after { animation-delay:1.25s; }
+.whatsapp-fab:hover { transform:scale(1.12) translateY(-3px); box-shadow:0 10px 36px rgba(37,211,102,.6); }
+.fab-tooltip { position:absolute; right:72px; white-space:nowrap; background:var(--maroon-deep); color:var(--white); font-size:.8rem; padding:7px 14px; border-radius:8px; pointer-events:none; opacity:0; transform:translateX(8px); transition:.25s; border:1px solid rgba(201,147,58,.2); }
+.fab-tooltip::after { content:''; position:absolute; top:50%; right:-5px; transform:translateY(-50%); border:5px solid transparent; border-right-width:0; border-left-color:var(--maroon-deep); }
+.whatsapp-fab:hover .fab-tooltip { opacity:1; transform:translateX(0); }
+.back-to-top { position:fixed; bottom:96px; right:26px; z-index:999; width:42px; height:42px; background:linear-gradient(135deg,var(--maroon),var(--maroon-light)); border:1px solid var(--gold); color:var(--gold-light); font-size:1.1rem; font-weight:700; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(12px); transition:all .35s var(--ease-spring); pointer-events:none; box-shadow:var(--shadow-sm); }
+.back-to-top.visible { opacity:1; transform:translateY(0); pointer-events:all; }
+.back-to-top:hover { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:var(--maroon-dark); transform:translateY(-3px); }
+
+/* ── TOAST ── */
+.toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(80px) scale(.9); background:rgba(44,22,5,.95); backdrop-filter:blur(12px); border:1px solid var(--border); color:var(--maroon-gold); padding:12px 24px; border-radius:var(--r-md); font-size:.85rem; font-weight:500; z-index:700; display:flex; align-items:center; gap:10px; box-shadow:0 8px 36px rgba(107,15,26,.3); opacity:0; pointer-events:none; transition:all .4s var(--spring); max-width:calc(100vw - 40px); }
+.toast.show { transform:translateX(-50%) translateY(0) scale(1); opacity:1; }
+.toast.ok { border-color:rgba(37,211,102,.3); color:#6ee7b7; background:rgba(6,20,12,.95); }
+.toast.err { border-color:rgba(220,38,38,.3); color:#fca5a5; background:rgba(20,6,6,.95); }
+
+/* ── BRANCHES SECTION ── */
+.branches-section { background:linear-gradient(160deg,var(--maroon-deep) 0%,var(--maroon) 100%); padding:60px 0 80px; position:relative; overflow:hidden; border-top:1px solid rgba(200,169,110,.15); }
+.branches-section::before { content:''; position:absolute; inset:0; background-image:repeating-linear-gradient(-45deg,rgba(201,147,58,.04) 0,rgba(201,147,58,.04) 1px,transparent 0,transparent 50%); background-size:24px 24px; pointer-events:none; }
+.branches-section-hdr { text-align:center; margin-bottom:40px; padding:0 20px; position:relative; z-index:1; }
+.branches-section-label { font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(200,169,110,.5); margin-bottom:8px; }
+.branches-section-title { font-family:var(--ff-serif); font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; font-style:italic; color:var(--white); line-height:1.2; }
+.branches-section-title span { display:block; font-size:.6em; font-style:normal; font-weight:500; color:var(--maroon-gold); letter-spacing:.06em; margin-top:4px; font-family:var(--ff-sans); }
+.branches-divider { width:52px; height:1.5px; background:linear-gradient(90deg,transparent,var(--maroon-gold),transparent); margin:14px auto 0; border-radius:99px; }
+.branches-grid-new { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px; max-width:1000px; margin:0 auto; padding:0 20px; position:relative; z-index:1; }
+.branch-card-new { background:rgba(255,255,255,.06); border:1px solid rgba(201,147,58,.22); border-radius:var(--r-lg); overflow:hidden; transition:all .4s var(--spring); }
+.branch-card-new:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 20px 50px rgba(0,0,0,.4); border-color:rgba(201,147,58,.5); }
+.branch-badge-new { display:inline-block; margin:18px 18px 0; padding:5px 16px; background:linear-gradient(135deg,var(--maroon-gold),var(--gold-light)); color:var(--maroon-dark); border-radius:50px; font-family:var(--ff-serif); font-size:.78rem; font-weight:700; letter-spacing:.1em; }
+.branch-name-row { display:flex; align-items:flex-start; gap:10px; padding:12px 18px 14px; }
+.branch-pin-icon { font-size:1.5rem; margin-top:2px; flex-shrink:0; animation:pinBounce 2s ease-in-out infinite; }
+.branch-name-row h3 { font-family:var(--ff-serif); font-size:1.22rem; font-weight:700; color:var(--white); margin-bottom:3px; }
+.branch-name-row p { font-size:.82rem; color:var(--gold-light); letter-spacing:.04em; font-family:var(--ff-sans); }
+.branch-addr-new { font-size:.8rem; color:rgba(200,169,110,.6); line-height:1.7; padding:0 18px 14px; }
+.branch-addr-new strong { display:flex; align-items:center; gap:5px; color:var(--maroon-gold); font-size:.82rem; margin-bottom:3px; }
+.branch-map-container { overflow:hidden; line-height:0; }
+.branch-map-container iframe { display:block; width:100%; height:230px; border:0; filter:sepia(20%) contrast(1.05); }
+.branch-map-btn { display:block; margin:14px 18px 18px; text-align:center; padding:11px 0; background:linear-gradient(135deg,var(--maroon-gold),var(--gold-light)); color:var(--maroon-dark); border-radius:var(--r-md); font-size:.82rem; font-weight:700; letter-spacing:.04em; text-decoration:none; transition:all .25s var(--spring); box-shadow:0 4px 14px rgba(200,169,110,.25); }
+.branch-map-btn:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(200,169,110,.4); filter:brightness(1.05); }
+
+/* ── CONTACT SECTION ── */
+.contact-section { background:var(--cream); padding:60px 0 80px; position:relative; overflow:hidden; border-top:1px solid var(--border); }
+.contact-section::before { content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:800px; height:800px; border-radius:50%; background:radial-gradient(circle,rgba(139,69,19,.06) 0%,transparent 70%); pointer-events:none; }
+.contact-section-hdr { text-align:center; margin-bottom:40px; padding:0 20px; position:relative; z-index:1; }
+.contact-section-label { font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--muted2); margin-bottom:8px; display:block; }
+.contact-section-title { font-family:var(--ff-serif); font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; font-style:italic; color:var(--maroon-dk); line-height:1.2; }
+.contact-section-title span { display:block; font-size:.58em; font-style:normal; font-weight:500; color:var(--muted2); letter-spacing:.06em; margin-top:4px; font-family:var(--ff-sans); }
+.contact-divider { width:52px; height:1.5px; background:linear-gradient(90deg,transparent,var(--maroon-gold),transparent); margin:14px auto 0; border-radius:99px; }
+.contact-grid-new { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; max-width:900px; margin:0 auto; padding:0 20px; position:relative; z-index:1; }
+.contact-card-new { background:#fff; border-radius:var(--r-lg); padding:34px 24px; text-align:center; box-shadow:0 2px 12px rgba(107,15,26,.1); border:1px solid rgba(201,147,58,.12); transition:all .35s var(--spring); position:relative; overflow:hidden; }
+.contact-card-new::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--maroon-gold),var(--gold-light),var(--maroon-gold)); transform:scaleX(0); transform-origin:center; transition:.4s var(--ease); }
+.contact-card-new:hover { transform:translateY(-6px); box-shadow:0 14px 40px rgba(107,15,26,.16); }
+.contact-card-new:hover::before { transform:scaleX(1); }
+.contact-icon-new { font-size:2.4rem; margin-bottom:14px; display:inline-block; transition:.3s var(--spring); }
+.contact-card-new:hover .contact-icon-new { transform:scale(1.2) rotate(-5deg); }
+.contact-card-new h4 { font-family:var(--ff-serif); font-size:1.05rem; font-weight:600; font-style:italic; color:var(--maroon); margin-bottom:14px; }
+.contact-branch-lbl { font-size:.82rem; color:var(--maroon-dk); margin-bottom:5px; letter-spacing:.04em; font-weight:500; }
+.contact-phone-btn { display:block; font-size:.9rem; font-weight:700; color:#fff; background:linear-gradient(135deg,var(--maroon),var(--maroon-lt)); border:1px solid rgba(201,147,58,.3); border-radius:50px; padding:11px 20px; margin-bottom:8px; letter-spacing:.05em; text-decoration:none; transition:all .3s var(--spring); box-shadow:0 2px 10px rgba(107,15,26,.2); position:relative; overflow:hidden; }
+.contact-phone-btn::after { content:''; position:absolute; inset:0; background:linear-gradient(120deg,transparent,rgba(255,255,255,.14),transparent); transform:translateX(-100%); transition:.4s; }
+.contact-phone-btn:hover::after { transform:translateX(100%); }
+.contact-phone-btn:hover { background:linear-gradient(135deg,var(--gold-dk),var(--gold-light)); color:var(--maroon-dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(200,169,110,.45); }
+.hours-label { font-size:.82rem; color:var(--muted2); margin-bottom:3px; }
+.hours-label strong { color:var(--ink2); }
+.hours-time-new { font-family:var(--ff-serif); font-size:1.15rem; font-weight:600; color:var(--maroon); margin-bottom:14px; }
+.contact-wa-btn { display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:50px; margin-top:10px; background:linear-gradient(135deg,#1ebe57,var(--wa)); color:#fff; font-size:.9rem; font-weight:700; text-decoration:none; letter-spacing:.03em; box-shadow:0 4px 16px rgba(37,211,102,.35); transition:all .3s var(--spring); position:relative; overflow:hidden; }
+.contact-wa-btn::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent); transform:translateX(-220%) skewX(-14deg); }
+.contact-wa-btn:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(37,211,102,.5); }
+.contact-wa-btn:hover::after { animation:shimmerSlide .6s ease; }
+
+/* ── FOOTER ── */
+.footer { background:var(--maroon-dk); padding:44px 28px 32px; text-align:center; border-top:1px solid rgba(200,169,110,.2); }
+.foot-brand { font-family:var(--ff-serif); font-size:1.6rem; font-weight:400; color:var(--maroon-gold); margin-bottom:8px; font-style:italic; }
+.footer p { font-size:.74rem; color:rgba(200,169,110,.55); margin-bottom:18px; }
+.flinks { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; }
+.flinks a { font-size:.72rem; color:rgba(200,169,110,.5); transition:color .2s; }
+.flinks a:hover { color:var(--maroon-gold); }
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .55s var(--reveal),transform .55s var(--reveal); }
+.reveal.visible { opacity:1; transform:none; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     SECURITY PROTECTIONS — injected block
+     ═══════════════════════════════════════════════ -->
+<style>
+/* Disable text selection site-wide (inputs/textareas exempt below) */
+*, *::before, *::after {
+  -webkit-user-select: none !important;
+  -moz-user-select:    none !important;
+  -ms-user-select:     none !important;
+  user-select:         none !important;
+}
+/* Re-enable selection inside inputs and textareas so search still works */
+input, textarea, select, [contenteditable] {
+  -webkit-user-select: text !important;
+  -moz-user-select:    text !important;
+  -ms-user-select:     text !important;
+  user-select:         text !important;
+}
+</style>
+<script>
+(function(){
+  'use strict';
+
+  /* ── 1. Disable right-click context menu ── */
+  document.addEventListener('contextmenu', function(e){
+    e.preventDefault(); e.stopImmediatePropagation(); return false;
+  }, true);
+
+  /* ── 2. Disable text selection events ── */
+  document.addEventListener('selectstart', function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')return;
+    e.preventDefault(); e.stopImmediatePropagation(); return false;
+  }, true);
+
+  /* ── 3. Block DevTools & utility keyboard shortcuts ── */
+  document.addEventListener('keydown', function(e){
+    var k = e.key || '';
+    /* F12 */
+    if(k === 'F12'){e.preventDefault();e.stopImmediatePropagation();return false;}
+    /* Ctrl+Shift+I / J / C / K (DevTools) */
+    if(e.ctrlKey && e.shiftKey && ['i','I','j','J','c','C','k','K'].indexOf(k) > -1){
+      e.preventDefault();e.stopImmediatePropagation();return false;
+    }
+    /* Ctrl+U (View Source) */
+    if(e.ctrlKey && (k==='u'||k==='U')){e.preventDefault();e.stopImmediatePropagation();return false;}
+    /* Ctrl+S (Save Page) */
+    if(e.ctrlKey && (k==='s'||k==='S')){e.preventDefault();e.stopImmediatePropagation();return false;}
+    /* Ctrl+P (Print / expose DOM) */
+    if(e.ctrlKey && (k==='p'||k==='P')){e.preventDefault();e.stopImmediatePropagation();return false;}
+    /* Ctrl+A (Select All) */
+    if(e.ctrlKey && (k==='a'||k==='A')){
+      if(document.activeElement&&(document.activeElement.tagName==='INPUT'||document.activeElement.tagName==='TEXTAREA'))return;
+      e.preventDefault();e.stopImmediatePropagation();return false;
+    }
+  }, true);
+
+  /* ── 4. Clear console every 80 ms ── */
+  setInterval(function(){ try{ console.clear(); }catch(ex){} }, 80);
+
+  /* ── 5. DevTools window-size detector ── */
+  var THRESHOLD = 160;
+  var overlayVisible = false;
+
+  function showSecOverlay(){
+    if(overlayVisible) return;
+    overlayVisible = true;
+    var ov = document.createElement('div');
+    ov.id = '__sec_ov__';
+    ov.style.cssText = [
+      'position:fixed','inset:0','z-index:2147483647',
+      'background:#1a0305',
+      'display:flex','flex-direction:column',
+      'align-items:center','justify-content:center','gap:20px',
+      'font-family:sans-serif'
+    ].join(';');
+    ov.innerHTML =
+      '<div style="font-size:4.5rem">🚫</div>' +
+      '<div style="font-size:1.6rem;font-weight:700;color:#c8a96e;letter-spacing:.05em">Access Restricted</div>' +
+      '<div style="font-size:.95rem;color:rgba(200,169,110,.6);max-width:340px;text-align:center;line-height:1.7">' +
+        'Developer tools are not permitted on this page.<br>Please close DevTools to continue.' +
+      '</div>';
+    document.body.appendChild(ov);
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hideSecOverlay(){
+    var ov = document.getElementById('__sec_ov__');
+    if(ov){ ov.remove(); overlayVisible = false; document.body.style.overflow = ''; }
+  }
+
+  setInterval(function(){
+    var dw = window.outerWidth  - window.innerWidth;
+    var dh = window.outerHeight - window.innerHeight;
+    if(dw > THRESHOLD || dh > THRESHOLD){ showSecOverlay(); }
+    else{ hideSecOverlay(); }
+  }, 300);
+
+  /* ── 6. Debugger loop — pauses any open DevTools console ── */
+  (function devtoolsTrap(){
+    try{ (function(){}).constructor('debugger')(); }catch(ex){}
+    setTimeout(devtoolsTrap, 2000);
+  })();
+
+})();
+</script>
+<!-- ═══════════════════════════════════════════════
+     END SECURITY BLOCK
+     ═══════════════════════════════════════════════ -->
+
+<!-- HEADER -->
+<header class="hdr" id="hdr">
+  <nav class="nav">
+    <div class="logo">
+      <div class="logo-words">
+        <div class="logo-name">🌾 Malivagam</div>
+        <div class="logo-sub">Quality Groceries · Since 1964</div>
+      </div>
+    </div>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="#pgrid" onclick="document.getElementById('pgrid').scrollIntoView({behavior:'smooth'});return false;">Our Products</a>
+      <a href="#branches" onclick="document.getElementById('branches').scrollIntoView({behavior:'smooth'});return false;">Branches</a>
+      <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">Contact</a>
+    </nav>
+
+    <div class="nav-search" id="navSearch">
+      <div class="sw" id="sw">
+        <span class="si">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search rice, dal, flour…" autocomplete="off" aria-label="Search products" aria-autocomplete="list" aria-controls="searchSugg">
+        <button class="s-clear" id="sClr" onclick="clearSearch()" aria-label="Clear search">✕</button>
+        <div class="sugg-box" id="searchSugg" role="listbox" aria-label="Search suggestions"></div>
+      </div>
+    </div>
+
+    <div class="nav-r">
+      <button class="cart-pill" onclick="openCart()">🛒 Cart <span class="cart-badge" id="cn">0</span></button>
+      <div class="dot-menu-wrap" id="dotMenuWrap">
+        <button class="dot-menu-btn" id="dotMenuBtn" onclick="toggleDotMenu()" aria-label="Navigation menu">⋮</button>
+        <div class="dot-menu-dropdown" id="dotMenuDropdown">
+          <a class="dot-menu-item" href="#pgrid" onclick="scrollTo_('pgrid');return false;"><span class="dmi">🛒</span>Our Products</a>
+          <a class="dot-menu-item" href="#branches" onclick="scrollTo_('branches');return false;"><span class="dmi">📍</span> Map / Branches</a>
+          <a class="dot-menu-item" href="#contact" onclick="scrollTo_('contact');return false;"><span class="dmi">📞</span> Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-search-bar" id="mobileSearchBar">
+  <span class="mob-si">🔍</span>
+  <input type="text" id="mobileSearch" placeholder="Search products…" autocomplete="off">
+  <div class="mob-sugg-box sugg-box" id="mobSuggBox"></div>
+</div>
+
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">🌾 Premium Biriyani Rice Variety Available</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🛵 Salem, Tamil Nadu</span><span class="ticker-dot"></span>
+    <span class="ticker-item">📞 9443355683</span><span class="ticker-dot"></span>
+    <span class="ticker-item">✅ Trusted Since 1964</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🌾 Premium Biriyani Rice Variety Available</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🛵 Salem, Tamil Nadu</span><span class="ticker-dot"></span>
+    <span class="ticker-item">📞 9443355683</span><span class="ticker-dot"></span>
+    <span class="ticker-item">✅ Trusted Since 1964</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🌾 Premium Biriyani Rice Variety Available</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🛵 Salem, Tamil Nadu</span><span class="ticker-dot"></span>
+    <span class="ticker-item">📞 9443355683</span><span class="ticker-dot"></span>
+    <span class="ticker-item">✅ Trusted Since 1964</span><span class="ticker-dot"></span>
+  </div>
+</div>
+
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-orb hero-orb1"></div>
+  <div class="hero-orb hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="hero-badge-star">✦</span> Since 1964 · Trusted Quality</div>
+    <div class="hero-brand-name">Malivagam</div><br>
+    <div class="hero-location">· Salem, Tamil Nadu ·</div>
+    <div class="hero-divider-line"></div>
+    <div class="hero-pills">
+      <span class="hero-pill">🍚 Sugar</span>
+      <span class="hero-pill">🌾 Rice</span>
+      <span class="hero-pill">🫘 Dal</span>
+      <span class="hero-pill">🌻 Flour</span>
+      <span class="hero-pill">🫙 Oil</span>
+    </div>
+    <div class="hero-actions">
+      <button class="ica-primary" onclick="document.getElementById('pgrid').scrollIntoView({behavior:'smooth'})">🛒 Browse Products</button>
+      <a class="ica-ghost" href="https://wa.me/919443355683?text=Vanakkam%20Malivagam" target="_blank">💬 WhatsApp Order</a>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">🌾 Premium Biriyani Rice Variety Available</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🛵 Salem, Tamil Nadu</span><span class="ticker-dot"></span>
+    <span class="ticker-item">📞 9443355683</span><span class="ticker-dot"></span>
+    <span class="ticker-item">✅ Trusted Since 1964</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🌾 Premium Biriyani Rice Variety Available</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🛵 Salem, Tamil Nadu</span><span class="ticker-dot"></span>
+    <span class="ticker-item">📞 9443355683</span><span class="ticker-dot"></span>
+    <span class="ticker-item">✅ Trusted Since 1964</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🌾 Premium Biriyani Rice Variety Available</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🛵 Salem, Tamil Nadu</span><span class="ticker-dot"></span>
+    <span class="ticker-item">📞 9443355683</span><span class="ticker-dot"></span>
+    <span class="ticker-item">✅ Trusted Since 1964</span><span class="ticker-dot"></span>
+  </div>
+</div>
+
+<div class="fbar"><div class="fin">
+  <button class="fb act" data-cat="All">🏪 All</button>
+  <button class="fb" data-cat="Sugar">🍚 அஸ்கா-புதிய வரவு / Sugar</button>
+  <button class="fb" data-cat="Rice">🌾 அரிசி / Rice</button>
+  <button class="fb" data-cat="Dal">🫘 பருப்பு / Dal</button>
+  <button class="fb" data-cat="Flour">🌻 மாவு / Flour</button>
+  <button class="fb" data-cat="Oil">🫙 எண்ணெய் / Oil</button>
+  <button class="fb" data-cat="Other">🛒 மற்றவை / Other</button>
+  <div class="fsort">⇅ <select id="ss" onchange="renderProds()">
+    <option value="">Sort</option>
+    <option value="na">Name A–Z</option>
+    <option value="nd">Name Z–A</option>
+    <option value="pa">Price ↑</option>
+    <option value="pd">Price ↓</option>
+  </select></div>
+</div></div>
+
+<div class="main">
+  <div class="sh">
+    <h2 class="stitle" id="stitle">Our Products</h2>
+    <span class="pcnt" id="pcnt">Loading…</span>
+  </div>
+  <div class="pgrid" id="pgrid"></div>
+</div>
+
+<section class="branches-section" id="branches">
+  <div class="branches-section-hdr">
+    <p class="branches-section-label">Find Us</p>
+    <h2 class="branches-section-title">எங்கள் கிளைகள்<span>Our Branches</span></h2>
+    <div class="branches-divider"></div>
+  </div>
+  <div class="branches-grid-new">
+    <div class="branch-card-new">
+      <div class="branch-badge-new">Branch 1</div>
+      <div class="branch-name-row">
+        <span class="branch-pin-icon">📍</span>
+        <div><h3>Siva Trading Co</h3><p>Shevapet, Salem</p></div>
+      </div>
+      <div class="branch-addr-new">
+        <strong>📞 <a href="tel:+919443355683" style="color:var(--maroon-gold);text-decoration:none">9443355683</a></strong>
+        824, Navalar Nedunchezhian Salai,<br>Shevapet, Salem – 636002
+      </div>
+      <div class="branch-map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15629.946923087795!2d78.13179369574488!3d11.659877366762199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf1fa8cb958a5%3A0xefd4cc4f97fed81a!2zU2l2YSBUcmFkaW5nIENvIChNYWxpdmFnYW0pIOCuruCusuCuv-CuteCuleCuruCvjQ!5e0!3m2!1sen!2sin!4v1774108014490!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Siva Trading Co Location"></iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/2KehgwKbfZic1DNFA" class="branch-map-btn" target="_blank" rel="noopener">🗺 View on Google Maps</a>
+    </div>
+    <div class="branch-card-new">
+      <div class="branch-badge-new">Branch 2</div>
+      <div class="branch-name-row">
+        <span class="branch-pin-icon">📍</span>
+        <div><h3>King Trading Co</h3><p>Suramangalam, Salem</p></div>
+      </div>
+      <div class="branch-addr-new">
+        <strong>📞 <a href="tel:+918122909992" style="color:var(--maroon-gold);text-decoration:none">8122909992</a></strong>
+        304/445, Suramangalam Road, South Lane,<br>Salem – 636005
+      </div>
+      <div class="branch-map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3905.4!2d78.1391781!3d11.6560154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf03c80fe3d83%3A0x2072fd7e14c128a2!2sKing%20Trading%20and%20co!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="King Trading Co Location"></iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/aentkfhAJZMDDZkL6" class="branch-map-btn" target="_blank" rel="noopener">🗺 View on Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-section-hdr">
+    <span class="contact-section-label">Get in Touch</span>
+    <h2 class="contact-section-title">தொடர்பு கொள்ளுங்கள்<span>Contact Us</span></h2>
+    <div class="contact-divider"></div>
+  </div>
+  <div class="contact-grid-new">
+    <div class="contact-card-new">
+      <div class="contact-icon-new">📞</div>
+      <h4>Call Us</h4>
+      <p class="contact-branch-lbl">Branch 1 · Siva Trading Co</p>
+      <a href="tel:+919443355683" class="contact-phone-btn">📞 9443355683</a>
+      <p class="contact-branch-lbl" style="margin-top:10px">Branch 2 · King Trading Co</p>
+      <a href="tel:+918122909992" class="contact-phone-btn">📞 8122909992</a>
+    </div>
+    <div class="contact-card-new">
+      <div class="contact-icon-new">🕒</div>
+      <h4>Working Hours</h4>
+      <p class="contact-branch-lbl">Branch 1 · Siva Trading Co</p>
+      <p class="hours-label"><strong>Monday – Saturday</strong></p>
+      <p class="hours-time-new">9:00 AM – 8:00 PM</p>
+      <p class="contact-branch-lbl" style="margin-top:8px">Branch 2 · King Trading Co</p>
+      <p class="hours-label"><strong>Monday – Saturday</strong></p>
+      <p class="hours-time-new">9:00 AM – 8:00 PM</p>
+    </div>
+    <div class="contact-card-new">
+      <div class="contact-icon-new">💬</div>
+      <h4>WhatsApp Order</h4>
+      <p style="font-size:.85rem;color:var(--muted2);margin-bottom:18px;line-height:1.6">Send us your order list directly on WhatsApp — fast, easy, and confirmed instantly.</p>
+      <a href="https://wa.me/919443355683?text=வணக்கம்%20மலிவகம்!%20ஆர்டர்%20செய்ய%20விரும்புகிறேன்." class="contact-wa-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" fill="white" width="18" height="18"><path d="M16.003 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.336.627 4.593 1.817 6.564L2.667 29.333l6.954-1.78A13.27 13.27 0 0016.003 29.333c7.365 0 13.33-5.971 13.33-13.333 0-7.362-5.965-13.333-13.33-13.333zm0 24c-2.01 0-3.981-.527-5.714-1.522l-.41-.24-4.124 1.056 1.093-3.984-.265-.428A10.633 10.633 0 015.333 16c0-5.882 4.788-10.667 10.67-10.667 5.882 0 10.664 4.785 10.664 10.667S21.885 26.667 16.003 26.667zm5.847-7.988c-.32-.16-1.893-.933-2.186-1.04-.293-.107-.506-.16-.72.16s-.826 1.04-1.013 1.253c-.187.214-.373.24-.693.08-.32-.16-1.35-.497-2.572-1.586-.95-.848-1.59-1.895-1.776-2.215-.187-.32-.02-.493.14-.652.144-.143.32-.373.48-.56.16-.186.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.986-2.373-.26-.624-.524-.54-.72-.55l-.613-.01a1.18 1.18 0 00-.853.4c-.293.32-1.12 1.093-1.12 2.666s1.147 3.094 1.307 3.307c.16.213 2.254 3.44 5.463 4.826.764.33 1.36.526 1.824.674.766.243 1.464.209 2.016.127.615-.091 1.893-.773 2.16-1.52.266-.747.266-1.387.186-1.52-.08-.134-.293-.214-.614-.374z"/></svg>
+        Order on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="foot-brand">Malivagam</div>
+  <p>Siva Trading Co · King Trading Co · Salem, Tamil Nadu</p>
+  <p style="margin-top:4px">📞 9443355683 &nbsp;·&nbsp; 📞 8122909992</p>
+  <div class="flinks" style="margin-top:16px">
+    <a href="index.html">Home</a>
+    <a href="https://wa.me/919443355683" target="_blank">WhatsApp</a>
+    <a href="https://maps.app.goo.gl/2KehgwKbfZic1DNFA" target="_blank">Siva Trading Map</a>
+    <a href="https://maps.app.goo.gl/aentkfhAJZMDDZkL6" target="_blank">King Trading Map</a>
+  </div>
+</footer>
+
+<div class="carto" id="carto" onclick="if(event.target===this)closeCart()">
+  <div class="cartp">
+    <div class="carth"><h2>🛒 Your Cart</h2><button class="cartx" onclick="closeCart()">✕</button></div>
+    <div class="cartl" id="cartl"></div>
+    <div class="cartf" id="cartf" style="display:none">
+      <div class="ctr"><span class="ctl">Total</span><span class="ctv" id="ctv">—</span></div>
+      <div class="csub" id="csub"></div>
+      <button class="chkbtn" onclick="checkoutWA()">
+        <svg viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16c0 2.68.697 5.197 1.916 7.381L1 31l7.86-1.873A14.948 14.948 0 0016 31c8.271 0 15-6.729 15-15S24.271 1 16 1zm6.84 18.204c-.374-.188-2.215-1.092-2.558-1.216-.343-.125-.593-.187-.843.188-.25.374-.968 1.216-1.187 1.467-.218.25-.437.28-.812.093-.374-.188-1.58-.582-3.009-1.856-1.112-.993-1.862-2.218-2.08-2.593-.218-.374-.023-.576.165-.762.17-.169.374-.438.562-.656.188-.218.25-.374.375-.624.124-.25.062-.469-.031-.657-.094-.188-.844-2.032-1.156-2.782-.305-.729-.615-.63-.843-.642-.218-.012-.468-.015-.718-.015-.25 0-.656.094-.999.469-.343.374-1.312 1.282-1.312 3.126s1.343 3.625 1.53 3.875c.188.25 2.645 4.04 6.407 5.665.896.387 1.596.617 2.14.789.899.285 1.717.245 2.363.148.72-.107 2.215-.905 2.527-1.78.312-.874.312-1.624.218-1.78-.093-.156-.343-.25-.718-.437z"/></svg>
+        Order via WhatsApp
+      </button>
+      <button class="clbtn" onclick="clearCart()">🗑 Clear Cart</button>
+    </div>
+  </div>
+</div>
+
+<div class="qvo" id="qvo" onclick="if(event.target===this)closeQV()">
+  <div class="qvb">
+    <div class="qvi" id="qvi"></div>
+    <div class="qvbody">
+      <div class="qvc" id="qvc"></div>
+      <div class="qvn" id="qvn"></div>
+      <div class="qvp" id="qvp"></div>
+      <div class="qvd" id="qvd"></div>
+      <div class="qvacts">
+        <button class="qvadd" id="qvadd" onclick="qvAddCart()">🛒 Add to Cart</button>
+        <a class="qvwa" id="qvwa" target="_blank">
+          <svg viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16c0 2.68.697 5.197 1.916 7.381L1 31l7.86-1.873A14.948 14.948 0 0016 31c8.271 0 15-6.729 15-15S24.271 1 16 1zm6.84 18.204c-.374-.188-2.215-1.092-2.558-1.216-.343-.125-.593-.187-.843.188-.25.374-.968 1.216-1.187 1.467-.218.25-.437.28-.812.093-.374-.188-1.58-.582-3.009-1.856-1.112-.993-1.862-2.218-2.08-2.593-.218-.374-.023-.576.165-.762.17-.169.374-.438.562-.656.188-.218.25-.374.375-.624.124-.25.062-.469-.031-.657-.094-.188-.844-2.032-1.156-2.782-.305-.729-.615-.63-.843-.642-.218-.012-.468-.015-.718-.015-.25 0-.656.094-.999.469-.343.374-1.312 1.282-1.312 3.126s1.343 3.625 1.53 3.875c.188.25 2.645 4.04 6.407 5.665.896.387 1.596.617 2.14.789.899.285 1.717.245 2.363.148.72-.107 2.215-.905 2.527-1.78.312-.874.312-1.624.218-1.78-.093-.156-.343-.25-.718-.437z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="#" onclick="openWhatsappOrder(event)" class="whatsapp-fab" aria-label="Order on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="white" width="28" height="28"><path d="M16.003 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.336.627 4.593 1.817 6.564L2.667 29.333l6.954-1.78A13.27 13.27 0 0016.003 29.333c7.365 0 13.33-5.971 13.33-13.333 0-7.362-5.965-13.333-13.33-13.333zm0 24c-2.01 0-3.981-.527-5.714-1.522l-.41-.24-4.124 1.056 1.093-3.984-.265-.428A10.633 10.633 0 015.333 16c0-5.882 4.788-10.667 10.67-10.667 5.882 0 10.664 4.785 10.664 10.667S21.885 26.667 16.003 26.667zm5.847-7.988c-.32-.16-1.893-.933-2.186-1.04-.293-.107-.506-.16-.72.16s-.826 1.04-1.013 1.253c-.187.214-.373.24-.693.08-.32-.16-1.35-.497-2.572-1.586-.95-.848-1.59-1.895-1.776-2.215-.187-.32-.02-.493.14-.652.144-.143.32-.373.48-.56.16-.186.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.986-2.373-.26-.624-.524-.54-.72-.55l-.613-.01a1.18 1.18 0 00-.853.4c-.293.32-1.12 1.093-1.12 2.666s1.147 3.094 1.307 3.307c.16.213 2.254 3.44 5.463 4.826.764.33 1.36.526 1.824.674.766.243 1.464.209 2.016.127.615-.091 1.893-.773 2.16-1.52.266-.747.266-1.387.186-1.52-.08-.134-.293-.214-.614-.374z"/></svg>
+  <span class="fab-tooltip">Order Now</span>
+</a>
+<button class="back-to-top" id="bttNew" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script>
+/* ── FIREBASE ── */
+var _k=['AIzaSyBg0HeoooI58R6ikEfM5oaC5kPmfS9VskM','kingtradingco-eac53.firebaseapp.com','kingtradingco-eac53','705858167354','1:705858167354:web:03bfc2cc0e702b428b0b03'];
+(function(){firebase.initializeApp({apiKey:_k[0],authDomain:_k[1],projectId:_k[2],storageBucket:'',messagingSenderId:_k[3],appId:_k[4]});})();
+var db=firebase.firestore(),col=db.collection('products'),WA='919443355683';
+
+var SEED=[
+  {productName:"A M30",price:0,category:"Rice",available:true},
+  {productName:"Aschippam 50 K",price:0,category:"Flour",available:true},
+  {productName:"Aska 25 Kg",price:0,category:"Sugar",available:true},
+  {productName:"Aska No.1 50 Kg",price:0,category:"Sugar",available:true},
+  {productName:"Atta 10kg",price:0,category:"Flour",available:true},
+  {productName:"Atta 50K",price:0,category:"Flour",available:true},
+  {productName:"Deepam Oil 180 Bottle",price:0,category:"Oil",available:true},
+  {productName:"Deepam Oil 350 Bottle",price:0,category:"Oil",available:true},
+  {productName:"Deepam Oil 500 Bottle",price:0,category:"Oil",available:true},
+  {productName:"Deepam Oil 500 Pouch",price:0,category:"Oil",available:true},
+  {productName:"Frg 30kg 222",price:0,category:"Rice",available:true},
+  {productName:"Frg 30kg Apple",price:0,category:"Rice",available:true},
+  {productName:"Frg Gopuram",price:0,category:"Rice",available:true},
+  {productName:"Gf Joker 30Kg",price:0,category:"Rice",available:true},
+  {productName:"Gf Leader 30Kg",price:0,category:"Rice",available:true},
+  {productName:"GF NO1 30k",price:0,category:"Rice",available:true},
+  {productName:"Gf Tiger",price:0,category:"Rice",available:true},
+  {productName:"KV +++ Atta 50K",price:0,category:"Flour",available:true},
+  {productName:"Maida 10kg VG Mudai",price:0,category:"Flour",available:true},
+  {productName:"Maida 50 Kg Meenachi Diamond",price:0,category:"Flour",available:true},
+  {productName:"Maida 50K VERY NICE",price:0,category:"Flour",available:true},
+  {productName:"Maida KURUVI 50Kg",price:0,category:"Flour",available:true},
+  {productName:"Maida Oxygen 50KG",price:0,category:"Flour",available:true},
+  {productName:"Maida Vnice 10Kg Chippam",price:0,category:"Flour",available:true},
+  {productName:"MDall 30Kg",price:0,category:"Dal",available:true},
+  {productName:"ODall 25kg",price:0,category:"Dal",available:true},
+  {productName:"ODall 50kg GANESH",price:0,category:"Dal",available:true},
+  {productName:"ODall GUBERAN 50kg",price:0,category:"Dal",available:true},
+  {productName:"ODall KANNAN 50kg",price:0,category:"Dal",available:true},
+  {productName:"Onion Bold",price:0,category:"Other",available:true},
+  {productName:"Onion Medium",price:0,category:"Other",available:true},
+  {productName:"Onion New",price:0,category:"Other",available:true},
+  {productName:"PDall Australia",price:0,category:"Dal",available:true},
+  {productName:"PDall Satha",price:0,category:"Dal",available:true},
+  {productName:"Pori Hand Fry",price:0,category:"Other",available:true},
+  {productName:"Puli AC NO1",price:0,category:"Other",available:true},
+  {productName:"Puli BEST",price:0,category:"Other",available:true},
+  {productName:"PULI Special New",price:0,category:"Other",available:true},
+  {productName:"R Adt45 Baloon26 Kg",price:0,category:"Rice",available:true},
+  {productName:"Rava Very Nice 50K",price:0,category:"Flour",available:true},
+  {productName:"R Basmathi BK Platina 26Kg",price:0,category:"Rice",available:true},
+  {productName:"R Basmathi Nazreen 30Kg",price:0,category:"Rice",available:true},
+  {productName:"R Bpt Krishna 26kg Old",price:0,category:"Rice",available:true},
+  {productName:"R Bpt Krishna New 26 Kg",price:0,category:"Rice",available:true},
+  {productName:"R Bpt Omsakthi 26kg",price:0,category:"Rice",available:true},
+  {productName:"R Bullet SS 26Kg",price:0,category:"Rice",available:true},
+  {productName:"R DT Vadakolam 26kg",price:0,category:"Rice",available:true},
+  {productName:"R DT Vadakolam 30Kg",price:0,category:"Rice",available:true},
+  {productName:"Real Diamond",price:0,category:"Rice",available:true},
+  {productName:"R HMT Andal Nachiyar 26 Kg",price:0,category:"Rice",available:true},
+  {productName:"R HMT Annalakshmi 26kg",price:0,category:"Rice",available:true},
+  {productName:"R HMT Kitchen King 26Kg",price:0,category:"Rice",available:true},
+  {productName:"R Idly Addukumali 26Kg",price:0,category:"Rice",available:true},
+  {productName:"R Idly Nirmalaya 26Kg",price:0,category:"Rice",available:true},
+  {productName:"R IDLY Orange 26kg",price:0,category:"Rice",available:true},
+  {productName:"R KA CS 26kg",price:0,category:"Rice",available:true},
+  {productName:"RNR Pannayar 26 Kg",price:0,category:"Rice",available:true},
+  {productName:"R Pachai 26Kg",price:0,category:"Rice",available:true},
+  {productName:"Samiya Ragi",price:0,category:"Flour",available:true},
+  {productName:"TDall 25kg",price:0,category:"Dal",available:true},
+  {productName:"Tdall Orange 50KG",price:0,category:"Dal",available:true},
+  {productName:"Vanaspathy Abirami 10kg",price:0,category:"Oil",available:true},
+  {productName:"Vanaspathy Bakery Green Gold",price:0,category:"Oil",available:true},
+  {productName:"Vanaspathy Bess",price:0,category:"Oil",available:true},
+  {productName:"Vanaspathy Margarine Cake 5 Kg",price:0,category:"Oil",available:true},
+  {productName:"Vanaspathy PRIDE Puff",price:0,category:"Oil",available:true},
+  {productName:"Vanaspathy RICHLAYER Puff",price:0,category:"Oil",available:true},
+  {productName:"Vanaspathy T S R Biscuits",price:0,category:"Oil",available:true},
+  {productName:"Vanaspathy T.S.R. Cream",price:0,category:"Oil",available:true},
+  {productName:"Vanaspathy Tsr Fiesta 5kg",price:0,category:"Oil",available:true},
+  {productName:"Vanaspathy T S R Puff",price:0,category:"Oil",available:true},
+  {productName:"Sugar Special",price:0,category:"Sugar",available:true}
+];
+
+var CATS=["Sugar","Rice","Dal","Flour","Oil","Other"];
+var EM={Sugar:"🍚",Rice:"🌾",Dal:"🫘",Flour:"🌻",Oil:"🫙",Other:"🛒"};
+var prods=[],activeCat="All",sq="",qvId=null,suggFocusIdx=-1;
+
+/* ── 3-DOT MENU ── */
+function toggleDotMenu(){
+  var btn=document.getElementById('dotMenuBtn');
+  var dd=document.getElementById('dotMenuDropdown');
+  btn.classList.toggle('open');dd.classList.toggle('open');
+}
+function scrollTo_(id){closeDotMenu();var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
+function closeDotMenu(){document.getElementById('dotMenuBtn').classList.remove('open');document.getElementById('dotMenuDropdown').classList.remove('open');}
+document.addEventListener('click',function(e){var wrap=document.getElementById('dotMenuWrap');if(wrap&&!wrap.contains(e.target))closeDotMenu();});
+
+document.addEventListener('DOMContentLoaded',function(){
+  updateBadge();showSkel(10);loadProds();initScroll();
+  setTimeout(function(){document.getElementById('stitle').classList.add('drawn');},900);
+
+  document.querySelectorAll('.fb').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.fb').forEach(function(x){x.classList.remove('act');});
+      b.classList.add('act');activeCat=b.dataset.cat;renderProds();
+    });
+  });
+
+  var searchEl=document.getElementById('searchInput');
+  var navSearch=document.getElementById('navSearch');
+  var mobEl=document.getElementById('mobileSearch');
+
+  searchEl.addEventListener('input',function(e){
+    sq=e.target.value.toLowerCase().trim();
+    navSearch.classList.toggle('has-value',sq.length>0);
+    buildSugg(e.target.value,'searchSugg');
+    if(mobEl)mobEl.value=e.target.value;
+    renderProds();
+  });
+  searchEl.addEventListener('focus',function(e){if(e.target.value.trim())buildSugg(e.target.value,'searchSugg');});
+  searchEl.addEventListener('blur',function(){setTimeout(hideSugg,200);});
+  searchEl.addEventListener('keydown',function(e){kbNav(e,'searchSugg');});
+
+  if(mobEl){
+    mobEl.addEventListener('input',function(e){
+      sq=e.target.value.toLowerCase().trim();
+      searchEl.value=e.target.value;
+      navSearch.classList.toggle('has-value',sq.length>0);
+      buildSugg(e.target.value,'mobSuggBox');
+      renderProds();
+    });
+    mobEl.addEventListener('focus',function(e){if(e.target.value.trim())buildSugg(e.target.value,'mobSuggBox');});
+    mobEl.addEventListener('blur',function(){setTimeout(hideSugg,200);});
+    mobEl.addEventListener('keydown',function(e){kbNav(e,'mobSuggBox');});
+  }
+});
+
+function buildSugg(query,boxId){
+  var box=document.getElementById(boxId||'searchSugg');
+  if(!box)return;
+  var ql=query.trim().toLowerCase();
+  if(!ql){hideSugg();return;}
+  var all=prods.filter(function(p){return p.productName.toLowerCase().includes(ql)||(p.category||'').toLowerCase().includes(ql);});
+  if(!all.length){box.innerHTML='<div class="ss-empty"><div class="ss-empty-icon">🔍</div>No results for "'+eh(query)+'"</div>';box.classList.add('show');suggFocusIdx=-1;return;}
+  var catMatches=all.filter(function(p){return(p.category||'').toLowerCase().includes(ql);}).slice(0,3);
+  var nameMatches=all.filter(function(p){return catMatches.indexOf(p)===-1&&p.productName.toLowerCase().includes(ql);}).slice(0,7);
+  var html='',globalIdx=0;
+  if(catMatches.length){html+='<div class="ss-group-hdr"><span class="ss-group-hdr-icon">📦</span> Categories</div>';catMatches.forEach(function(p){html+=suggRow(p,ql,globalIdx++);});}
+  if(nameMatches.length){html+='<div class="ss-group-hdr"><span class="ss-group-hdr-icon">🔍</span> Products</div>';nameMatches.forEach(function(p){html+=suggRow(p,ql,globalIdx++);});}
+  box.innerHTML=html;box.classList.add('show');suggFocusIdx=-1;
+  box.querySelectorAll('.ss-item').forEach(function(el,i){el.style.animationDelay=(i*0.035)+'s';});
+  syncSuggBtns(boxId);
+}
+function suggRow(p,ql,idx){
+  var e=EM[p.category]||'🛒';
+  var hi=p.productName.replace(new RegExp('('+ql.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>');
+  var inCart=getCart().find(function(c){return c.id===p.id;});
+  var addCls=inCart?'ss-add added':'ss-add';var addLbl=inCart?'✓':'＋';
+  var priceHtml=p.price>0?'<span class="ss-price">₹'+p.price.toLocaleString('en-IN')+'</span>':'<span class="ss-price ask">on request</span>';
+  return '<div class="ss-item" data-idx="'+idx+'" data-id="'+p.id+'" onmousedown="pickSugg(\''+ea(p.productName)+'\',\''+p.id+'\')">'
+    +'<div class="ss-icon">'+e+'</div>'
+    +'<div class="ss-text-wrap"><div class="ss-name">'+hi+'</div><div class="ss-meta"><span class="ss-cat">'+eh(p.category||'Other')+'</span>'+priceHtml+'</div></div>'
+    +'<button id="sadd-'+p.id+'" class="'+addCls+'" title="Add to cart" onmousedown="event.stopPropagation();suggAdd(\''+p.id+'\',\''+ea(p.productName)+'\','+(p.price||0)+',\'\')">'+addLbl+'</button>'
+    +'</div>';
+}
+function suggAdd(id,name,price,image){
+  addCart(id,name,price,image);
+  ['searchSugg','mobSuggBox'].forEach(function(boxId){var btn=document.getElementById('sadd-'+id);if(btn){btn.className='ss-add added';btn.textContent='✓';}});
+}
+function syncSuggBtns(boxId){
+  var cart=getCart();var box=document.getElementById(boxId||'searchSugg');if(!box)return;
+  box.querySelectorAll('.ss-item').forEach(function(row){var id=row.dataset.id;var btn=document.getElementById('sadd-'+id);if(!btn)return;var inCart=cart.find(function(c){return c.id===id;});btn.className=inCart?'ss-add added':'ss-add';btn.textContent=inCart?'✓':'＋';});
+}
+function pickSugg(name,id){
+  var searchEl=document.getElementById('searchInput');var mobEl=document.getElementById('mobileSearch');
+  searchEl.value=name;if(mobEl)mobEl.value=name;sq=name.toLowerCase();
+  document.getElementById('navSearch').classList.add('has-value');hideSugg();renderProds();
+  setTimeout(function(){var card=document.querySelector('.pc[onclick*="\''+id+'\'"]');if(card){card.scrollIntoView({behavior:'smooth',block:'center'});card.style.outline='2.5px solid var(--accent)';setTimeout(function(){card.style.outline='';},1800);}},200);
+}
+function hideSugg(){['searchSugg','mobSuggBox'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('show');});}
+function kbNav(e,boxId){
+  var box=document.getElementById(boxId);if(!box||!box.classList.contains('show'))return;
+  var items=box.querySelectorAll('.ss-item');if(!items.length)return;
+  if(e.key==='ArrowDown'){e.preventDefault();suggFocusIdx=Math.min(suggFocusIdx+1,items.length-1);items.forEach(function(el,i){el.classList.toggle('active',i===suggFocusIdx);});}
+  else if(e.key==='ArrowUp'){e.preventDefault();suggFocusIdx=Math.max(suggFocusIdx-1,0);items.forEach(function(el,i){el.classList.toggle('active',i===suggFocusIdx);});}
+  else if(e.key==='Enter'){if(suggFocusIdx>=0){var row=items[suggFocusIdx];pickSugg(row.querySelector('.ss-name').textContent,row.dataset.id);}}
+  else if(e.key==='Escape'){clearSearch();}
+}
+function clearSearch(){
+  var searchEl=document.getElementById('searchInput');var mob=document.getElementById('mobileSearch');
+  if(searchEl)searchEl.value='';if(mob)mob.value='';sq='';
+  var ns=document.getElementById('navSearch');if(ns)ns.classList.remove('has-value');
+  hideSugg();renderProds();
+}
+
+function loadProds(){
+  try{
+    col.orderBy('sortOrder','asc').get()
+      .then(function(snap){
+        var hasSortOrder=snap.docs.some(function(d){return d.data().sortOrder!==undefined;});
+        var liveQuery=hasSortOrder
+          ? col.orderBy('sortOrder','asc')
+          : col.orderBy('createdAt','desc');
+
+        liveQuery.onSnapshot(function(s){
+          if(s.empty){
+            var batch=db.batch();
+            SEED.forEach(function(p,i){
+              var r=col.doc();
+              batch.set(r,Object.assign({},p,{sortOrder:i,createdAt:firebase.firestore.FieldValue.serverTimestamp()}));
+            });
+            batch.commit().catch(function(){
+              prods=SEED.map(function(p,i){return Object.assign({id:'s'+i},p);});renderProds();
+            });
+            return;
+          }
+          prods=s.docs.map(function(d){return Object.assign({id:d.id},d.data());});
+          renderProds();
+        },function(){
+          col.orderBy('createdAt','desc').onSnapshot(function(s){
+            prods=s.docs.map(function(d){return Object.assign({id:d.id},d.data());});renderProds();
+          });
+        });
+      })
+      .catch(function(){
+        col.orderBy('createdAt','desc').onSnapshot(function(s){
+          prods=s.docs.map(function(d){return Object.assign({id:d.id},d.data());});renderProds();
+        });
+      });
+  }catch(e){prods=SEED.map(function(p,i){return Object.assign({id:'s'+i},p);});renderProds();}
+}
+
+function getFiltered(){
+  var list=prods.filter(function(p){
+    return(activeCat==='All'||p.category===activeCat)
+      &&(!sq||p.productName.toLowerCase().includes(sq)||(p.category||'').toLowerCase().includes(sq)
+        ||(p.aliases&&p.aliases.some(function(a){return a.toLowerCase().includes(sq);})));
+  });
+  var s=document.getElementById('ss')?document.getElementById('ss').value:'';
+  if(s==='na')list.sort(function(a,b){return a.productName.localeCompare(b.productName);});
+  if(s==='nd')list.sort(function(a,b){return b.productName.localeCompare(a.productName);});
+  if(s==='pa')list.sort(function(a,b){return(a.price||0)-(b.price||0);});
+  if(s==='pd')list.sort(function(a,b){return(b.price||0)-(a.price||0);});
+  return list;
+}
+function renderProds(){
+  var g=document.getElementById('pgrid'),f=getFiltered();
+  document.getElementById('pcnt').textContent=f.length+' items';
+  if(!g)return;
+  if(!f.length){g.innerHTML='<div class="empty-s"><div class="ei">🔍</div><h3 style="margin-bottom:5px;color:var(--muted)">No products found</h3><p>Try a different search or category</p></div>';return;}
+  g.innerHTML=f.map(cardH).join('');
+  g.querySelectorAll('.pc').forEach(function(c,i){c.style.animationDelay=i*.03+'s';});
+  initReveal();
+}
+function cardH(p){
+  var e=EM[p.category]||'🛒';
+  var img=p.imageUrl?'<img src="'+p.imageUrl+'" alt="'+eh(p.productName)+'" loading="lazy" onerror="this.outerHTML=\'<div class=\\\'tph\\\'>'+e+'</div>\'">':'<div class="tph">'+e+'</div>';
+  var pr=p.price>0?'<div class="cprice"><span class="c">₹</span>'+p.price.toLocaleString('en-IN')+'</div>':'<div class="cprice ask">Price on request</div>';
+  var sn=ea(p.productName),si=ea(p.imageUrl||'');
+  var inCart=getCart().find(function(c){return c.id===p.id;});
+  var btnLbl=inCart?'✓ In Cart ('+inCart.qty+')':'＋ Add to Cart';
+  var btnCls=inCart?'abtn added':'abtn';
+  var btn=p.available!==false?'<button id="btn-'+p.id+'" class="'+btnCls+'" onclick="addCart(\''+p.id+'\',\''+sn+'\','+(p.price||0)+',\''+si+'\')">'+btnLbl+'</button>':'<button class="abtn" disabled>Unavailable</button>';
+  return '<div class="pc'+(p.available===false?' unavail':'')+'" onclick="openQV(\''+p.id+'\')">'
+    +'<div class="cthumb">'+img+'<div class="scan"></div><span class="ctag">'+e+' '+(p.category||'Other')+'</span></div>'
+    +'<div class="cbody"><div class="cname">'+eh(p.productName)+'</div>'
+    +'<div class="ccat">'+e+' '+(p.category||'Other')+'</div>'+pr
+    +'<div onclick="event.stopPropagation()">'+btn+'</div></div></div>';
+}
+function showSkel(n){var g=document.getElementById('pgrid');if(!g)return;g.innerHTML=Array(n).fill('<div class="skc"><div class="sk ski"></div><div class="skb"><div class="sk skl"></div><div class="sk skl s"></div><div class="sk skl b"></div></div></div>').join('');}
+
+function getCart(){try{return JSON.parse(localStorage.getItem('mv_cart')||'[]');}catch(e){return[];}}
+function saveCart(c){localStorage.setItem('mv_cart',JSON.stringify(c));}
+function updateBadge(){var t=getCart().reduce(function(s,i){return s+i.qty;},0);var b=document.getElementById('cn');b.textContent=t;if(t>0)b.classList.add('show');else b.classList.remove('show');}
+function syncBtn(id){var btn=document.getElementById('btn-'+id);if(!btn)return;var item=getCart().find(function(c){return c.id===id;});if(item){btn.className='abtn added';btn.textContent='✓ In Cart ('+item.qty+')';}else{btn.className='abtn';btn.innerHTML='＋ Add to Cart';}}
+function addCart(id,name,price,image){
+  var cart=getCart(),ex=cart.find(function(i){return i.id===id;});
+  if(ex){ex.qty++;}else{cart.push({id:id,name:name,price:price,image:image,qty:1});}
+  saveCart(cart);updateBadge();syncBtn(id);
+  ['searchSugg','mobSuggBox'].forEach(function(boxId){syncSuggBtns(boxId);});
+  showToast('🛒 '+(name.length>24?name.slice(0,24)+'…':name)+' added!','ok');
+}
+function changeQty(itemId,delta){var cart=getCart(),item=cart.find(function(c){return c.id===itemId;});if(!item)return;item.qty+=delta;if(item.qty<=0){cart=cart.filter(function(c){return c.id!==itemId;});showToast('Item removed');}saveCart(cart);updateBadge();renderCart();syncBtn(itemId);}
+function removeItem(itemId){saveCart(getCart().filter(function(c){return c.id!==itemId;}));updateBadge();renderCart();syncBtn(itemId);showToast('Item removed');}
+function clearCart(){saveCart([]);updateBadge();renderCart();document.querySelectorAll('.abtn.added').forEach(function(b){b.className='abtn';b.innerHTML='＋ Add to Cart';});showToast('Cart அழிக்கப்பட்டது!');}
+function openCart(){renderCart();document.getElementById('carto').classList.add('open');document.body.style.overflow='hidden';}
+function closeCart(){document.getElementById('carto').classList.remove('open');document.body.style.overflow='';}
+function renderCart(){
+  var cart=getCart(),list=document.getElementById('cartl'),foot=document.getElementById('cartf');
+  if(!cart.length){list.innerHTML='<div class="cart-empty"><div class="cei">🛒</div><h3 style="color:var(--muted);margin-bottom:4px">Cart is empty</h3><p style="font-size:.85rem;font-style:italic">Add products to start</p></div>';foot.style.display='none';return;}
+  list.innerHTML=cart.map(function(item,i){
+    var e=catEmoji(item.name);var img=item.image?'<img class="cith" src="'+item.image+'" alt="">':'<div class="ciph">'+e+'</div>';
+    var pr=item.price>0?'₹'+item.price.toLocaleString('en-IN')+' × '+item.qty+' = ₹'+(item.price*item.qty).toLocaleString('en-IN'):'Qty: '+item.qty;
+    return '<div class="citem" style="animation-delay:'+i*.04+'s">'+img+'<div class="ciinf"><div class="cin">'+eh(item.name)+'</div><div class="cipr">'+pr+'</div></div>'
+      +'<div class="cictrl"><button class="qb" onclick="changeQty(\''+item.id+'\',-1)">−</button><span class="qn">'+item.qty+'</span><button class="qb" onclick="changeQty(\''+item.id+'\',1)">＋</button><button class="cdel" onclick="removeItem(\''+item.id+'\')">🗑</button></div></div>';
+  }).join('');
+  foot.style.display='block';
+  var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);
+  var qty=cart.reduce(function(s,i){return s+i.qty;},0);
+  document.getElementById('ctv').textContent=total>0?'₹'+total.toLocaleString('en-IN'):'—';
+  document.getElementById('csub').textContent=qty+' item'+(qty>1?'s':'')+' in cart';
+}
+
+function openQV(id){
+  var p=prods.find(function(x){return x.id===id;});if(!p)return;qvId=id;
+  var ie=document.getElementById('qvi');
+  ie.innerHTML=(p.imageUrl?'<img src="'+p.imageUrl+'" alt="'+eh(p.productName)+'">':'<div class="qviph">'+(EM[p.category]||'🛒')+'</div>')+'<button class="qvx" onclick="closeQV()">✕</button>';
+  document.getElementById('qvc').textContent=(EM[p.category]||'')+' '+(p.category||'Other');
+  document.getElementById('qvn').textContent=p.productName;
+  var pe=document.getElementById('qvp');
+  if(p.price>0){pe.className='qvp';pe.innerHTML='<span class="qc">₹</span>'+p.price.toLocaleString('en-IN');}
+  else{pe.className='qvp ask';pe.textContent='Price on request — call or WhatsApp us';}
+  var desc=p.description&&p.description.trim()?p.description:'Premium quality '+(p.category||'').toLowerCase()+' from Malivagam. Order via WhatsApp for bulk discounts and fast delivery.';
+  document.getElementById('qvd').textContent=desc;
+  var ab=document.getElementById('qvadd');
+  if(p.available===false){ab.disabled=true;ab.textContent='Unavailable';ab.style.background='#e8e0d4';ab.style.color='#b0957a';}
+  else{ab.disabled=false;ab.innerHTML='🛒 Add to Cart';ab.style.background='';ab.style.color='';}
+  document.getElementById('qvwa').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Vanakkam Malivagam, I\'m interested in: '+p.productName);
+  document.getElementById('qvo').classList.add('open');document.body.style.overflow='hidden';
+}
+function closeQV(){document.getElementById('qvo').classList.remove('open');document.body.style.overflow='';qvId=null;}
+function qvAddCart(){var p=prods.find(function(x){return x.id===qvId;});if(!p)return;addCart(p.id,p.productName,p.price||0,p.imageUrl||'');closeQV();}
+
+function checkoutWA(){
+  var cart=getCart();if(!cart.length){alert('Cart is empty!');return;}
+  var msg=buildOrderMsg();
+  window.open('https://wa.me/'+WA+'?text='+msg,'_blank');
+}
+
+function buildOrderMsg(){
+  var cart=getCart();if(!cart.length)return'';
+  var msg='வணக்கம் மலிவகம்!! 🙏\n\nஎன்னுடைய ஆர்டர் :\n';
+  cart.forEach(function(item,i){
+    msg+=(i+1)+'. '+item.name+' - '+item.qty;
+    if(item.price>0)msg+=' = ₹'+(item.price*item.qty).toLocaleString('en-IN');
+    msg+='\n';
+  });
+  var totalQty=cart.reduce(function(s,i){return s+i.qty;},0);
+  var total=cart.reduce(function(s,i){return s+(i.price*i.qty);},0);
+  msg+='\nமொத்த  பொருட்கள்: '+totalQty+' qty';
+  if(total>0)msg+='\nமொத்தம்: ₹'+total.toLocaleString('en-IN');
+  msg+='\n\nதயவுசெய்து உறுதிப்படுத்தவும். நன்றி!😊';
+  return encodeURIComponent(msg);
+}
+
+function openWhatsappOrder(e){
+  e.preventDefault();var msg=buildOrderMsg();
+  if(msg){window.open('https://wa.me/'+WA+'?text='+msg,'_blank');}
+  else{window.open('https://wa.me/'+WA+'?text='+encodeURIComponent('வணக்கம் மலிவகம்!! 🙏\nஆர்டர் செய்ய விரும்புகிறேன்.'),'_blank');}
+}
+
+function initScroll(){
+  var hdr=document.getElementById('hdr'),btt=document.getElementById('bttNew');
+  window.addEventListener('scroll',function(){var y=window.scrollY;hdr.classList.toggle('scrolled',y>10);if(btt)btt.classList.toggle('visible',y>400);});
+  initReveal();
+}
+function initReveal(){
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+}
+function showToast(msg,type){var t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(type||'')+' show';clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2800);}
+function eh(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function ea(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;');}
+function catEmoji(n){n=(n||'').toLowerCase();if(n.includes('rice')||n.includes('bpt')||n.includes('basmathi')||n.includes('idly'))return'🌾';if(n.includes('dal'))return'🫘';if(n.includes('atta')||n.includes('maida')||n.includes('flour')||n.includes('rava'))return'🌻';if(n.includes('oil')||n.includes('vanaspathy'))return'🫙';if(n.includes('sugar')||n.includes('aska'))return'🍚';return'🛒';}
+</script>
+</body>
+</html>
